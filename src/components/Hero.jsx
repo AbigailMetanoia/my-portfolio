@@ -1,10 +1,10 @@
-import profileImg from "../assets/profile.png"; // ganti dengan nama file foto kamu
+import profileImg from "../assets/profile.png";
 
 const badges = [
-  { label: "UI/UX Designer",     style: { bottom: "38%", left: "4%" } },
-  { label: "Frontend Developer", style: { top:    "32%", right: "4%" } },
-  { label: "Visual Designer",    style: { bottom: "16%", left: "4%" } },
-  { label: "Graphic Designer",   style: { bottom: "22%", right: "4%" } },
+  { label: "UI/UX Designer",     pos: { bottom: "50%", left: "4%" } },
+  { label: "Frontend Developer", pos: { top:    "32%", right: "4%" } },
+  { label: "Visual Designer",    pos: { bottom: "16%", left: "4%" } },
+  { label: "Graphic Designer",   pos: { bottom: "22%", right: "4%" } },
 ];
 
 export default function Hero() {
@@ -22,8 +22,13 @@ export default function Hero() {
         paddingTop: "120px",
       }}
     >
-      {/* ── Heading (above photo, centered) ── */}
-      <div style={{ textAlign: "center", zIndex: 5, position: "relative" }}>
+      {/* ── Heading — z-index RENDAH agar foto bisa overlap di atasnya ── */}
+      <div style={{
+        textAlign: "center",
+        position: "relative",
+        zIndex: 2,          /* < zIndex foto (5) → foto di depan heading */
+        marginBottom: "0px",
+      }}>
         <p style={{
           fontFamily: "'Inter', sans-serif",
           fontWeight: "600",
@@ -50,7 +55,7 @@ export default function Hero() {
         </h1>
       </div>
 
-      {/* ── Photo area — badges float around this ── */}
+      {/* ── Photo + badge container ── */}
       <div style={{
         position: "relative",
         width: "100%",
@@ -58,59 +63,81 @@ export default function Hero() {
         margin: "0 auto",
         display: "flex",
         justifyContent: "center",
-        marginTop: "-40px",   /* photo slightly overlaps heading bottom */
+        marginTop: "-50px",
       }}>
 
-        {/* Gradient glows — centred around the photo */}
+        {/* ── GRADIENT GLOWS — lebih pekat & saturated ── */}
+
+        {/* Ungu — tepat di belakang kepala */}
         <div style={{
           position: "absolute",
-          width: "320px", height: "320px",
-          background: "radial-gradient(circle, rgba(124,92,252,0.45) 0%, transparent 70%)",
-          top: "25%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          borderRadius: "50%", pointerEvents: "none", zIndex: 1,
+          width: "400px", height: "400px",
+          background: "radial-gradient(circle, rgba(110,60,255,0.80) 0%, rgba(80,30,200,0.40) 45%, transparent 70%)",
+          top: "5%", left: "50%",
+          transform: "translateX(-50%)",
+          borderRadius: "50%", pointerEvents: "none",
+          zIndex: 3,          /* sama dengan foto, tapi foto di depannya */
+          mixBlendMode: "screen",
         }} />
+
+        {/* Kuning-emas — bawah kiri */}
+        <div style={{
+          position: "absolute",
+          width: "300px", height: "300px",
+          background: "radial-gradient(circle, rgba(255,185,0,0.75) 0%, rgba(220,140,0,0.35) 50%, transparent 70%)",
+          bottom: "15%", left: "16%",
+          borderRadius: "50%", pointerEvents: "none",
+          zIndex: 3,
+          mixBlendMode: "screen",
+        }} />
+
+        {/* Biru — kanan atas */}
         <div style={{
           position: "absolute",
           width: "260px", height: "260px",
-          background: "radial-gradient(circle, rgba(255,200,50,0.28) 0%, transparent 70%)",
-          bottom: "10%", left: "18%",
-          borderRadius: "50%", pointerEvents: "none", zIndex: 1,
-        }} />
-        <div style={{
-          position: "absolute",
-          width: "220px", height: "220px",
-          background: "radial-gradient(circle, rgba(50,130,255,0.25) 0%, transparent 70%)",
-          top: "15%", right: "14%",
-          borderRadius: "50%", pointerEvents: "none", zIndex: 1,
-        }} />
-        <div style={{
-          position: "absolute",
-          width: "200px", height: "200px",
-          background: "radial-gradient(circle, rgba(180,50,255,0.22) 0%, transparent 70%)",
-          bottom: "5%", right: "12%",
-          borderRadius: "50%", pointerEvents: "none", zIndex: 1,
+          background: "radial-gradient(circle, rgba(30,160,255,0.70) 0%, rgba(20,100,220,0.35) 50%, transparent 70%)",
+          top: "10%", right: "14%",
+          borderRadius: "50%", pointerEvents: "none",
+          zIndex: 3,
+          mixBlendMode: "screen",
         }} />
 
-        {/* Floating role badges */}
-        {badges.map(({ label, style }, i) => (
+        {/* Pink-ungu — kanan bawah */}
+        <div style={{
+          position: "absolute",
+          width: "240px", height: "240px",
+          background: "radial-gradient(circle, rgba(200,50,255,0.65) 0%, rgba(150,20,200,0.30) 50%, transparent 70%)",
+          bottom: "10%", right: "12%",
+          borderRadius: "50%", pointerEvents: "none",
+          zIndex: 3,
+          mixBlendMode: "screen",
+        }} />
+
+        {/* ── Floating role badges — true iOS glass ── */}
+        {badges.map(({ label, pos }, i) => (
           <div
             key={label}
             style={{
               position: "absolute",
-              ...style,
-              background: "rgba(28,28,30,0.72)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              border: "1px solid rgba(255,255,255,0.14)",
+              ...pos,
+              /* iOS-style glass: putih transparan + saturate tinggi */
+              background: "rgba(255,255,255,0.10)",
+              backdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
+              WebkitBackdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
+              /* border terang di atas, gelap di bawah — efek depth kaca */
+              border: "1px solid rgba(255,255,255,0.25)",
+              boxShadow:
+                "inset 0 1.5px 0 rgba(255,255,255,0.30), " +   /* highlight atas */
+                "inset 0 -1px 0 rgba(0,0,0,0.15), " +           /* shadow bawah */
+                "0 8px 32px rgba(0,0,0,0.35)",                  /* outer shadow */
               borderRadius: "60px",
               padding: "16px 32px",
               color: "#fff",
               fontFamily: "'Inter', sans-serif",
-              fontSize: "clamp(1.2rem, 2.2vw, 2.1rem)",   /* ~34px di Figma */
+              fontSize: "clamp(1.1rem, 2.2vw, 2.1rem)",
               fontWeight: "500",
               whiteSpace: "nowrap",
-              zIndex: 4,
+              zIndex: 6,        /* di atas foto */
               animation: `floatBadge ${2.6 + i * 0.45}s ease-in-out infinite alternate`,
             }}
           >
@@ -118,22 +145,39 @@ export default function Hero() {
           </div>
         ))}
 
-        {/* Hero photo — z-index 3 so it's above glows but badges can be above/below */}
-        <img
-          src={profileImg}
-          alt="Noia - UI/UX Designer"
-          style={{
-            width: "clamp(300px, 42%, 480px)",
-            objectFit: "cover",
-            display: "block",
-            position: "relative",
-            zIndex: 3,
-            filter: "drop-shadow(0 30px 80px rgba(0,0,0,0.6))",
-          }}
-        />
-        
+        {/* ── Hero photo wrapper — z-index 5 → DI DEPAN heading (z:2) ── */}
+        <div style={{
+          position: "relative",
+          zIndex: 5,
+          display: "flex",
+          justifyContent: "center",
+        }}>
+          <img
+            src={profileImg}
+            alt="Noia - UI/UX Designer"
+            style={{
+              width: "clamp(300px, 42%, 480px)",
+              objectFit: "cover",
+              display: "block",
+              /* drop shadow agar foto menyatu dengan bg */
+              filter: "drop-shadow(0 20px 60px rgba(0,0,0,0.7))",
+            }}
+          />
 
-        {/* Get in Touch button — bottom-right of photo area */}
+          {/* Gradient fade BAWAH saja — transisi halus, tidak membentuk kotak */}
+          <div style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: "20%",
+            background: "linear-gradient(to bottom, transparent 0%, rgba(14,14,14,0.6) 50%, #0E0E0E 100%)",
+            pointerEvents: "none",
+            zIndex: 1,
+          }} />
+        </div>
+
+        {/* ── Get in Touch button — glowing ── */}
         <a
           href="#contact"
           style={{
@@ -147,23 +191,30 @@ export default function Hero() {
             color: "#fff",
             padding: "16px 32px",
             borderRadius: "50px",
-            fontSize: "clamp(1rem, 1.6vw, 1.3rem)",
+            fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
             fontFamily: "'Inter', sans-serif",
             fontWeight: "600",
             textDecoration: "none",
-            zIndex: 5,
-            transition: "background 0.2s, transform 0.2s, box-shadow 0.2s",
-            // boxShadow: "0 8px 32px rgba(124,92,252,0.35)",
+            zIndex: 7,
+            // boxShadow:
+            //   "0 0 20px rgba(124,92,252,0.75), " +
+            //   "0 0 60px rgba(124,92,252,0.40), " +
+            //   "0 0 100px rgba(124,92,252,0.20)",
+            transition: "transform 0.2s, box-shadow 0.2s",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = "#6A4AE8";
-            e.currentTarget.style.transform = "scale(1.05)";
-            e.currentTarget.style.boxShadow = "0 12px 40px rgba(124,92,252,0.5)";
+            e.currentTarget.style.transform = "scale(1.06)";
+            e.currentTarget.style.boxShadow =
+              "0 0 30px rgba(124,92,252,0.95), " +
+              "0 0 80px rgba(124,92,252,0.60), " +
+              "0 0 120px rgba(124,92,252,0.30)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = "#7C5CFC";
             e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.boxShadow = "0 8px 32px rgba(124,92,252,0.35)";
+            e.currentTarget.style.boxShadow =
+              "0 0 20px rgba(124,92,252,0.75), " +
+              "0 0 60px rgba(124,92,252,0.40), " +
+              "0 0 100px rgba(124,92,252,0.20)";
           }}
         >
           Get in Touch →
