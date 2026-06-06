@@ -16,7 +16,7 @@ export default function Footer() {
             key={item}
             href={`#${item.toLowerCase()}`}
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: "0.85rem",
               color: "rgba(255,255,255,0.45)",
               textDecoration: "none",
@@ -32,7 +32,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <p style={{
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'Inter', sans-serif",
         fontSize: "0.8rem",
         color: "rgba(255,255,255,0.3)",
         margin: 0,

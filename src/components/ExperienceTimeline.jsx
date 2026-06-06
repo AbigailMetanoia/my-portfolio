@@ -34,7 +34,7 @@ export default function ExperienceTimeline() {
               gap: "4px",
             }}>
               <h4 style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: "0.95rem",
                 fontWeight: "600",
                 color: "#fff",
@@ -43,7 +43,7 @@ export default function ExperienceTimeline() {
                 {exp.role}
               </h4>
               <span style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: "0.78rem",
                 color: "rgba(255,255,255,0.4)",
                 whiteSpace: "nowrap",
@@ -52,7 +52,7 @@ export default function ExperienceTimeline() {
               </span>
             </div>
             <p style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: "0.82rem",
               color: "rgba(255,255,255,0.5)",
               margin: "3px 0 0 0",

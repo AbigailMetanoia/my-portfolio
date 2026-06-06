@@ -51,7 +51,7 @@ export default function ProjectCard({ project }) {
       {/* Card Body */}
       <div style={{ padding: "16px" }}>
         <h3 style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           fontSize: "0.95rem",
           fontWeight: "600",
           color: "#fff",
@@ -74,7 +74,7 @@ export default function ProjectCard({ project }) {
                   padding: "4px 12px",
                   borderRadius: "50px",
                   fontSize: "0.75rem",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: "500",
                 }}
               >

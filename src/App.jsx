@@ -9,7 +9,7 @@ export default function App() {
   return (
     <div
       style={{
-        background: "#0E0E0E",
+        background: "#1A1A1A",
         minHeight: "100vh",
         color: "#fff",
         overflowX: "hidden",

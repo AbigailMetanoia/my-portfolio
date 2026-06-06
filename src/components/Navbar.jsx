@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import amLogo from "../assets/AM_Logo.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,86 +11,95 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav
-      style={{
+    <>
+      {/* AM Logo — fixed, top-left, outside navbar */}
+      <div style={{
         position: "fixed",
         top: "20px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        gap: "2rem",
-        background: scrolled
-          ? "rgba(20, 20, 20, 0.95)"
-          : "rgba(30, 30, 30, 0.7)",
-        backdropFilter: "blur(16px)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: "50px",
-        padding: "10px 20px",
-        transition: "background 0.3s ease",
-      }}
-    >
-      {/* Logo */}
-      <span
-        style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: "1.4rem",
-          fontWeight: "700",
-          color: "#fff",
-          letterSpacing: "-0.02em",
-          marginRight: "0.5rem",
-        }}
-      >
-        AM
-      </span>
-
-      {/* Nav Links */}
-      {["About", "Projects", "Contact"].map((item) => (
-        <a
-          key={item}
-          href={`#${item.toLowerCase()}`}
+        left: "28px",
+        zIndex: 200,
+      }}>
+        <img
+          src={amLogo}
+          alt="AM Logo"
           style={{
-            color: "rgba(255,255,255,0.75)",
-            textDecoration: "none",
-            fontSize: "0.9rem",
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: "400",
-            transition: "color 0.2s",
+            width: "60px",
+            height: "auto",
+            display: "block",
           }}
-          onMouseEnter={(e) => (e.target.style.color = "#fff")}
-          onMouseLeave={(e) => (e.target.style.color = "rgba(255,255,255,0.75)")}
-        >
-          {item}
-        </a>
-      ))}
+        />
+      </div>
 
-      {/* CTA Button */}
-      <a
-        href="/cv.pdf"
-        download
+      {/* Pill Navbar — centered */}
+      <nav
         style={{
-          background: "#7C5CFC",
-          color: "#fff",
-          padding: "8px 18px",
+          position: "fixed",
+          top: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 100,
+          display: "flex",
+          alignItems: "center",
+          gap: "2rem",
+          background: scrolled
+            ? "rgba(20, 20, 20, 0.95)"
+            : "rgba(30, 30, 30, 0.65)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: "50px",
-          fontSize: "0.85rem",
-          fontFamily: "'DM Sans', sans-serif",
-          fontWeight: "500",
-          textDecoration: "none",
-          transition: "background 0.2s, transform 0.2s",
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.background = "#6A4AE8";
-          e.target.style.transform = "scale(1.04)";
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.background = "#7C5CFC";
-          e.target.style.transform = "scale(1)";
+          padding: "10px 24px",
+          transition: "background 0.3s ease",
+          whiteSpace: "nowrap",
         }}
       >
-        Download CV
-      </a>
-    </nav>
+        {/* Nav Links */}
+        {["About", "Projects", "Contact"].map((item) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            style={{
+              color: "rgba(255,255,255,0.75)",
+              textDecoration: "none",
+              fontSize: "0.95rem",
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: "400",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.target.style.color = "#fff")}
+            onMouseLeave={(e) => (e.target.style.color = "rgba(255,255,255,0.75)")}
+          >
+            {item}
+          </a>
+        ))}
+
+        {/* Download CV Button */}
+        <a
+          href="/cv.pdf"
+          download
+          style={{
+            background: "#7C5CFC",
+            color: "#fff",
+            padding: "8px 20px",
+            borderRadius: "50px",
+            fontSize: "0.9rem",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: "500",
+            textDecoration: "none",
+            transition: "background 0.2s, transform 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#6A4AE8";
+            e.currentTarget.style.transform = "scale(1.04)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "#7C5CFC";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          Download CV
+        </a>
+      </nav>
+    </>
   );
 }

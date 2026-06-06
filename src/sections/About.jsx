@@ -1,11 +1,11 @@
-import profileImg from "../assets/images/profile.png"; // ganti dengan nama file foto kamu
+import profileImg from "../assets/profile.png"; // ganti dengan nama file foto kamu
 import ExperienceTimeline from "../components/ExperienceTimeline";
 
 // Import icon SVGs atau gunakan emoji/teks sebagai placeholder
 const socialLinks = [
-  { label: "LinkedIn", href: "https://linkedin.com/in/abigailmetanoia", icon: "in" },
-  { label: "Email", href: "mailto:abigailmetanoia@email.com", icon: "✉" },
-  { label: "WhatsApp", href: "https://wa.me/62xxxxxxxx", icon: "✆" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/abigail-metanoia-melody-09bb99219/", icon: "in" },
+  { label: "Email", href: "mailto:abigailmetanoia17@gmail.com", icon: "✉" },
+  { label: "WhatsApp", href: "https://wa.me/6281994055237", icon: "✆" },
 ];
 
 export default function About() {
@@ -20,7 +20,7 @@ export default function About() {
     >
       {/* Section label */}
       <p style={{
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'Inter', sans-serif",
         fontSize: "0.85rem",
         color: "rgba(255,255,255,0.4)",
         textAlign: "center",
@@ -31,7 +31,7 @@ export default function About() {
       </p>
 
       <h2 style={{
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "'Inter', sans-serif",
         fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
         fontWeight: "700",
         color: "#fff",
@@ -86,7 +86,7 @@ export default function About() {
                   color: "rgba(255,255,255,0.6)",
                   fontSize: "0.85rem",
                   textDecoration: "none",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: "700",
                   transition: "background 0.2s, color 0.2s",
                 }}
@@ -106,7 +106,7 @@ export default function About() {
 
           <div style={{ textAlign: "center" }}>
             <p style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontWeight: "600",
               fontSize: "1rem",
               color: "#fff",
@@ -115,7 +115,7 @@ export default function About() {
               Abigail Metanoia
             </p>
             <p style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: "0.85rem",
               color: "rgba(255,255,255,0.45)",
               margin: "4px 0 0 0",
@@ -128,7 +128,7 @@ export default function About() {
         {/* Right — bio + timeline */}
         <div>
           <p style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             fontSize: "1rem",
             color: "rgba(255,255,255,0.7)",
             lineHeight: 1.75,

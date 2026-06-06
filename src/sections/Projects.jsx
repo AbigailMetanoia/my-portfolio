@@ -13,7 +13,7 @@ export default function Projects() {
     >
       {/* Section heading */}
       <h2 style={{
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "'Inter', sans-serif",
         fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
         fontWeight: "700",
         color: "#fff",
