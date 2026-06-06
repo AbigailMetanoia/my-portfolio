@@ -1,7 +1,7 @@
 const experiences = [
   {
     id: 1,
-    role: "Junior UI/UX Designer",
+    role: "Junior Developer",
     company: "Apple Developer Academy Bali Cohort 2026",
     period: "Mar 2026 – Now",
     active: true,
@@ -20,6 +20,13 @@ const experiences = [
     period: "Jan 2024 – Mei 2024",
     active: false,
   },
+  {
+    id: 4,
+    role: "Freelance Graphic Designer",
+    company: "Bimbel B-Smart Semarang",
+    period: "Mar 2023 – Mar 2024",
+    active: false,
+  },
 ];
- 
+
 export default experiences;

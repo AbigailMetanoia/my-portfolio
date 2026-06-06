@@ -1,13 +1,16 @@
+import { useState } from "react";
 import profileImg from "../assets/profile.png";
 
 const badges = [
-  { label: "UI/UX Designer",     pos: { bottom: "50%", left: "4%" } },
-  { label: "Frontend Developer", pos: { top:    "32%", right: "4%" } },
-  { label: "Visual Designer",    pos: { bottom: "16%", left: "4%" } },
-  { label: "Graphic Designer",   pos: { bottom: "22%", right: "4%" } },
+  { label: "UI/UX Designer", pos: { bottom: "50%", left: "2%" } },
+  { label: "Frontend Developer", pos: { top: "32%", right: "2%" } },
+  { label: "Visual Designer", pos: { bottom: "16%", left: "2%" } },
+  { label: "Graphic Designer", pos: { bottom: "30%", right: "2%" } },
 ];
 
 export default function Hero() {
+  const [hoveredBadge, setHoveredBadge] = useState(null);
+
   return (
     <section
       id="hero"
@@ -23,135 +26,183 @@ export default function Hero() {
       }}
     >
       {/* ── Heading — z-index RENDAH agar foto bisa overlap di atasnya ── */}
-      <div style={{
-        textAlign: "center",
-        position: "relative",
-        zIndex: 2,          /* < zIndex foto (5) → foto di depan heading */
-        marginBottom: "0px",
-      }}>
-        <p style={{
-          fontFamily: "'Inter', sans-serif",
-          fontWeight: "600",
-          color: "#fff",
-          fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
-          margin: "0 0 4px 0",
-          letterSpacing: "-0.02em",
-        }}>
+      <div
+        style={{
+          textAlign: "center",
+          position: "relative",
+          zIndex: 2,
+          marginBottom: "0px",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: "600",
+            color: "#fff",
+            fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
+            margin: "0 0 4px 0",
+            letterSpacing: "-0.02em",
+          }}
+        >
           Hi I'm Noia
         </p>
 
-        <h1 style={{
-          fontFamily: "'Gruppo', cursive",
-          fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
-          fontWeight: "400",
-          color: "transparent",
-          WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
-          textShadow: "0px 4px 4px rgba(255,255,255,0.40)",
-          lineHeight: 1,
-          margin: 0,
-          letterSpacing: "0.01em",
-        }}>
+        <h1
+          style={{
+            fontFamily: "'Gruppo', cursive",
+            fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
+            fontWeight: "400",
+            color: "transparent",
+            WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+            textShadow: "0px 4px 4px rgba(255,255,255,0.40)",
+            lineHeight: 1,
+            margin: 0,
+            letterSpacing: "0.01em",
+          }}
+        >
           UI/UX Designer
         </h1>
       </div>
 
       {/* ── Photo + badge container ── */}
-      <div style={{
-        position: "relative",
-        width: "100%",
-        maxWidth: "900px",
-        margin: "0 auto",
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "-50px",
-      }}>
-
-        {/* ── GRADIENT GLOWS — lebih pekat & saturated ── */}
-
-        {/* Ungu — tepat di belakang kepala */}
-        <div style={{
-          position: "absolute",
-          width: "400px", height: "400px",
-          background: "radial-gradient(circle, rgba(110,60,255,0.80) 0%, rgba(80,30,200,0.40) 45%, transparent 70%)",
-          top: "5%", left: "50%",
-          transform: "translateX(-50%)",
-          borderRadius: "50%", pointerEvents: "none",
-          zIndex: 3,          /* sama dengan foto, tapi foto di depannya */
-          mixBlendMode: "screen",
-        }} />
-
-        {/* Kuning-emas — bawah kiri */}
-        <div style={{
-          position: "absolute",
-          width: "300px", height: "300px",
-          background: "radial-gradient(circle, rgba(255,185,0,0.75) 0%, rgba(220,140,0,0.35) 50%, transparent 70%)",
-          bottom: "15%", left: "16%",
-          borderRadius: "50%", pointerEvents: "none",
-          zIndex: 3,
-          mixBlendMode: "screen",
-        }} />
-
-        {/* Biru — kanan atas */}
-        <div style={{
-          position: "absolute",
-          width: "260px", height: "260px",
-          background: "radial-gradient(circle, rgba(30,160,255,0.70) 0%, rgba(20,100,220,0.35) 50%, transparent 70%)",
-          top: "10%", right: "14%",
-          borderRadius: "50%", pointerEvents: "none",
-          zIndex: 3,
-          mixBlendMode: "screen",
-        }} />
-
-        {/* Pink-ungu — kanan bawah */}
-        <div style={{
-          position: "absolute",
-          width: "240px", height: "240px",
-          background: "radial-gradient(circle, rgba(200,50,255,0.65) 0%, rgba(150,20,200,0.30) 50%, transparent 70%)",
-          bottom: "10%", right: "12%",
-          borderRadius: "50%", pointerEvents: "none",
-          zIndex: 3,
-          mixBlendMode: "screen",
-        }} />
-
-        {/* ── Floating role badges — true iOS glass ── */}
-        {badges.map(({ label, pos }, i) => (
-          <div
-            key={label}
-            style={{
-              position: "absolute",
-              ...pos,
-              /* iOS-style glass: putih transparan + saturate tinggi */
-              background: "rgba(255,255,255,0.10)",
-              backdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
-              WebkitBackdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
-              /* border terang di atas, gelap di bawah — efek depth kaca */
-              border: "1px solid rgba(255,255,255,0.25)",
-              boxShadow:
-                "inset 0 1.5px 0 rgba(255,255,255,0.30), " +   /* highlight atas */
-                "inset 0 -1px 0 rgba(0,0,0,0.15), " +           /* shadow bawah */
-                "0 8px 32px rgba(0,0,0,0.35)",                  /* outer shadow */
-              borderRadius: "60px",
-              padding: "16px 32px",
-              color: "#fff",
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "clamp(1.1rem, 2.2vw, 2.1rem)",
-              fontWeight: "500",
-              whiteSpace: "nowrap",
-              zIndex: 6,        /* di atas foto */
-              animation: `floatBadge ${2.6 + i * 0.45}s ease-in-out infinite alternate`,
-            }}
-          >
-            {label}
-          </div>
-        ))}
-
-        {/* ── Hero photo wrapper — z-index 5 → DI DEPAN heading (z:2) ── */}
-        <div style={{
+      <div
+        style={{
           position: "relative",
-          zIndex: 5,
+          width: "100%",
+          maxWidth: "900px",
+          margin: "0 auto",
           display: "flex",
           justifyContent: "center",
-        }}>
+          marginTop: "-50px",
+        }}
+      >
+        {/* Ungu — tepat di belakang kepala */}
+        <div
+          style={{
+            position: "absolute",
+            width: "400px",
+            height: "400px",
+            background:
+              "radial-gradient(circle, rgba(110,60,255,0.80) 0%, rgba(80,30,200,0.40) 45%, transparent 70%)",
+            top: "5%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            borderRadius: "50%",
+            pointerEvents: "none",
+            zIndex: 3,
+            mixBlendMode: "screen",
+          }}
+        />
+
+        {/* Kuning-emas — bawah kiri */}
+        <div
+          style={{
+            position: "absolute",
+            width: "300px",
+            height: "300px",
+            background:
+              "radial-gradient(circle, rgba(255,185,0,0.75) 0%, rgba(220,140,0,0.35) 50%, transparent 70%)",
+            bottom: "15%",
+            left: "16%",
+            borderRadius: "50%",
+            pointerEvents: "none",
+            zIndex: 3,
+            mixBlendMode: "screen",
+          }}
+        />
+
+        {/* Biru — kanan atas */}
+        <div
+          style={{
+            position: "absolute",
+            width: "260px",
+            height: "260px",
+            background:
+              "radial-gradient(circle, rgba(30,160,255,0.70) 0%, rgba(20,100,220,0.35) 50%, transparent 70%)",
+            top: "10%",
+            right: "14%",
+            borderRadius: "50%",
+            pointerEvents: "none",
+            zIndex: 3,
+            mixBlendMode: "screen",
+          }}
+        />
+
+        {/* Pink-ungu — kanan bawah */}
+        <div
+          style={{
+            position: "absolute",
+            width: "240px",
+            height: "240px",
+            background:
+              "radial-gradient(circle, rgba(200,50,255,0.65) 0%, rgba(150,20,200,0.30) 50%, transparent 70%)",
+            bottom: "10%",
+            right: "12%",
+            borderRadius: "50%",
+            pointerEvents: "none",
+            zIndex: 3,
+            mixBlendMode: "screen",
+          }}
+        />
+
+        {/* ── Floating role badges ── */}
+        {badges.map(({ label, pos }, i) => {
+          const isHovered = hoveredBadge === i;
+          return (
+            <div
+              key={label}
+              onMouseEnter={() => setHoveredBadge(i)}
+              onMouseLeave={() => setHoveredBadge(null)}
+              style={{
+                position: "absolute",
+                ...pos,
+                background: isHovered ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.10)",
+                backdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
+                WebkitBackdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
+                border: isHovered
+                  ? "1px solid rgba(255,255,255,0.35)"
+                  : "1px solid rgba(255,255,255,0.25)",
+                boxShadow: isHovered
+                  ? "inset 0 1.5px 0 rgba(255,255,255,0.40), inset 0 -1px 0 rgba(0,0,0,0.15), 0 20px 60px rgba(0,0,0,0.50)"
+                  : "inset 0 1.5px 0 rgba(255,255,255,0.30), inset 0 -1px 0 rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.35)",
+                borderRadius: "60px",
+                padding: "10px 28px",
+                color: "#fff",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "clamp(1.1rem, 2.2vw, 2.1rem)",
+                fontWeight: "500",
+                whiteSpace: "nowrap",
+                zIndex: 6,
+                cursor: "default",
+                /* Pisahkan animasi float dan scale hover menggunakan
+                   animationPlayState + transform terpisah di wrapper */
+                animationName: "floatBadge",
+                animationDuration: `${2.6 + i * 0.45}s`,
+                animationTimingFunction: "ease-in-out",
+                animationIterationCount: "infinite",
+                animationDirection: "alternate",
+                /* transform hover via scale — tidak konflik karena
+                   floatBadge hanya pakai translateY, kita gabung keduanya */
+                transform: isHovered ? "translateY(0px) scale(1.12)" : undefined,
+                animationPlayState: isHovered ? "paused" : "running",
+                transition:
+                  "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+              }}
+            >
+              {label}
+            </div>
+          );
+        })}
+
+        {/* ── Hero photo wrapper ── */}
+        <div
+          style={{
+            position: "relative",
+            zIndex: 5,
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <img
             src={profileImg}
             alt="Noia - UI/UX Designer"
@@ -159,25 +210,53 @@ export default function Hero() {
               width: "clamp(300px, 42%, 480px)",
               objectFit: "cover",
               display: "block",
-              /* drop shadow agar foto menyatu dengan bg */
-              filter: "drop-shadow(0 20px 60px rgba(0,0,0,0.7))",
             }}
           />
 
-          {/* Gradient fade BAWAH saja — transisi halus, tidak membentuk kotak */}
-          <div style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: "20%",
-            background: "linear-gradient(to bottom, transparent 0%, rgba(14,14,14,0.6) 50%, #0E0E0E 100%)",
-            pointerEvents: "none",
-            zIndex: 1,
-          }} />
+          {/* Layer 1 — blur frosted di paling bawah */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              height: "30%",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              maskImage: "linear-gradient(to bottom, transparent 0%, black 60%)",
+              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 60%)",
+              pointerEvents: "none",
+              zIndex: 2,
+            }}
+          />
+
+          {/* Layer 2 — gradient smooth multi-stop */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              height: "55%",
+              background: `linear-gradient(
+              to bottom,
+              rgba(26,26,26,0)    0%,
+              rgba(26,26,26,0.04) 10%,
+              rgba(26,26,26,0.10) 20%,
+              rgba(26,26,26,0.22) 32%,
+              rgba(26,26,26,0.40) 46%,
+              rgba(26,26,26,0.62) 60%,
+              rgba(26,26,26,0.80) 74%,
+              rgba(26,26,26,0.93) 86%,
+              rgba(26,26,26,1.00) 100%
+            )`,
+              pointerEvents: "none",
+              zIndex: 3,
+            }}
+          />
         </div>
 
-        {/* ── Get in Touch button — glowing ── */}
+        {/* ── Get in Touch button ── */}
         <a
           href="#contact"
           style={{
@@ -196,10 +275,10 @@ export default function Hero() {
             fontWeight: "600",
             textDecoration: "none",
             zIndex: 7,
-            // boxShadow:
-            //   "0 0 20px rgba(124,92,252,0.75), " +
-            //   "0 0 60px rgba(124,92,252,0.40), " +
-            //   "0 0 100px rgba(124,92,252,0.20)",
+            boxShadow:
+              "0 0 20px rgba(124,92,252,0.75), " +
+              "0 0 60px rgba(124,92,252,0.40), " +
+              "0 0 100px rgba(124,92,252,0.20)",
             transition: "transform 0.2s, box-shadow 0.2s",
           }}
           onMouseEnter={(e) => {
