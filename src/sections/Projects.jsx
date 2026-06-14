@@ -1,37 +1,38 @@
 import ProjectCard from "../components/ProjectCard";
 import projects from "../data/projects";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function Projects() {
+  const isMobile = useIsMobile();
+
   return (
     <section
       id="projects"
       style={{
-        padding: "70px 48px",
+        padding: isMobile ? "60px 20px" : "100px 48px",
         maxWidth: "1200px",
         margin: "0 auto",
       }}
     >
-      {/* Section heading */}
       <h2
         style={{
           fontFamily: "'Inter', sans-serif",
-          fontSize: "clamp(2rem, 4vw, 3rem)",
+          fontSize: isMobile ? "1.8rem" : "clamp(2rem, 4vw, 3rem)",
           fontWeight: "700",
           color: "#fff",
           textAlign: "center",
-          margin: "0 0 64px 0",
+          margin: "0 0 48px 0",
           letterSpacing: "-0.02em",
         }}
       >
         My Recent Project
       </h2>
 
-      {/* 2-column grid */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "28px",
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
+          gap: isMobile ? "16px" : "28px",
         }}
       >
         {projects.map((project) => (

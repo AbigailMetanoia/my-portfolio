@@ -3,6 +3,7 @@ import iconLinkedIn from "../assets/mdi_linkedin.png";
 import iconGmail from "../assets/mdi_gmail.png";
 import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
 import ExperienceTimeline from "../components/ExperienceTimeline";
+import useIsMobile from "../hooks/useIsMobile";
 
 const socialLinks = [
   {
@@ -15,11 +16,12 @@ const socialLinks = [
 ];
 
 export default function About() {
+  const isMobile = useIsMobile();
   return (
     <section
       id="about-detail"
       style={{
-        padding: "70px 48px",
+        padding: isMobile ? "60px 20px" : "70px 48px",
         maxWidth: "1200px",
         margin: "0 auto",
       }}
@@ -176,13 +178,13 @@ export default function About() {
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Abigail Metanoia Melody
+                  Abigail Metanoia
                 </p>
                 <p
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.8rem",
-                    color: "rgba(255, 255, 255, 0.66)",
+                    fontSize: "0.78rem",
+                    color: "rgba(255,255,255,0.55)",
                     margin: "3px 0 0 0",
                   }}
                 >

@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Gruppo&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Gruppo&display=swap');
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -13,9 +11,9 @@ html {
 }
 
 body {
-  background: #0e0e0e;
+  background: #0E0E0E;
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden; /* cegah horizontal scroll dari elemen dekoratif yang overflow */
 }
@@ -25,7 +23,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0e0e0e;
+  background: #0E0E0E;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(124, 92, 252, 0.4);
@@ -47,5 +45,36 @@ body {
     flex-direction: column !important;
     text-align: center !important;
     padding: 24px !important;
+  }
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+
+  /* Navbar — perkecil padding */
+  nav {
+    gap: 1rem !important;
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Projects grid — 1 kolom di mobile */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About — stack vertical */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Project Detail sidebar — sembunyikan, pakai dropdown */
+  .detail-sidebar {
+    display: none !important;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr !important;
   }
 }
