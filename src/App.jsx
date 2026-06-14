@@ -1,26 +1,26 @@
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Projects from "./sections/Projects";
-import About from "./sections/About";
-import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 
+import HomePage from "./pages/HomePage";
+import ProjectsPage from "./pages/ProjectPage";
+import ProjectDetailPage from "./pages/Projectdetailpage";
+import ContactPage from "./pages/ContactPage";
+
 export default function App() {
+  const location = useLocation();
+  const hideFooter = location.pathname === "/contact";
+
   return (
-    <div
-      style={{
-        background: "#1A1A1A",
-        minHeight: "100vh",
-        color: "#fff",
-        overflowX: "hidden",
-      }}
-    >
+    <div style={{ background: "#0E0E0E", minHeight: "100vh", color: "#fff", overflowX: "hidden" }}>
       <Navbar />
-      <Hero />
-      <Projects />
-      <About />
-      <Contact />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+      {!hideFooter && <Footer />}
     </div>
   );
 }

@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import amLogo from "../assets/AM_Logo.png";
+
+const navItems = [
+  { label: "About", path: "/#about-detail" },
+  { label: "Projects", path: "/projects" },
+  { label: "Contact", path: "/contact" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -10,29 +18,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <>
-      {/* AM Logo — fixed, top-left, outside navbar */}
-      <div
-        style={{
-          position: "fixed",
-          top: "20px",
-          left: "28px",
-          zIndex: 200,
-        }}
-      >
-        <img
-          src={amLogo}
-          alt="AM Logo"
-          style={{
-            width: "60px",
-            height: "auto",
-            display: "block",
-          }}
-        />
+      {/* AM Logo — fixed, top-left */}
+      <div style={{ position: "fixed", top: "20px", left: "28px", zIndex: 200 }}>
+        <Link to="/">
+          <img
+            src={amLogo}
+            alt="AM Logo"
+            style={{ width: "60px", height: "auto", display: "block" }}
+          />
+        </Link>
       </div>
 
-      {/* Pill Navbar — centered, iOS glass */}
+      {/* Pill Navbar */}
       <nav
         style={{
           position: "fixed",
@@ -43,48 +44,44 @@ export default function Navbar() {
           display: "flex",
           alignItems: "center",
           gap: "2rem",
-
-          /* ── Glass effect — sama persis dengan float badges ── */
           background: scrolled ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.08)",
           backdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
           WebkitBackdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
-
-          /* border terang atas, shadow luar */
           border: "1px solid rgba(255,255,255,0.20)",
           boxShadow:
-            "inset 0 1.5px 0 rgba(255,255,255,0.25), " /* highlight tepi atas */ +
-            "inset 0 -1px 0 rgba(0,0,0,0.10), " /* shadow tepi bawah */ +
-            "0 8px 32px rgba(0,0,0,0.30)" /* outer depth shadow */,
-
+            "inset 0 1.5px 0 rgba(255,255,255,0.25), " +
+            "inset 0 -1px 0 rgba(0,0,0,0.10), " +
+            "0 8px 32px rgba(0,0,0,0.30)",
           borderRadius: "50px",
           padding: "10px 24px",
           whiteSpace: "nowrap",
           transition: "background 0.3s ease, box-shadow 0.3s ease",
         }}
       >
-        {/* Nav Links */}
-        {["About", "Projects", "Contact"].map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
+        {navItems.map(({ label, path }) => (
+          <Link
+            key={label}
+            to={path}
             style={{
-              color: "rgba(255,255,255,0.75)",
+              color: isActive(path) ? "#fff" : "rgba(255,255,255,0.65)",
               textDecoration: "none",
               fontSize: "0.95rem",
               fontFamily: "'Inter', sans-serif",
-              fontWeight: "400",
-              transition: "color 0.2s",
+              fontWeight: isActive(path) ? "600" : "400",
+              transition: "color 0.2s, font-weight 0.2s",
             }}
-            onMouseEnter={(e) => (e.target.style.color = "#fff")}
-            onMouseLeave={(e) => (e.target.style.color = "rgba(255,255,255,0.75)")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = isActive(path) ? "#fff" : "rgba(255,255,255,0.65)")
+            }
           >
-            {item}
-          </a>
+            {label}
+          </Link>
         ))}
 
-        {/* Download CV Button */}
+        {/* Download CV */}
         <a
-          href="/cv.pdf"
+          href="/CV_Abigail Metanoia Melody.pdf"
           download
           style={{
             background: "#7C5CFC",

@@ -231,6 +231,7 @@ export default function Hero() {
           />
 
           {/* Layer 2 — gradient smooth multi-stop */}
+          {/* Layer 2 — gradient smooth multi-stop */}
           <div
             style={{
               position: "absolute",
@@ -239,17 +240,17 @@ export default function Hero() {
               width: "100%",
               height: "55%",
               background: `linear-gradient(
-              to bottom,
-              rgba(26,26,26,0)    0%,
-              rgba(26,26,26,0.04) 10%,
-              rgba(26,26,26,0.10) 20%,
-              rgba(26,26,26,0.22) 32%,
-              rgba(26,26,26,0.40) 46%,
-              rgba(26,26,26,0.62) 60%,
-              rgba(26,26,26,0.80) 74%,
-              rgba(26,26,26,0.93) 86%,
-              rgba(26,26,26,1.00) 100%
-            )`,
+                to bottom,
+                rgba(14,14,14,0)    0%,
+                rgba(14,14,14,0.04) 10%,
+                rgba(14,14,14,0.10) 20%,
+                rgba(14,14,14,0.22) 32%,
+                rgba(14,14,14,0.40) 46%,
+                rgba(14,14,14,0.62) 60%,
+                rgba(14,14,14,0.80) 74%,
+                rgba(14,14,14,0.93) 86%,
+                rgba(14,14,14,1.00) 100%
+              )`,
               pointerEvents: "none",
               zIndex: 3,
             }}

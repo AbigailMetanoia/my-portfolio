@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const tagColors = {
   Edutech: { bg: "rgba(124,92,252,0.25)", color: "#C4B0FF", border: "rgba(124,92,252,0.40)" },
@@ -13,13 +14,14 @@ const tagColors = {
 
 export default function ProjectCard({ project }) {
   const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div
+      onClick={() => navigate(`/projects/${project.slug}`)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        /* ── Glass card ── */
         background: hovered ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.05)",
         backdropFilter: "blur(24px) saturate(180%)",
         WebkitBackdropFilter: "blur(24px) saturate(180%)",
@@ -32,18 +34,11 @@ export default function ProjectCard({ project }) {
         cursor: "pointer",
         transform: hovered ? "translateY(-8px)" : "translateY(0)",
         transition:
-          "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
+          "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.25s, box-shadow 0.25s, border-color 0.25s",
       }}
     >
-      {/* ── Project Image — besar, rasio 4/3 ── */}
-      <div
-        style={{
-          width: "100%",
-          aspectRatio: "4/3",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
+      {/* Project Image */}
+      <div style={{ width: "100%", aspectRatio: "4/3", overflow: "hidden", position: "relative" }}>
         <img
           src={project.image}
           alt={project.title}
@@ -56,8 +51,6 @@ export default function ProjectCard({ project }) {
             transition: "transform 0.5s ease",
           }}
         />
-
-        {/* Subtle gradient overlay bawah gambar — biar judul mudah dibaca */}
         <div
           style={{
             position: "absolute",
@@ -71,14 +64,8 @@ export default function ProjectCard({ project }) {
         />
       </div>
 
-      {/* ── Card Body ── */}
-      <div
-        style={{
-          padding: "20px 22px 22px",
-          /* thin top border sebagai separator glass */
-          borderTop: "1px solid rgba(255,255,255,0.07)",
-        }}
-      >
+      {/* Card Body */}
+      <div style={{ padding: "20px 22px 22px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <h3
           style={{
             fontFamily: "'Inter', sans-serif",
@@ -92,8 +79,6 @@ export default function ProjectCard({ project }) {
         >
           {project.title}
         </h3>
-
-        {/* Tags */}
         <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
           {project.tags.map((tag) => {
             const t = tagColors[tag] || {
@@ -113,8 +98,6 @@ export default function ProjectCard({ project }) {
                   fontSize: "0.78rem",
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: "500",
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
                 }}
               >
                 {tag}
