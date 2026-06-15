@@ -1,5 +1,5 @@
 import amLogo from "../assets/AM_Logo.png";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 export default function Footer() {
   const isMobile = useIsMobile();

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import profileImg from "../assets/profile.png";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 const badges = [
   {

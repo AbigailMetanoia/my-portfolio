@@ -3,7 +3,7 @@ import iconLinkedIn from "../assets/mdi_linkedin.png";
 import iconGmail from "../assets/mdi_gmail.png";
 import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
 import ExperienceTimeline from "../components/ExperienceTimeline";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 const socialLinks = [
   {

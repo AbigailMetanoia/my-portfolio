@@ -1,7 +1,7 @@
 import iconLinkedIn from "../assets/mdi_linkedin.png";
 import iconGmail from "../assets/mdi_gmail.png";
 import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 const contacts = [
   {
