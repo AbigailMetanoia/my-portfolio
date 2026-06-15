@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import amLogo from "../assets/AM_Logo.png";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 const navItems = [
   { label: "About", path: "/#about-detail" },

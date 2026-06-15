@@ -1,6 +1,6 @@
 import ProjectCard from "../components/ProjectCard";
 import projects from "../data/projects";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 export default function Projects() {
   const isMobile = useIsMobile();
