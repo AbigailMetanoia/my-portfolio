@@ -248,7 +248,7 @@ export default function Hero() {
               bottom: 0,
               left: 0,
               width: "100%",
-              height: "55%",
+              height: "30%",
               background: `linear-gradient(to bottom,
               rgba(14,14,14,0) 0%, rgba(14,14,14,0.04) 10%,
               rgba(14,14,14,0.10) 20%, rgba(14,14,14,0.22) 32%,

@@ -85,9 +85,9 @@ export default function About() {
               alt="Abigail Metanoia Melody"
               style={{
                 width: "100%",
-                aspectRatio: isMobile ? "1/1" : "3/3",
+                aspectRatio: isMobile ? "2/1" : "3/3",
                 objectFit: "cover",
-                objectPosition: "center top",
+                objectPosition: "center 70%",
                 display: "block",
               }}
             />
