@@ -89,7 +89,7 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="/cv.pdf"
+            href="/CV_Abigail Metanoia Melody.pdf"
             download
             style={{
               background: "#7C5CFC",
@@ -199,7 +199,7 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="/cv.pdf"
+            href="/CV_Abigail Metanoia Melody.pdf"
             download
             style={{
               marginTop: "8px",

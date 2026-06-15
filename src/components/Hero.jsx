@@ -1,15 +1,33 @@
 import { useState } from "react";
 import profileImg from "../assets/profile.png";
+import useIsMobile from "../hooks/useIsMobile";
 
 const badges = [
-  { label: "UI/UX Designer", pos: { bottom: "50%", left: "2%" } },
-  { label: "Frontend Developer", pos: { top: "32%", right: "2%" } },
-  { label: "Visual Designer", pos: { bottom: "16%", left: "2%" } },
-  { label: "Graphic Designer", pos: { bottom: "30%", right: "2%" } },
+  {
+    label: "UI/UX Designer",
+    pos: { bottom: "50%", left: "2%" },
+    mobilePos: { top: "32%", left: "2%" },
+  },
+  {
+    label: "Frontend Developer",
+    pos: { top: "32%", right: "2%" },
+    mobilePos: { top: "32%", right: "2%" },
+  },
+  {
+    label: "Visual Designer",
+    pos: { bottom: "16%", left: "2%" },
+    mobilePos: { bottom: "22%", left: "2%" },
+  },
+  {
+    label: "Graphic Designer",
+    pos: { bottom: "30%", right: "2%" },
+    mobilePos: { bottom: "22%", right: "2%" },
+  },
 ];
 
 export default function Hero() {
   const [hoveredBadge, setHoveredBadge] = useState(null);
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -22,16 +40,15 @@ export default function Hero() {
         justifyContent: "flex-start",
         position: "relative",
         overflow: "hidden",
-        paddingTop: "120px",
+        paddingTop: isMobile ? "90px" : "120px",
       }}
     >
-      {/* ── Heading — z-index RENDAH agar foto bisa overlap di atasnya ── */}
+      {/* ── Heading ── */}
       <div
         style={{
           textAlign: "center",
           position: "relative",
           zIndex: 2,
-          marginBottom: "0px",
         }}
       >
         <p
@@ -39,7 +56,7 @@ export default function Hero() {
             fontFamily: "'Inter', sans-serif",
             fontWeight: "600",
             color: "#fff",
-            fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
+            fontSize: isMobile ? "1.6rem" : "clamp(2rem, 4.5vw, 3.8rem)",
             margin: "0 0 4px 0",
             letterSpacing: "-0.02em",
           }}
@@ -50,7 +67,7 @@ export default function Hero() {
         <h1
           style={{
             fontFamily: "'Gruppo', cursive",
-            fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
+            fontSize: isMobile ? "3.2rem" : "clamp(3.5rem, 9vw, 7.5rem)",
             fontWeight: "400",
             color: "transparent",
             WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
@@ -58,6 +75,7 @@ export default function Hero() {
             lineHeight: 1,
             margin: 0,
             letterSpacing: "0.01em",
+            whiteSpace: isMobile ? "nowrap" : "normal",
           }}
         >
           UI/UX Designer
@@ -69,19 +87,20 @@ export default function Hero() {
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: "900px",
+          maxWidth: isMobile ? "100%" : "900px",
           margin: "0 auto",
           display: "flex",
           justifyContent: "center",
-          marginTop: "-50px",
+          marginTop: isMobile ? "-20px" : "-50px",
+          minHeight: isMobile ? "420px" : "auto",
         }}
       >
-        {/* Ungu — tepat di belakang kepala */}
+        {/* Gradient glows */}
         <div
           style={{
             position: "absolute",
-            width: "400px",
-            height: "400px",
+            width: isMobile ? "220px" : "400px",
+            height: isMobile ? "220px" : "400px",
             background:
               "radial-gradient(circle, rgba(110,60,255,0.80) 0%, rgba(80,30,200,0.40) 45%, transparent 70%)",
             top: "5%",
@@ -93,51 +112,45 @@ export default function Hero() {
             mixBlendMode: "screen",
           }}
         />
-
-        {/* Kuning-emas — bawah kiri */}
         <div
           style={{
             position: "absolute",
-            width: "300px",
-            height: "300px",
+            width: isMobile ? "160px" : "300px",
+            height: isMobile ? "160px" : "300px",
             background:
               "radial-gradient(circle, rgba(255,185,0,0.75) 0%, rgba(220,140,0,0.35) 50%, transparent 70%)",
             bottom: "15%",
-            left: "16%",
+            left: isMobile ? "5%" : "16%",
             borderRadius: "50%",
             pointerEvents: "none",
             zIndex: 3,
             mixBlendMode: "screen",
           }}
         />
-
-        {/* Biru — kanan atas */}
         <div
           style={{
             position: "absolute",
-            width: "260px",
-            height: "260px",
+            width: isMobile ? "140px" : "260px",
+            height: isMobile ? "140px" : "260px",
             background:
               "radial-gradient(circle, rgba(30,160,255,0.70) 0%, rgba(20,100,220,0.35) 50%, transparent 70%)",
             top: "10%",
-            right: "14%",
+            right: isMobile ? "5%" : "14%",
             borderRadius: "50%",
             pointerEvents: "none",
             zIndex: 3,
             mixBlendMode: "screen",
           }}
         />
-
-        {/* Pink-ungu — kanan bawah */}
         <div
           style={{
             position: "absolute",
-            width: "240px",
-            height: "240px",
+            width: isMobile ? "130px" : "240px",
+            height: isMobile ? "130px" : "240px",
             background:
               "radial-gradient(circle, rgba(200,50,255,0.65) 0%, rgba(150,20,200,0.30) 50%, transparent 70%)",
             bottom: "10%",
-            right: "12%",
+            right: isMobile ? "5%" : "12%",
             borderRadius: "50%",
             pointerEvents: "none",
             zIndex: 3,
@@ -145,9 +158,10 @@ export default function Hero() {
           }}
         />
 
-        {/* ── Floating role badges ── */}
-        {badges.map(({ label, pos }, i) => {
+        {/* ── Floating badges ── */}
+        {badges.map(({ label, pos, mobilePos }, i) => {
           const isHovered = hoveredBadge === i;
+          const badgePos = isMobile ? mobilePos : pos;
           return (
             <div
               key={label}
@@ -155,7 +169,7 @@ export default function Hero() {
               onMouseLeave={() => setHoveredBadge(null)}
               style={{
                 position: "absolute",
-                ...pos,
+                ...badgePos,
                 background: isHovered ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.10)",
                 backdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
                 WebkitBackdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
@@ -163,30 +177,26 @@ export default function Hero() {
                   ? "1px solid rgba(255,255,255,0.35)"
                   : "1px solid rgba(255,255,255,0.25)",
                 boxShadow: isHovered
-                  ? "inset 0 1.5px 0 rgba(255,255,255,0.40), inset 0 -1px 0 rgba(0,0,0,0.15), 0 20px 60px rgba(0,0,0,0.50)"
-                  : "inset 0 1.5px 0 rgba(255,255,255,0.30), inset 0 -1px 0 rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.35)",
+                  ? "inset 0 1.5px 0 rgba(255,255,255,0.40), 0 20px 60px rgba(0,0,0,0.50)"
+                  : "inset 0 1.5px 0 rgba(255,255,255,0.30), 0 8px 32px rgba(0,0,0,0.35)",
                 borderRadius: "60px",
-                padding: "10px 28px",
+                padding: isMobile ? "7px 14px" : "10px 28px",
                 color: "#fff",
                 fontFamily: "'Inter', sans-serif",
-                fontSize: "clamp(1.1rem, 2.2vw, 2.1rem)",
+                fontSize: isMobile ? "0.72rem" : "clamp(1.1rem, 2.2vw, 2.1rem)",
                 fontWeight: "500",
                 whiteSpace: "nowrap",
                 zIndex: 6,
                 cursor: "default",
-                /* Pisahkan animasi float dan scale hover menggunakan
-                   animationPlayState + transform terpisah di wrapper */
                 animationName: "floatBadge",
                 animationDuration: `${2.6 + i * 0.45}s`,
                 animationTimingFunction: "ease-in-out",
                 animationIterationCount: "infinite",
                 animationDirection: "alternate",
-                /* transform hover via scale — tidak konflik karena
-                   floatBadge hanya pakai translateY, kita gabung keduanya */
                 transform: isHovered ? "translateY(0px) scale(1.12)" : undefined,
                 animationPlayState: isHovered ? "paused" : "running",
                 transition:
-                  "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+                  "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, box-shadow 0.2s ease",
               }}
             >
               {label}
@@ -194,7 +204,7 @@ export default function Hero() {
           );
         })}
 
-        {/* ── Hero photo wrapper ── */}
+        {/* ── Hero photo ── */}
         <div
           style={{
             position: "relative",
@@ -207,13 +217,14 @@ export default function Hero() {
             src={profileImg}
             alt="Noia - UI/UX Designer"
             style={{
-              width: "clamp(300px, 42%, 480px)",
+              width: isMobile ? "65vw" : "clamp(300px, 42%, 480px)",
+              maxWidth: isMobile ? "280px" : "480px",
               objectFit: "cover",
               display: "block",
             }}
           />
 
-          {/* Layer 1 — blur frosted di paling bawah */}
+          {/* Blur frosted bottom */}
           <div
             style={{
               position: "absolute",
@@ -230,8 +241,7 @@ export default function Hero() {
             }}
           />
 
-          {/* Layer 2 — gradient smooth multi-stop */}
-          {/* Layer 2 — gradient smooth multi-stop */}
+          {/* Gradient fade bawah */}
           <div
             style={{
               position: "absolute",
@@ -239,18 +249,12 @@ export default function Hero() {
               left: 0,
               width: "100%",
               height: "55%",
-              background: `linear-gradient(
-                to bottom,
-                rgba(14,14,14,0)    0%,
-                rgba(14,14,14,0.04) 10%,
-                rgba(14,14,14,0.10) 20%,
-                rgba(14,14,14,0.22) 32%,
-                rgba(14,14,14,0.40) 46%,
-                rgba(14,14,14,0.62) 60%,
-                rgba(14,14,14,0.80) 74%,
-                rgba(14,14,14,0.93) 86%,
-                rgba(14,14,14,1.00) 100%
-              )`,
+              background: `linear-gradient(to bottom,
+              rgba(14,14,14,0) 0%, rgba(14,14,14,0.04) 10%,
+              rgba(14,14,14,0.10) 20%, rgba(14,14,14,0.22) 32%,
+              rgba(14,14,14,0.40) 46%, rgba(14,14,14,0.62) 60%,
+              rgba(14,14,14,0.80) 74%, rgba(14,14,14,0.93) 86%,
+              rgba(14,14,14,1.00) 100%)`,
               pointerEvents: "none",
               zIndex: 3,
             }}
@@ -262,39 +266,28 @@ export default function Hero() {
           href="#contact"
           style={{
             position: "absolute",
-            bottom: "6%",
-            right: "4%",
+            bottom: isMobile ? "2%" : "6%",
+            right: isMobile ? "4%" : "4%",
             display: "inline-flex",
             alignItems: "center",
-            gap: "10px",
+            gap: "8px",
             background: "#7C5CFC",
             color: "#fff",
-            padding: "16px 32px",
+            padding: isMobile ? "10px 20px" : "16px 32px",
             borderRadius: "50px",
-            fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
+            fontSize: isMobile ? "0.82rem" : "clamp(1rem, 1.6vw, 1.25rem)",
             fontFamily: "'Inter', sans-serif",
             fontWeight: "600",
             textDecoration: "none",
             zIndex: 7,
-            boxShadow:
-              "0 0 20px rgba(124,92,252,0.75), " +
-              "0 0 60px rgba(124,92,252,0.40), " +
-              "0 0 100px rgba(124,92,252,0.20)",
+            boxShadow: "0 0 20px rgba(124,92,252,0.75), 0 0 60px rgba(124,92,252,0.40)",
             transition: "transform 0.2s, box-shadow 0.2s",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.06)";
-            e.currentTarget.style.boxShadow =
-              "0 0 30px rgba(124,92,252,0.95), " +
-              "0 0 80px rgba(124,92,252,0.60), " +
-              "0 0 120px rgba(124,92,252,0.30)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.boxShadow =
-              "0 0 20px rgba(124,92,252,0.75), " +
-              "0 0 60px rgba(124,92,252,0.40), " +
-              "0 0 100px rgba(124,92,252,0.20)";
           }}
         >
           Get in Touch →
@@ -303,7 +296,7 @@ export default function Hero() {
 
       <style>{`
         @keyframes floatBadge {
-          from { transform: translateY(0px);   }
+          from { transform: translateY(0px); }
           to   { transform: translateY(-12px); }
         }
       `}</style>
