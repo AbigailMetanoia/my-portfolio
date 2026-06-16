@@ -404,7 +404,7 @@ export default function ProjectDetailPage() {
 
             {/* Content */}
             <div>
-              {project.sections.map((sec, i) => (
+              {project.sections.map((sec) => (
                 <div key={sec.title} style={{ marginBottom: "56px" }}>
                   <h2
                     style={{
