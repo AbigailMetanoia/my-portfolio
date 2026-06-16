@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import projects from "../data/projects";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 const tagColors = {
   Edutech: { bg: "rgba(124,92,252,0.25)", color: "#C4B0FF", border: "rgba(124,92,252,0.40)" },
