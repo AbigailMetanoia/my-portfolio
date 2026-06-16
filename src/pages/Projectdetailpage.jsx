@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import projects from "../data/projects";
+import useIsMobile from "../hooks/useIsMobile";
 
 const tagColors = {
   Edutech: { bg: "rgba(124,92,252,0.25)", color: "#C4B0FF", border: "rgba(124,92,252,0.40)" },
@@ -16,30 +17,16 @@ const tagColors = {
 export default function ProjectDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   const project = projects.find((p) => p.slug === slug);
-  const [activeSection, setActiveSection] = useState(0);
-  const sectionRefs = useRef([]);
-
-  // Scroll spy — highlight sidebar sesuai section yang terlihat
-  useEffect(() => {
-    const observers = sectionRefs.current.map((ref, i) => {
-      if (!ref) return null;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(i);
-        },
-        { rootMargin: "-30% 0px -60% 0px" },
-      );
-      obs.observe(ref);
-      return obs;
-    });
-    return () => observers.forEach((obs) => obs?.disconnect());
-  }, [project]);
+  const [activeTab, setActiveTab] = useState(0);
 
   if (!project) {
     return (
-      <div style={{ padding: "160px 48px", textAlign: "center", color: "#fff" }}>
-        <p>Project not found.</p>
+      <div style={{ padding: "160px 24px", textAlign: "center", color: "#fff" }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", color: "rgba(255,255,255,0.5)" }}>
+          Project not found.
+        </p>
         <button
           onClick={() => navigate("/projects")}
           style={{
@@ -49,6 +36,7 @@ export default function ProjectDetailPage() {
             border: "none",
             cursor: "pointer",
             fontSize: "1rem",
+            fontFamily: "'Inter', sans-serif",
           }}
         >
           ← Back to Projects
@@ -57,13 +45,15 @@ export default function ProjectDetailPage() {
     );
   }
 
+  const activeSection = project.sections[activeTab];
+
   return (
-    <main style={{ minHeight: "100vh", paddingTop: "80px" }}>
-      {/* ── Hero Image — full width, tall ── */}
+    <main style={{ minHeight: "100vh", paddingTop: "72px" }}>
+      {/* ── Hero Image ── */}
       <div
         style={{
           width: "100%",
-          height: "clamp(320px, 50vw, 560px)",
+          height: isMobile ? "240px" : "clamp(320px, 50vw, 560px)",
           overflow: "hidden",
           position: "relative",
         }}
@@ -78,24 +68,23 @@ export default function ProjectDetailPage() {
             objectPosition: "center top",
           }}
         />
-        {/* Gradient fade bottom */}
         <div
           style={{
             position: "absolute",
             bottom: 0,
             left: 0,
             width: "100%",
-            height: "40%",
+            height: "50%",
             background: "linear-gradient(to bottom, transparent, #0E0E0E)",
             pointerEvents: "none",
           }}
         />
-        {/* Tag badge — pojok kanan bawah gambar */}
+        {/* Tag pojok kanan bawah */}
         <div
           style={{
             position: "absolute",
-            bottom: "20px",
-            right: "24px",
+            bottom: "16px",
+            right: "16px",
             display: "flex",
             gap: "8px",
           }}
@@ -113,9 +102,9 @@ export default function ProjectDetailPage() {
                   background: t.bg,
                   color: t.color,
                   border: `1px solid ${t.border}`,
-                  padding: "6px 16px",
+                  padding: "5px 14px",
                   borderRadius: "50px",
-                  fontSize: "0.85rem",
+                  fontSize: "0.78rem",
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: "500",
                   backdropFilter: "blur(12px)",
@@ -130,20 +119,33 @@ export default function ProjectDetailPage() {
       </div>
 
       {/* ── Title + Tags ── */}
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "36px 48px 0" }}>
+      <div
+        style={{
+          padding: isMobile ? "20px 20px 0" : "32px 48px 0",
+          maxWidth: "1100px",
+          margin: "0 auto",
+        }}
+      >
         <h1
           style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+            fontSize: isMobile ? "1.3rem" : "clamp(1.6rem, 3vw, 2.4rem)",
             fontWeight: "700",
             color: "#fff",
-            margin: "0 0 16px 0",
+            margin: "0 0 12px 0",
             letterSpacing: "-0.02em",
           }}
         >
           {project.title}
         </h1>
-        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "48px" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "8px",
+            flexWrap: "wrap",
+            marginBottom: isMobile ? "24px" : "40px",
+          }}
+        >
           {project.tags.map((tag) => {
             const t = tagColors[tag] || {
               bg: "rgba(255,255,255,0.1)",
@@ -157,9 +159,9 @@ export default function ProjectDetailPage() {
                   background: t.bg,
                   color: t.color,
                   border: `1px solid ${t.border}`,
-                  padding: "5px 16px",
+                  padding: "4px 14px",
                   borderRadius: "50px",
-                  fontSize: "0.82rem",
+                  fontSize: "0.78rem",
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: "500",
                 }}
@@ -169,38 +171,48 @@ export default function ProjectDetailPage() {
             );
           })}
         </div>
+      </div>
 
-        {/* ── Two-column: sidebar + content ── */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "180px 1fr",
-            gap: "60px",
-            alignItems: "start",
-          }}
-        >
-          {/* Sidebar — sticky */}
-          <div style={{ position: "sticky", top: "100px" }}>
+      {/* ── MOBILE: Tab layout ── */}
+      {isMobile ? (
+        <div style={{ padding: "0 0 80px" }}>
+          {/* Tab bar — horizontal scroll */}
+          <div
+            style={{
+              overflowX: "auto",
+              overflowY: "hidden",
+              display: "flex",
+              gap: "0",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              padding: "0 20px",
+            }}
+          >
+            <style>{`
+              .tab-scroll::-webkit-scrollbar { display: none; }
+              @keyframes floatBadge {
+                from { transform: translateY(0px); }
+                to   { transform: translateY(-12px); }
+              }
+            `}</style>
             {project.sections.map((sec, i) => (
               <button
                 key={sec.title}
-                onClick={() => {
-                  sectionRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
+                onClick={() => setActiveTab(i)}
                 style={{
-                  display: "block",
-                  width: "100%",
-                  textAlign: "left",
+                  flexShrink: 0,
                   background: "none",
                   border: "none",
-                  padding: "8px 0",
+                  borderBottom: activeTab === i ? "2px solid #7C5CFC" : "2px solid transparent",
+                  padding: "12px 16px",
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.9rem",
-                  fontWeight: activeSection === i ? "700" : "400",
-                  color: activeSection === i ? "#fff" : "rgba(255,255,255,0.30)",
+                  fontSize: "0.85rem",
+                  fontWeight: activeTab === i ? "600" : "400",
+                  color: activeTab === i ? "#fff" : "rgba(255,255,255,0.40)",
                   cursor: "pointer",
-                  transition: "color 0.2s, font-weight 0.2s",
-                  letterSpacing: "-0.01em",
+                  transition: "color 0.2s, border-color 0.2s",
+                  whiteSpace: "nowrap",
                 }}
               >
                 {sec.title}
@@ -208,95 +220,273 @@ export default function ProjectDetailPage() {
             ))}
           </div>
 
-          {/* Main content */}
-          <div style={{ paddingBottom: "120px" }}>
-            {project.sections.map((sec, i) => (
+          {/* Tab content */}
+          <div style={{ padding: "28px 20px" }}>
+            <h2
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "1.1rem",
+                fontWeight: "700",
+                color: "#fff",
+                margin: "0 0 16px 0",
+              }}
+            >
+              {activeSection.title}
+            </h2>
+
+            {activeSection.content && (
               <div
-                key={sec.title}
-                ref={(el) => (sectionRefs.current[i] = el)}
-                style={{ marginBottom: "56px", scrollMarginTop: "120px" }}
+                style={{
+                  borderLeft: "2px solid rgba(124,92,252,0.50)",
+                  paddingLeft: "16px",
+                }}
               >
-                <h2
+                <p
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: "1.15rem",
-                    fontWeight: "700",
-                    color: "#fff",
-                    margin: "0 0 16px 0",
-                    letterSpacing: "-0.01em",
+                    fontSize: "0.92rem",
+                    color: "rgba(255,255,255,0.65)",
+                    lineHeight: 1.85,
+                    margin: 0,
                   }}
                 >
-                  {sec.title}
-                </h2>
+                  {activeSection.content}
+                </p>
+              </div>
+            )}
 
-                {sec.content && (
-                  <div
+            {/* Result — link + image */}
+            {activeSection.title === "Result" && (
+              <div style={{ borderLeft: "2px solid rgba(124,92,252,0.50)", paddingLeft: "16px" }}>
+                {activeSection.link && (
+                  <p
                     style={{
-                      borderLeft: "2px solid rgba(255,255,255,0.08)",
-                      paddingLeft: "20px",
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: "0.85rem",
+                      color: "rgba(255,255,255,0.55)",
+                      margin: "0 0 20px 0",
+                      wordBreak: "break-all",
                     }}
                   >
-                    <p
-                      style={{
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: "0.95rem",
-                        color: "rgba(255,255,255,0.60)",
-                        lineHeight: 1.8,
-                        margin: 0,
-                      }}
+                    Link:{" "}
+                    <a
+                      href={activeSection.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: "#A78BFA", textDecoration: "underline" }}
                     >
-                      {sec.content}
-                    </p>
-                  </div>
+                      {activeSection.link}
+                    </a>
+                  </p>
                 )}
-
-                {/* Result section — link + image */}
-                {sec.title === "Result" && (
+                {project.resultImage && (
                   <div
-                    style={{ borderLeft: "2px solid rgba(255,255,255,0.08)", paddingLeft: "20px" }}
+                    style={{
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
                   >
-                    {sec.link && (
-                      <p
-                        style={{
-                          fontFamily: "'Inter', sans-serif",
-                          fontSize: "0.9rem",
-                          color: "rgba(255,255,255,0.55)",
-                          margin: "0 0 24px 0",
-                        }}
-                      >
-                        Link :{" "}
-                        <a
-                          href={sec.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ color: "#A78BFA", textDecoration: "underline" }}
-                        >
-                          {sec.link}
-                        </a>
-                      </p>
-                    )}
-                    {project.resultImage && (
-                      <div
-                        style={{
-                          borderRadius: "16px",
-                          overflow: "hidden",
-                          border: "1px solid rgba(255,255,255,0.08)",
-                        }}
-                      >
-                        <img
-                          src={project.resultImage}
-                          alt="Result"
-                          style={{ width: "100%", display: "block", objectFit: "cover" }}
-                        />
-                      </div>
-                    )}
+                    <img
+                      src={project.resultImage}
+                      alt="Result"
+                      style={{ width: "100%", display: "block", objectFit: "cover" }}
+                    />
                   </div>
                 )}
               </div>
-            ))}
+            )}
+          </div>
+
+          {/* Tab navigation arrows — prev / next */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "0 20px",
+              marginTop: "8px",
+            }}
+          >
+            <button
+              onClick={() => setActiveTab((prev) => Math.max(0, prev - 1))}
+              disabled={activeTab === 0}
+              style={{
+                background: activeTab === 0 ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: "50px",
+                padding: "10px 20px",
+                color: activeTab === 0 ? "rgba(255,255,255,0.25)" : "#fff",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.85rem",
+                fontWeight: "500",
+                cursor: activeTab === 0 ? "default" : "pointer",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                transition: "background 0.2s",
+              }}
+            >
+              ← Prev
+            </button>
+            <span
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.78rem",
+                color: "rgba(255,255,255,0.35)",
+                alignSelf: "center",
+              }}
+            >
+              {activeTab + 1} / {project.sections.length}
+            </span>
+            <button
+              onClick={() =>
+                setActiveTab((prev) => Math.min(project.sections.length - 1, prev + 1))
+              }
+              disabled={activeTab === project.sections.length - 1}
+              style={{
+                background:
+                  activeTab === project.sections.length - 1
+                    ? "rgba(255,255,255,0.04)"
+                    : "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: "50px",
+                padding: "10px 20px",
+                color:
+                  activeTab === project.sections.length - 1 ? "rgba(255,255,255,0.25)" : "#fff",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.85rem",
+                fontWeight: "500",
+                cursor: activeTab === project.sections.length - 1 ? "default" : "pointer",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                transition: "background 0.2s",
+              }}
+            >
+              Next →
+            </button>
           </div>
         </div>
-      </div>
+      ) : (
+        /* ── DESKTOP: Sidebar + scroll layout ── */
+        <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 48px 120px" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "180px 1fr",
+              gap: "60px",
+              alignItems: "start",
+            }}
+          >
+            {/* Sidebar sticky */}
+            <div style={{ position: "sticky", top: "100px" }}>
+              {project.sections.map((sec, i) => (
+                <button
+                  key={sec.title}
+                  onClick={() => setActiveTab(i)}
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    textAlign: "left",
+                    background: "none",
+                    border: "none",
+                    padding: "8px 0",
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "0.9rem",
+                    fontWeight: activeTab === i ? "700" : "400",
+                    color: activeTab === i ? "#fff" : "rgba(255,255,255,0.30)",
+                    cursor: "pointer",
+                    transition: "color 0.2s",
+                  }}
+                >
+                  {sec.title}
+                </button>
+              ))}
+            </div>
+
+            {/* Content */}
+            <div>
+              {project.sections.map((sec, i) => (
+                <div key={sec.title} style={{ marginBottom: "56px" }}>
+                  <h2
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: "1.15rem",
+                      fontWeight: "700",
+                      color: "#fff",
+                      margin: "0 0 16px 0",
+                    }}
+                  >
+                    {sec.title}
+                  </h2>
+                  {sec.content && (
+                    <div
+                      style={{
+                        borderLeft: "2px solid rgba(255,255,255,0.08)",
+                        paddingLeft: "20px",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: "0.95rem",
+                          color: "rgba(255,255,255,0.60)",
+                          lineHeight: 1.8,
+                          margin: 0,
+                        }}
+                      >
+                        {sec.content}
+                      </p>
+                    </div>
+                  )}
+                  {sec.title === "Result" && (
+                    <div
+                      style={{
+                        borderLeft: "2px solid rgba(255,255,255,0.08)",
+                        paddingLeft: "20px",
+                      }}
+                    >
+                      {sec.link && (
+                        <p
+                          style={{
+                            fontFamily: "'Inter', sans-serif",
+                            fontSize: "0.9rem",
+                            color: "rgba(255,255,255,0.55)",
+                            margin: "0 0 24px 0",
+                          }}
+                        >
+                          Link:{" "}
+                          <a
+                            href={sec.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ color: "#A78BFA", textDecoration: "underline" }}
+                          >
+                            {sec.link}
+                          </a>
+                        </p>
+                      )}
+                      {project.resultImage && (
+                        <div
+                          style={{
+                            borderRadius: "16px",
+                            overflow: "hidden",
+                            border: "1px solid rgba(255,255,255,0.08)",
+                          }}
+                        >
+                          <img
+                            src={project.resultImage}
+                            alt="Result"
+                            style={{ width: "100%", display: "block", objectFit: "cover" }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
