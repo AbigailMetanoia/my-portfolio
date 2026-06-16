@@ -58,34 +58,32 @@ export default function ContactPage() {
         }}
       />
 
-      {/* AM Vector Logo — hanya muncul di desktop */}
-      {!isMobile && (
-        <div
+      {/* AM Vector Logo — desktop & mobile, ukuran disesuaikan */}
+      <div
+        style={{
+          position: "fixed",
+          right: isMobile ? "-10%" : "0",
+          bottom: isMobile ? "-5%" : "0",
+          width: isMobile ? "100vw" : "52vw",
+          maxWidth: isMobile ? "360px" : "600px",
+          pointerEvents: "none",
+          userSelect: "none",
+          zIndex: 0,
+        }}
+      >
+        <img
+          src={amLogo}
+          alt=""
+          aria-hidden="true"
           style={{
-            position: "fixed",
-            right: "0",
-            bottom: "0",
-            width: "42vw",
-            maxWidth: "600px",
-            pointerEvents: "none",
-            userSelect: "none",
-            zIndex: 0,
+            width: "100%",
+            height: "auto",
+            display: "block",
+            opacity: isMobile ? 0.1 : 0.15,
+            filter: "blur(0.6px)",
           }}
-        >
-          <img
-            src={amLogo}
-            alt=""
-            aria-hidden="true"
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-              opacity: 0.15,
-              filter: "blur(0.6px)",
-            }}
-          />
-        </div>
-      )}
+        />
+      </div>
 
       {/* Content */}
       <div
@@ -93,6 +91,7 @@ export default function ContactPage() {
           position: "relative",
           zIndex: 2,
           maxWidth: isMobile ? "100%" : "560px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         {/* Heading — bersih tanpa stroke berlebihan */}
@@ -135,7 +134,7 @@ export default function ContactPage() {
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
             gap: isMobile ? "12px" : "14px",
-            alignItems: isMobile ? "flex-start" : "center",
+            alignItems: "center",
           }}
         >
           {contacts.map((c) => (
@@ -150,8 +149,9 @@ export default function ContactPage() {
                 alignItems: "center",
                 gap: "10px",
                 padding: isMobile ? "13px 24px" : "12px 24px",
-                width: isMobile ? "100%" : "auto",
-                maxWidth: isMobile ? "260px" : "none",
+                width: isMobile ? "80vw" : "auto",
+                maxWidth: isMobile ? "280px" : "none",
+                justifyContent: "center",
                 borderRadius: "50px",
                 textDecoration: "none",
                 fontFamily: "'Inter', sans-serif",
