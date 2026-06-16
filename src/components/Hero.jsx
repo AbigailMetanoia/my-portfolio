@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import profileImg from "../assets/profile.png";
 import useIsMobile from "../hooks/Useismobile";
 
@@ -28,6 +29,7 @@ const badges = [
 export default function Hero() {
   const [hoveredBadge, setHoveredBadge] = useState(null);
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   return (
     <section
@@ -165,6 +167,7 @@ export default function Hero() {
           return (
             <div
               key={label}
+              onClick={() => navigate("/projects")}
               onMouseEnter={() => setHoveredBadge(i)}
               onMouseLeave={() => setHoveredBadge(null)}
               style={{
@@ -180,14 +183,14 @@ export default function Hero() {
                   ? "inset 0 1.5px 0 rgba(255,255,255,0.40), 0 20px 60px rgba(0,0,0,0.50)"
                   : "inset 0 1.5px 0 rgba(255,255,255,0.30), 0 8px 32px rgba(0,0,0,0.35)",
                 borderRadius: "60px",
-                padding: isMobile ? "7px 14px" : "10px 28px",
+                padding: isMobile ? "7px 14px" : "9px 20px",
                 color: "#fff",
                 fontFamily: "'Inter', sans-serif",
-                fontSize: isMobile ? "0.72rem" : "clamp(1.1rem, 2.2vw, 2.1rem)",
+                fontSize: isMobile ? "0.72rem" : "clamp(0.85rem, 1.1vw, 1rem)",
                 fontWeight: "500",
                 whiteSpace: "nowrap",
                 zIndex: 6,
-                cursor: "default",
+                cursor: "pointer",
                 animationName: "floatBadge",
                 animationDuration: `${2.6 + i * 0.45}s`,
                 animationTimingFunction: "ease-in-out",
@@ -217,8 +220,8 @@ export default function Hero() {
             src={profileImg}
             alt="Noia - UI/UX Designer"
             style={{
-              width: isMobile ? "65vw" : "clamp(300px, 42%, 480px)",
-              maxWidth: isMobile ? "280px" : "480px",
+              width: isMobile ? "65vw" : "clamp(380px, 52%, 580px)",
+              maxWidth: isMobile ? "280px" : "580px",
               objectFit: "cover",
               display: "block",
             }}
@@ -248,7 +251,7 @@ export default function Hero() {
               bottom: 0,
               left: 0,
               width: "100%",
-              height: "30%",
+              height: "55%",
               background: `linear-gradient(to bottom,
               rgba(14,14,14,0) 0%, rgba(14,14,14,0.04) 10%,
               rgba(14,14,14,0.10) 20%, rgba(14,14,14,0.22) 32%,
