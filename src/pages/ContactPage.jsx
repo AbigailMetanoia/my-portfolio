@@ -64,7 +64,7 @@ export default function ContactPage() {
           position: "fixed",
           right: isMobile ? "-10%" : "0",
           bottom: isMobile ? "-5%" : "0",
-          width: isMobile ? "100vw" : "52vw",
+          width: isMobile ? "200vw" : "82vw",
           maxWidth: isMobile ? "360px" : "600px",
           pointerEvents: "none",
           userSelect: "none",
@@ -79,7 +79,7 @@ export default function ContactPage() {
             width: "100%",
             height: "auto",
             display: "block",
-            opacity: isMobile ? 0.1 : 0.15,
+            opacity: isMobile ? 0.2 : 0.25,
             filter: "blur(0.6px)",
           }}
         />
