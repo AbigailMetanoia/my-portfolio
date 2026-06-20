@@ -1,18 +1,14 @@
 import experiences from "../data/experiences";
+import useIsMobile from "../hooks/Useismobile";
 
 export default function ExperienceTimeline() {
+  const isMobile = useIsMobile();
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0px" }}>
       {experiences.map((exp, i) => (
-        <div
-          key={exp.id}
-          style={{
-            display: "flex",
-            gap: "20px",
-            position: "relative",
-          }}
-        >
-          {/* ── Left: dot + vertical line ── */}
+        <div key={exp.id} style={{ display: "flex", gap: "20px", position: "relative" }}>
+          {/* Dot + garis vertikal */}
           <div
             style={{
               display: "flex",
@@ -22,7 +18,6 @@ export default function ExperienceTimeline() {
               width: "14px",
             }}
           >
-            {/* Dot */}
             <div
               style={{
                 width: "13px",
@@ -39,14 +34,12 @@ export default function ExperienceTimeline() {
                 marginTop: "4px",
               }}
             />
-
-            {/* Vertical connector line — tidak muncul di item terakhir */}
             {i < experiences.length - 1 && (
               <div
                 style={{
                   width: "1.5px",
                   flex: 1,
-                  minHeight: "40px",
+                  minHeight: isMobile ? "56px" : "40px",
                   background:
                     "linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
                   margin: "6px 0",
@@ -55,28 +48,26 @@ export default function ExperienceTimeline() {
             )}
           </div>
 
-          {/* ── Right: content ── */}
+          {/* Konten — selalu stack: title lalu badge waktu di bawahnya */}
           <div
             style={{
               flex: 1,
-              paddingBottom: i < experiences.length - 1 ? "36px" : "0",
+              paddingBottom: i < experiences.length - 1 ? (isMobile ? "28px" : "36px") : "0",
             }}
           >
-            {/* Role + glass time badge */}
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-between",
+                flexDirection: "column" /* konsisten: selalu stack vertical */,
                 alignItems: "flex-start",
-                gap: "12px",
-                flexWrap: "wrap",
-                marginBottom: "6px",
+                gap: "8px",
+                marginBottom: "8px",
               }}
             >
               <h4
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: "1rem",
+                  fontSize: isMobile ? "1.05rem" : "1rem",
                   fontWeight: "700",
                   color: "#fff",
                   margin: 0,
@@ -86,34 +77,31 @@ export default function ExperienceTimeline() {
                 {exp.role}
               </h4>
 
-              {/* Glass time badge */}
+              {/* Glass time badge — selalu di bawah judul */}
               <span
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.75rem",
+                  fontSize: isMobile ? "0.78rem" : "0.75rem",
                   fontWeight: "500",
                   color: "rgba(255,255,255,0.70)",
                   whiteSpace: "nowrap",
-
-                  /* iOS glass */
                   background: "rgba(255,255,255,0.08)",
                   backdropFilter: "blur(20px) saturate(180%)",
                   WebkitBackdropFilter: "blur(20px) saturate(180%)",
                   border: "1px solid rgba(255,255,255,0.18)",
                   boxShadow: "inset 0 1px 0 rgba(255,255,255,0.20)",
                   borderRadius: "50px",
-                  padding: "4px 14px",
+                  padding: isMobile ? "5px 14px" : "4px 14px",
                 }}
               >
                 {exp.period}
               </span>
             </div>
 
-            {/* Company */}
             <p
               style={{
                 fontFamily: "'Inter', sans-serif",
-                fontSize: "0.87rem",
+                fontSize: isMobile ? "0.88rem" : "0.87rem",
                 color: "rgba(255,255,255,0.45)",
                 margin: 0,
                 lineHeight: 1.5,

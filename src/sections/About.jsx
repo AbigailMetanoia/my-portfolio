@@ -58,12 +58,12 @@ export default function About() {
         Getting to Know me
       </h2>
 
-      {/* Layout: stack di mobile, 2 kolom di desktop */}
+      {/* Layout */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: isMobile ? "1fr" : "1.1fr 1fr",
-          gap: isMobile ? "36px" : "72px",
+          gap: isMobile ? "40px" : "72px",
           alignItems: "start",
         }}
       >
@@ -85,9 +85,10 @@ export default function About() {
               alt="Abigail Metanoia Melody"
               style={{
                 width: "100%",
-                aspectRatio: isMobile ? "2/1" : "3/3",
+                /* foto lebih besar & lebih landscape natural di mobile */
+                aspectRatio: isMobile ? "4/5" : "3/3",
                 objectFit: "cover",
-                objectPosition: "center 70%",
+                objectPosition: "center top",
                 display: "block",
               }}
             />
@@ -105,22 +106,24 @@ export default function About() {
               }}
             />
 
-            {/* Bottom bar — social + nama */}
+            {/* Bottom bar — social + nama, diperbesar di mobile */}
             <div
               style={{
                 position: "absolute",
                 bottom: 0,
                 left: 0,
                 right: 0,
-                padding: isMobile ? "12px 16px" : "18px 22px",
+                padding: isMobile ? "20px 22px" : "18px 22px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                gap: "8px",
+                gap: "10px",
               }}
             >
-              {/* Social icons */}
-              <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+              {/* Social icons — diperbesar */}
+              <div
+                style={{ display: "flex", gap: isMobile ? "12px" : "8px", alignItems: "center" }}
+              >
                 {socialLinks.map((s) => (
                   <a
                     key={s.label}
@@ -129,8 +132,8 @@ export default function About() {
                     target="_blank"
                     rel="noreferrer"
                     style={{
-                      width: isMobile ? "30px" : "36px",
-                      height: isMobile ? "30px" : "36px",
+                      width: isMobile ? "48px" : "36px",
+                      height: isMobile ? "48px" : "36px",
                       borderRadius: "50%",
                       background: "rgba(255,255,255,0.10)",
                       backdropFilter: "blur(20px) saturate(180%)",
@@ -157,8 +160,8 @@ export default function About() {
                       src={s.icon}
                       alt={s.label}
                       style={{
-                        width: isMobile ? "15px" : "18px",
-                        height: isMobile ? "15px" : "18px",
+                        width: isMobile ? "24px" : "18px",
+                        height: isMobile ? "24px" : "18px",
                         objectFit: "contain",
                       }}
                     />
@@ -166,15 +169,16 @@ export default function About() {
                 ))}
               </div>
 
-              {/* Nama + role */}
+              {/* Nama + role — diperbesar di mobile */}
               <div style={{ textAlign: "right" }}>
                 <p
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontWeight: "600",
-                    fontSize: isMobile ? "0.82rem" : "1rem",
+                    fontWeight: "700",
+                    fontSize: isMobile ? "1.15rem" : "1rem",
                     color: "#fff",
                     margin: 0,
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   Abigail Metanoia
@@ -182,9 +186,9 @@ export default function About() {
                 <p
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: isMobile ? "0.70rem" : "0.78rem",
-                    color: "rgba(255,255,255,0.55)",
-                    margin: "2px 0 0 0",
+                    fontSize: isMobile ? "0.92rem" : "0.78rem",
+                    color: "rgba(255,255,255,0.60)",
+                    margin: "4px 0 0 0",
                   }}
                 >
                   UI/UX Designer
@@ -199,10 +203,13 @@ export default function About() {
           <p
             style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: isMobile ? "0.95rem" : "1.07rem",
+              fontSize: isMobile ? "0.98rem" : "1.07rem",
               color: "rgba(255,255,255,0.80)",
               lineHeight: 1.85,
               margin: "0 0 36px 0",
+              /* justify agar rapi kiri-kanan, bukan ragged */
+              textAlign: isMobile ? "justify" : "left",
+              textAlignLast: isMobile ? "left" : "auto",
             }}
           >
             I'm a <strong style={{ color: "#fff" }}>UI/UX designer</strong> with a background in

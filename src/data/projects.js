@@ -1,6 +1,6 @@
-import p1 from "../assets/project 1 dummy.jpg";
-import p2 from "../assets/project 2 dummy.gif";
-import p3 from "../assets/project 3 dummy.jpg";
+import p1 from "../assets/Expense_Tracker.png";
+import p2 from "../assets/BI_Papua.png";
+import p3 from "../assets/Tantrum_Noya.png";
 import p4 from "../assets/project 4 dummy.jpg";
 
 const projects = [
@@ -9,7 +9,7 @@ const projects = [
     slug: "expense-tracker",
     title: "Expense Tracker",
     image: p1,
-    tags: ["Edutech", "Mobile App"],
+    tags: ["Team Project", "Mobile App"],
     sections: [
       {
         title: "Empathize",
@@ -50,7 +50,7 @@ const projects = [
     slug: "bi-papua",
     title: "BI Papua",
     image: p2,
-    tags: ["UX Research", "Mobile App"],
+    tags: ["UI Design", "Built-In Website"],
     sections: [
       {
         title: "Empathize",
@@ -91,7 +91,7 @@ const projects = [
     slug: "tantrum-no-ya",
     title: "TANTRUM NO-YA",
     image: p3,
-    tags: ["Edutech", "UX Research"],
+    tags: ["Team Project", "UX Research", "Mobile App", "Study Cased"],
     sections: [
       {
         title: "Empathize",
