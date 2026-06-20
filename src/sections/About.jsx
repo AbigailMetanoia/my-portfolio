@@ -1,7 +1,7 @@
 import profileImg from "../assets/newest_photo.jpeg";
 import iconLinkedIn from "../assets/mdi_linkedin.png";
 import iconGmail from "../assets/mdi_gmail.png";
-import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
+// import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
 import ExperienceTimeline from "../components/ExperienceTimeline";
 import useIsMobile from "../hooks/Useismobile";
 
@@ -12,7 +12,7 @@ const socialLinks = [
     icon: iconLinkedIn,
   },
   { label: "Gmail", href: "mailto:abigailmetanoia17@gmail.com", icon: iconGmail },
-  { label: "WhatsApp", href: "https://wa.me/6281994055237", icon: iconWhatsapp },
+  // { label: "WhatsApp", href: "https://wa.me/6281994055237", icon: iconWhatsapp },
 ];
 
 export default function About() {
