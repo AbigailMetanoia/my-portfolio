@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer style={{ position: "relative", overflow: "hidden" }}>
-      {/* Logo dekoratif — AM_Vector, jelas tanpa blur */}
+      {/* Logo dekoratif — AM_Vector, dengan fade mask di tepi bawah agar potongan rapi */}
       <div
         style={{
           position: "relative",
@@ -17,6 +17,7 @@ export default function Footer() {
           minHeight: isMobile ? "160px" : "320px",
           pointerEvents: "none",
           userSelect: "none",
+          overflow: "hidden",
         }}
       >
         <div
@@ -56,6 +57,8 @@ export default function Footer() {
           }}
         />
 
+        {/* Logo dengan mask gradient — fade halus di tepi bawah, 
+            tidak terpotong kasar oleh garis nav bar */}
         <img
           src={amLogo}
           alt=""
@@ -65,15 +68,18 @@ export default function Footer() {
             objectFit: "contain",
             display: "block",
             opacity: 0.35,
-            /* tanpa blur — logo terlihat tajam/jelas */
-            marginBottom: "-10px",
+            marginBottom: "0px",
+            maskImage: "linear-gradient(to bottom, black 0%, black 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 70%, transparent 100%)",
           }}
         />
       </div>
 
-      {/* Nav bar */}
+      {/* Nav bar — solid background agar tidak ada logo nyelip di belakang teks */}
       <div
         style={{
+          position: "relative",
+          background: "#0E0E0E",
           borderTop: "1px solid rgba(255,255,255,0.06)",
           padding: isMobile ? "16px 20px" : "24px 48px",
           display: "flex",
