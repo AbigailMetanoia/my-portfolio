@@ -48,20 +48,23 @@ export default function ExperienceTimeline() {
             )}
           </div>
 
-          {/* Konten — selalu stack: title lalu badge waktu di bawahnya */}
+          {/* Konten */}
           <div
             style={{
               flex: 1,
               paddingBottom: i < experiences.length - 1 ? (isMobile ? "28px" : "36px") : "0",
             }}
           >
+            {/* Title + badge — desktop: sejajar, title kiri badge kanan | mobile: stack */}
             <div
               style={{
                 display: "flex",
-                flexDirection: "column" /* konsisten: selalu stack vertical */,
-                alignItems: "flex-start",
+                flexDirection: isMobile ? "column" : "row",
+                justifyContent: isMobile ? "flex-start" : "space-between",
+                alignItems: isMobile ? "flex-start" : "center",
                 gap: "8px",
                 marginBottom: "8px",
+                width: "100%",
               }}
             >
               <h4
@@ -77,7 +80,7 @@ export default function ExperienceTimeline() {
                 {exp.role}
               </h4>
 
-              {/* Glass time badge — selalu di bawah judul */}
+              {/* Glass time badge — desktop: rata kanan | mobile: di bawah judul */}
               <span
                 style={{
                   fontFamily: "'Inter', sans-serif",
@@ -85,6 +88,7 @@ export default function ExperienceTimeline() {
                   fontWeight: "500",
                   color: "rgba(255,255,255,0.70)",
                   whiteSpace: "nowrap",
+                  flexShrink: 0,
                   background: "rgba(255,255,255,0.08)",
                   backdropFilter: "blur(20px) saturate(180%)",
                   WebkitBackdropFilter: "blur(20px) saturate(180%)",

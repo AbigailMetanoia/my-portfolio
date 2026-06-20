@@ -88,7 +88,7 @@ export default function About() {
                 /* foto lebih besar & lebih landscape natural di mobile */
                 aspectRatio: isMobile ? "4/5" : "3/3",
                 objectFit: "cover",
-                objectPosition: "center top",
+                objectPosition: isMobile ? "center top" : "center",
                 display: "block",
               }}
             />

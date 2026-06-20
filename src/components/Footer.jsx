@@ -1,4 +1,4 @@
-import amLogo from "../assets/AM_Logo.png";
+import amLogo from "../assets/AM_Vector.png";
 import useIsMobile from "../hooks/Useismobile";
 
 export default function Footer() {
@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer style={{ position: "relative", overflow: "hidden" }}>
-      {/* Logo dekoratif */}
+      {/* Logo dekoratif — AM_Vector, jelas tanpa blur */}
       <div
         style={{
           position: "relative",
@@ -64,8 +64,8 @@ export default function Footer() {
             width: isMobile ? "70%" : "clamp(400px, 65%, 780px)",
             objectFit: "contain",
             display: "block",
-            opacity: 0.12,
-            filter: "blur(1.5px) grayscale(30%)",
+            opacity: 0.35,
+            /* tanpa blur — logo terlihat tajam/jelas */
             marginBottom: "-10px",
           }}
         />

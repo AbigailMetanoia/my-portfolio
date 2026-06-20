@@ -10,6 +10,22 @@ const tagColors = {
     border: "rgba(80,220,130,0.35)",
   },
   "UX Research": { bg: "rgba(255,160,60,0.20)", color: "#FFA84E", border: "rgba(255,160,60,0.35)" },
+  "Team Project": {
+    bg: "rgba(255,99,132,0.20)",
+    color: "#FF8FA8",
+    border: "rgba(255,99,132,0.35)",
+  },
+  "UI Design": { bg: "rgba(0,210,200,0.20)", color: "#5EEAE0", border: "rgba(0,210,200,0.35)" },
+  "Built-In Website": {
+    bg: "rgba(255,205,60,0.20)",
+    color: "#FFE08A",
+    border: "rgba(255,205,60,0.35)",
+  },
+  "Study Cased": {
+    bg: "rgba(180,120,255,0.22)",
+    color: "#D4B8FF",
+    border: "rgba(180,120,255,0.40)",
+  },
 };
 
 export default function ProjectCard({ project }) {

@@ -1,14 +1,57 @@
 import p1 from "../assets/Expense_Tracker.png";
 import p2 from "../assets/BI_Papua.png";
 import p3 from "../assets/Tantrum_Noya.png";
-import p4 from "../assets/project 4 dummy.jpg";
+import p4 from "../assets/SatisfEAT.gif";
 
 const projects = [
   {
     id: 1,
+    slug: "tantrum-no-ya",
+    title: "TANTRUM NO-YA",
+    image: p3,
+    category: "Apple Developer Academy",
+    tags: ["Team Project", "UX Research", "Mobile App"],
+    sections: [
+      {
+        title: "Empathize",
+        content:
+          "Conducted observations and gained an understanding of the challenges teachers face when handling children experiencing tantrums, especially in situations that require quick and appropriate responses.",
+      },
+      {
+        title: "Define",
+        content:
+          "Defined the main problem as the difficulty of detecting tantrum situations quickly and determining the appropriate handling steps within a limited amount of time in educational environments.",
+      },
+      {
+        title: "Ideate",
+        content:
+          "Developed the idea of an audio-detection-based application capable of recognizing tantrum indications through sound analysis and automatically providing mitigation guidance through the smartphone speaker to assist teachers in taking appropriate action.",
+      },
+      {
+        title: "Prototype",
+        content:
+          "Created a mobile application prototype featuring tantrum sound detection, emotional indication analysis, and voice-based mitigation instructions that could be directly used by teachers.",
+      },
+      {
+        title: "Test",
+        content:
+          "Conducted testing on the application flow to ensure the system could properly detect tantrum indications and provide mitigation instructions that were easy for users to understand.",
+      },
+      {
+        title: "Result",
+        content:
+          "Produced an educational application concept based on audio detection technology that helps teachers handle tantrum situations more quickly, responsively, and effectively within children's learning environments.",
+        link: null,
+      },
+    ],
+    resultImage: p3,
+  },
+  {
+    id: 2,
     slug: "expense-tracker",
     title: "Expense Tracker",
     image: p1,
+    category: "Personal Project",
     tags: ["Team Project", "Mobile App"],
     sections: [
       {
@@ -46,10 +89,53 @@ const projects = [
     resultImage: p1,
   },
   {
-    id: 2,
+    id: 3,
+    slug: "satisfeat",
+    title: "SatisfEat",
+    image: p4,
+    category: "Apple Developer Academy",
+    tags: ["Team Project", "UI Design", "UX Research"],
+    sections: [
+      {
+        title: "Empathize",
+        content:
+          "Conducted research on how people often struggle to decide where to eat nearby, especially when facing too many options or unclear preferences for the day. Users wanted a faster, more enjoyable way to discover restaurants that actually matched what they felt like eating in the moment.",
+      },
+      {
+        title: "Define",
+        content:
+          "Defined the main problem as decision fatigue when choosing a place to eat — traditional list-based restaurant apps felt slow and overwhelming. The solution needed to make food discovery quick, fun, and personalized to the user's current mood and location.",
+      },
+      {
+        title: "Ideate",
+        content:
+          "Developed the idea of a swipe-based food discovery experience, similar to Tinder, where users swipe through nearby restaurant recommendations based on their location and preferences for the day, making decisions faster and more engaging.",
+      },
+      {
+        title: "Prototype",
+        content:
+          "Created a mobile application prototype featuring a card-swiping interface for restaurant recommendations, location-based filtering, and preference matching to surface the most relevant dining options nearby.",
+      },
+      {
+        title: "Test",
+        content:
+          "Conducted usability testing to ensure the swipe interaction felt intuitive, recommendations matched user preferences accurately, and the overall flow from swiping to choosing a restaurant was smooth and enjoyable.",
+      },
+      {
+        title: "Result",
+        content:
+          "Produced SatisfEat, a fun and intuitive restaurant discovery app that helps users find nearby dining options matching their preferences for the day through a familiar, swipe-based interaction similar to Tinder.",
+        link: null,
+      },
+    ],
+    resultImage: p4,
+  },
+  {
+    id: 4,
     slug: "bi-papua",
     title: "BI Papua",
     image: p2,
+    category: "Freelance",
     tags: ["UI Design", "Built-In Website"],
     sections: [
       {
@@ -85,82 +171,6 @@ const projects = [
       },
     ],
     resultImage: p2,
-  },
-  {
-    id: 3,
-    slug: "tantrum-no-ya",
-    title: "TANTRUM NO-YA",
-    image: p3,
-    tags: ["Team Project", "UX Research", "Mobile App", "Study Cased"],
-    sections: [
-      {
-        title: "Empathize",
-        content:
-          "Conducted observations and gained an understanding of the challenges teachers face when handling children experiencing tantrums, especially in situations that require quick and appropriate responses.",
-      },
-      {
-        title: "Define",
-        content:
-          "Defined the main problem as the difficulty of detecting tantrum situations quickly and determining the appropriate handling steps within a limited amount of time in educational environments.",
-      },
-      {
-        title: "Ideate",
-        content:
-          "Developed the idea of an audio-detection-based application capable of recognizing tantrum indications through sound analysis and automatically providing mitigation guidance through the smartphone speaker to assist teachers in taking appropriate action.",
-      },
-      {
-        title: "Prototype",
-        content:
-          "Created a mobile application prototype featuring tantrum sound detection, emotional indication analysis, and voice-based mitigation instructions that could be directly used by teachers.",
-      },
-      {
-        title: "Test",
-        content:
-          "Conducted testing on the application flow to ensure the system could properly detect tantrum indications and provide mitigation instructions that were easy for users to understand.",
-      },
-      {
-        title: "Result",
-        content:
-          "Produced an educational application concept based on audio detection technology that helps teachers handle tantrum situations more quickly, responsively, and effectively within children's learning environments.",
-        link: null,
-      },
-    ],
-    resultImage: p3,
-  },
-  {
-    id: 4,
-    slug: "redesign-academic-system",
-    title: "Redesign An Academic Information System",
-    image: p4,
-    tags: ["Edutech", "UX Research"],
-    sections: [
-      {
-        title: "Empathize",
-        content: "",
-      },
-      {
-        title: "Define",
-        content: "",
-      },
-      {
-        title: "Ideate",
-        content: "",
-      },
-      {
-        title: "Prototype",
-        content: "",
-      },
-      {
-        title: "Test",
-        content: "",
-      },
-      {
-        title: "Result",
-        content: "",
-        link: null,
-      },
-    ],
-    resultImage: p4,
   },
 ];
 
