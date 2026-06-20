@@ -2,12 +2,13 @@ import p1 from "../assets/Expense_Tracker.png";
 import p2 from "../assets/BI_Papua.png";
 import p3 from "../assets/Tantrum_Noya.png";
 import p4 from "../assets/SatisfEAT.gif";
+import p5 from "../assets/OuRigin.png";
 
 const projects = [
   {
     id: 1,
     slug: "tantrum-no-ya",
-    title: "TANTRUM NO-YA",
+    title: "Tantrum No-Ya!",
     image: p3,
     category: "Apple Developer Academy",
     tags: ["Team Project", "UX Research", "Mobile App"],
@@ -91,7 +92,7 @@ const projects = [
   {
     id: 3,
     slug: "satisfeat",
-    title: "SatisfEat",
+    title: "SatisfEAT",
     image: p4,
     category: "Apple Developer Academy",
     tags: ["Team Project", "UI Design", "UX Research"],
@@ -132,6 +133,48 @@ const projects = [
   },
   {
     id: 4,
+    slug: "ourigin",
+    title: "OuRigin",
+    image: p5,
+    category: "Apple Developer Academy",
+    tags: ["UI Design", "Mobile App", "Native iOS"],
+    sections: [
+      {
+        title: "Empathize",
+        content:
+          "Conducted research on how users often receive calls or messages from unfamiliar phone numbers and need to manually search the internet to identify where the numbers originate from. This process is time-consuming and inconvenient, especially when users want quick information directly from their contact list.",
+      },
+      {
+        title: "Define",
+        content:
+          "Defined the main problem as the lack of contextual information within the native Contacts experience. Users could store phone numbers, but they had no simple way to understand the origin or region associated with a contact number without leaving the application.",
+      },
+      {
+        title: "Ideate",
+        content:
+          "Explored ideas for enhancing the native iOS Contacts experience by automatically identifying the origin of a phone number through its country and regional dialing codes. The concept focused on providing useful insights directly within the contact details page while maintaining a familiar and intuitive user experience.",
+      },
+      {
+        title: "Prototype",
+        content:
+          "Designed and developed OuRigin, a native iOS application inspired by Apple's Contacts app. The prototype was capable of automatically reading phone number prefixes and displaying relevant information about the number's origin, reducing the need for external searches.",
+      },
+      {
+        title: "Test",
+        content:
+          "Conducted usability testing with users to evaluate whether the origin information was easy to understand, whether the integration felt natural within a contact-management workflow, and whether the overall experience improved confidence when handling unfamiliar numbers.",
+      },
+      {
+        title: "Result",
+        content:
+          "Successfully delivered OuRigin, a native iOS contact application that automatically identifies the origin of phone numbers based on their dialing codes. The solution provides users with valuable contextual information directly within the app, creating a faster and more informative contact management experience.",
+        link: null,
+      },
+    ],
+    resultImage: p5,
+  },
+  {
+    id: 5,
     slug: "bi-papua",
     title: "BI Papua",
     image: p2,

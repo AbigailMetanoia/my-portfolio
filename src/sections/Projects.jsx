@@ -5,6 +5,10 @@ import useIsMobile from "../hooks/Useismobile";
 export default function Projects() {
   const isMobile = useIsMobile();
 
+  /* Hanya tampilkan 4 project terbaru di homepage.
+     Urutan mengikuti array projects.js — item pertama = terbaru. */
+  const recentProjects = projects.slice(0, 4);
+
   return (
     <section
       id="projects"
@@ -35,7 +39,7 @@ export default function Projects() {
           gap: isMobile ? "16px" : "28px",
         }}
       >
-        {projects.map((project) => (
+        {recentProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>

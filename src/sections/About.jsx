@@ -181,7 +181,7 @@ export default function About() {
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Abigail Metanoia
+                  Abigail Metanoia Melody
                 </p>
                 <p
                   style={{

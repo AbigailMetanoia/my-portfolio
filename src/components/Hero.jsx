@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import profileImg from "../assets/profile.png";
 
 const badges = [
@@ -28,7 +29,10 @@ export default function Hero() {
       }}
     >
       {/* ── Heading ── */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
         style={{
           textAlign: "center",
           position: "relative",
@@ -64,7 +68,7 @@ export default function Hero() {
         >
           UI/UX Designer
         </h1>
-      </div>
+      </motion.div>
 
       {/* ── Photo + badge container ── */}
       <div
@@ -78,8 +82,21 @@ export default function Hero() {
           marginTop: "-50px",
         }}
       >
+        {/* ── Gradient blobs — gerakan organik, lambat, tidak sinkron ── */}
+
         {/* Ungu */}
-        <div
+        <motion.div
+          animate={{
+            x: [0, 14, -8, 6, 0],
+            y: [0, -10, 8, -4, 0],
+            scale: [1, 1.06, 0.97, 1.03, 1],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+            times: [0, 0.3, 0.55, 0.8, 1],
+          }}
           style={{
             position: "absolute",
             width: "400px",
@@ -88,15 +105,27 @@ export default function Hero() {
               "radial-gradient(circle, rgba(110,60,255,0.80) 0%, rgba(80,30,200,0.40) 45%, transparent 70%)",
             top: "5%",
             left: "50%",
-            transform: "translateX(-50%)",
+            marginLeft: "-200px",
             borderRadius: "50%",
             pointerEvents: "none",
             zIndex: 3,
             mixBlendMode: "screen",
           }}
         />
+
         {/* Kuning-emas */}
-        <div
+        <motion.div
+          animate={{
+            x: [0, -10, 12, -6, 0],
+            y: [0, 12, -6, 8, 0],
+            scale: [1, 0.95, 1.05, 0.98, 1],
+          }}
+          transition={{
+            duration: 17,
+            repeat: Infinity,
+            ease: "easeInOut",
+            times: [0, 0.28, 0.6, 0.82, 1],
+          }}
           style={{
             position: "absolute",
             width: "300px",
@@ -111,8 +140,20 @@ export default function Hero() {
             mixBlendMode: "screen",
           }}
         />
+
         {/* Biru */}
-        <div
+        <motion.div
+          animate={{
+            x: [0, 10, -14, 4, 0],
+            y: [0, -8, 6, -10, 0],
+            scale: [1, 1.04, 0.96, 1.02, 1],
+          }}
+          transition={{
+            duration: 19,
+            repeat: Infinity,
+            ease: "easeInOut",
+            times: [0, 0.32, 0.58, 0.85, 1],
+          }}
           style={{
             position: "absolute",
             width: "260px",
@@ -127,8 +168,20 @@ export default function Hero() {
             mixBlendMode: "screen",
           }}
         />
+
         {/* Pink-ungu */}
-        <div
+        <motion.div
+          animate={{
+            x: [0, -12, 8, -4, 0],
+            y: [0, 9, -11, 5, 0],
+            scale: [1, 0.97, 1.05, 0.99, 1],
+          }}
+          transition={{
+            duration: 15.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            times: [0, 0.26, 0.52, 0.78, 1],
+          }}
           style={{
             position: "absolute",
             width: "240px",
@@ -144,19 +197,21 @@ export default function Hero() {
           }}
         />
 
-        {/* ── Floating badges — ukuran proporsional, klik ke /projects ── */}
+        {/* ── Floating badges ── */}
         {badges.map(({ label, pos }, i) => {
           const isHovered = hoveredBadge === i;
           return (
-            <div
+            <motion.div
               key={label}
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 2.0 + i * 0.12, ease: [0.34, 1.56, 0.64, 1] }}
               onClick={() => navigate("/projects")}
               onMouseEnter={() => setHoveredBadge(i)}
               onMouseLeave={() => setHoveredBadge(null)}
               style={{
                 position: "absolute",
                 ...pos,
-                /* glass */
                 background: isHovered ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.10)",
                 backdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
                 WebkitBackdropFilter: "blur(30px) saturate(200%) brightness(1.1)",
@@ -167,7 +222,6 @@ export default function Hero() {
                   ? "inset 0 1.5px 0 rgba(255,255,255,0.40), inset 0 -1px 0 rgba(0,0,0,0.15), 0 20px 60px rgba(0,0,0,0.50)"
                   : "inset 0 1.5px 0 rgba(255,255,255,0.30), inset 0 -1px 0 rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.35)",
                 borderRadius: "60px",
-                /* ukuran compact — tidak terlalu besar di desktop */
                 padding: "9px 20px",
                 color: "#fff",
                 fontFamily: "'Inter', sans-serif",
@@ -176,30 +230,34 @@ export default function Hero() {
                 whiteSpace: "nowrap",
                 zIndex: 6,
                 cursor: "pointer",
-                /* float animation */
                 animationName: "floatBadge",
                 animationDuration: `${2.6 + i * 0.45}s`,
                 animationTimingFunction: "ease-in-out",
                 animationIterationCount: "infinite",
                 animationDirection: "alternate",
+                animationDelay: `${2.0 + i * 0.12 + 0.5}s`,
                 animationPlayState: isHovered ? "paused" : "running",
-                transform: isHovered ? "translateY(0px) scale(1.10)" : undefined,
-                transition:
-                  "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
               }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.97 }}
             >
               {label}
-            </div>
+            </motion.div>
           );
         })}
 
         {/* ── Hero photo ── */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9, delay: 1.7, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: "relative",
             zIndex: 5,
             display: "flex",
             justifyContent: "center",
+            overflow: "hidden",
+            borderRadius: "1px",
           }}
         >
           <img
@@ -212,48 +270,35 @@ export default function Hero() {
             }}
           />
 
-          {/* Layer 1 — blur frosted */}
+          {/* Gradient fade bawah — single seamless layer, overlap penuh ke tepi */}
           <div
             style={{
               position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              height: "30%",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-              maskImage: "linear-gradient(to bottom, transparent 0%, black 60%)",
-              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 60%)",
-              pointerEvents: "none",
-              zIndex: 2,
-            }}
-          />
-
-          {/* Layer 2 — gradient smooth multi-stop */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              height: "55%",
+              bottom: "-2px",
+              left: "-2px",
+              width: "calc(100% + 4px)",
+              height: "60%",
               background: `linear-gradient(
               to bottom,
               rgba(14,14,14,0)    0%,
-              rgba(14,14,14,0.04) 10%,
-              rgba(14,14,14,0.10) 20%,
-              rgba(14,14,14,0.22) 32%,
-              rgba(14,14,14,0.40) 46%,
-              rgba(14,14,14,0.62) 60%,
-              rgba(14,14,14,0.80) 74%,
-              rgba(14,14,14,0.93) 86%,
+              rgba(14,14,14,0.01) 6%,
+              rgba(14,14,14,0.03) 14%,
+              rgba(14,14,14,0.07) 22%,
+              rgba(14,14,14,0.13) 31%,
+              rgba(14,14,14,0.22) 40%,
+              rgba(14,14,14,0.34) 49%,
+              rgba(14,14,14,0.48) 58%,
+              rgba(14,14,14,0.63) 67%,
+              rgba(14,14,14,0.77) 76%,
+              rgba(14,14,14,0.89) 85%,
+              rgba(14,14,14,0.97) 94%,
               rgba(14,14,14,1.00) 100%
             )`,
               pointerEvents: "none",
               zIndex: 3,
             }}
           />
-        </div>
+        </motion.div>
 
         {/* ── Get in Touch button ── */}
         <a

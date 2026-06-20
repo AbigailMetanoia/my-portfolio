@@ -26,6 +26,11 @@ const tagColors = {
     color: "#D4B8FF",
     border: "rgba(180,120,255,0.40)",
   },
+  "Native iOS": {
+    bg: "rgba(25, 38, 178, 0.22)",
+    color: "#b8c7ff",
+    border: "rgba(120, 201, 255, 0.4)",
+  },
 };
 
 export default function ProjectCard({ project }) {
