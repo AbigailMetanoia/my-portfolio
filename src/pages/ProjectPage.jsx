@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import ProjectCard from "../components/ProjectCard";
 import projects from "../data/projects";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../hooks/Useismobile";
 
 const FILTERS = ["All", "Freelance", "Personal Project", "Apple Developer Academy"];
 
