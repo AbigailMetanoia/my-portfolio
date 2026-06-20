@@ -1,6 +1,6 @@
 import iconLinkedIn from "../assets/mdi_linkedin.png";
 import iconGmail from "../assets/mdi_gmail.png";
-import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
+// import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
 import useIsMobile from "../hooks/Useismobile";
 
 const contacts = [
@@ -9,7 +9,7 @@ const contacts = [
     href: "https://www.linkedin.com/in/abigail-metanoia-melody-09bb99219/",
     icon: iconLinkedIn,
   },
-  { label: "Whatsapp", href: "https://wa.me/6281994055237", icon: iconWhatsapp },
+  // { label: "Whatsapp", href: "https://wa.me/6281994055237", icon: iconWhatsapp },
   { label: "Gmail", href: "mailto:abigailmetanoia17@gmail.com", icon: iconGmail },
 ];
 
