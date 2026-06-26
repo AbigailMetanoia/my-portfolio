@@ -3,6 +3,7 @@ import p2 from "../assets/BI_Papua.png";
 import p3 from "../assets/Tantrum_Noya.png";
 import p4 from "../assets/SatisfEAT.gif";
 import p5 from "../assets/OuRigin.png";
+import p6 from "../assets/MyBaliApp.png";
 
 const projects = [
   {
@@ -12,6 +13,16 @@ const projects = [
     image: p3,
     category: "Apple Developer Academy",
     tags: ["Team Project", "UX Research", "Mobile App"],
+    description:
+      "An audio-detection-based iOS app that helps teachers quickly identify and respond to children's tantrum situations in educational environments through real-time sound analysis and guided mitigation instructions.",
+    year: "2026",
+    timeline: "May 2026 - June 2026",
+    role: "UI/UX Designer, Researcher, Project Manager",
+    duration: "1 month",
+    links: {
+      prototype: "https://sketch.com/s/80de569b-be34-43a6-88f3-cce4b4ec52dc", // Sketch
+      github: "https://github.com/WilliamHoops2/TantrumNoYa/tree/main/TantrumNoYa.xcodeproj",
+    },
     sections: [
       {
         title: "Empathize",
@@ -21,17 +32,17 @@ const projects = [
       {
         title: "Define",
         content:
-          "Defined the main problem as the difficulty of detecting tantrum situations quickly and determining the appropriate handling steps within a limited amount of time in educational environments.",
+          "Defined the main problem as the difficulty of detecting tantrum situations quickly and determining the appropriate handling steps for each specific students within a limited amount of time in educational environments.",
       },
       {
         title: "Ideate",
         content:
-          "Developed the idea of an audio-detection-based application capable of recognizing tantrum indications through sound analysis and automatically providing mitigation guidance through the smartphone speaker to assist teachers in taking appropriate action.",
+          "Developed the idea of an application capable of giving personalized mitigations guidance through the smartphone speaker to assist teachers in taking appropriate action.",
       },
       {
         title: "Prototype",
         content:
-          "Created a mobile application prototype featuring tantrum sound detection, emotional indication analysis, and voice-based mitigation instructions that could be directly used by teachers.",
+          "Created a mobile application prototype featuring siri, shortcuts, personalized mitigations and voice-based mitigation instructions that could be directly used by teachers.",
       },
       {
         title: "Test",
@@ -54,6 +65,16 @@ const projects = [
     image: p1,
     category: "Personal Project",
     tags: ["Team Project", "Mobile App"],
+    description:
+      "A mobile expense tracking app that simplifies daily financial management through automatic receipt scanning, smart categorization, and visual spending summaries — making budgeting faster and more effortless.",
+    year: "2026",
+    timeline: "March 2026 - April 2026",
+    role: "UI/UX Designer",
+    duration: "1 month",
+    links: {
+      prototype: "https://sketch.com/s/a10c4010-da7c-4f45-ad21-6c4ba31e0a48", // Sketch
+      github: "https://github.com/abui-am/expense-tracker",
+    },
     sections: [
       {
         title: "Empathize",
@@ -96,6 +117,15 @@ const projects = [
     image: p4,
     category: "Apple Developer Academy",
     tags: ["Team Project", "UI Design", "UX Research"],
+    description:
+      "A swipe-based restaurant discovery app that eliminates decision fatigue by letting users swipe through nearby dining options tailored to their mood and location — making choosing where to eat fun and effortless.",
+    year: "2026",
+    timeline: "Mar 2026",
+    role: "UI/UX Designer & Researcher",
+    duration: "12 days",
+    links: {
+      prototype: "https://sketch.com/s/e7400bac-b351-4271-a86c-756eb14a14f1", // Sketch
+    },
     sections: [
       {
         title: "Empathize",
@@ -138,6 +168,16 @@ const projects = [
     image: p5,
     category: "Apple Developer Academy",
     tags: ["UI Design", "Mobile App", "Native iOS"],
+    description:
+      "A native iOS contacts app that automatically identifies the country and regional origin of any phone number based on its dialing code — giving users instant context without ever leaving their contact list.",
+    year: "2026",
+    timeline: "Mei 2026",
+    role: "UI/UX Designer & iOS Developer",
+    duration: "10 days",
+    links: {
+      prototype: "https://sketch.com/s/be5c6b95-e721-4b01-a96b-6793ae4a8ef9", // Sketch
+      github: "https://github.com/AbigailMetanoia/ADAProject/tree/main/OuRigin_White",
+    },
     sections: [
       {
         title: "Empathize",
@@ -174,12 +214,22 @@ const projects = [
     resultImage: p5,
   },
   {
-    id: 5,
+    id: 6,
     slug: "bi-papua",
     title: "BI Papua",
     image: p2,
     category: "Freelance",
     tags: ["UI Design", "Built-In Website"],
+    description:
+      "A SharePoint-based internal website for Bank Indonesia Papua, designed to support both executive and non-executive staff with a structured, professional, and easy-to-navigate operational platform.",
+    year: "2025",
+    timeline: "Jan 2025 - Feb 2025",
+    role: "UI/UX Designer & SharePoint Developer",
+    duration: "1 month",
+    links: {
+      prototype:
+        "https://www.figma.com/design/RmWwsDpv8k3W6cj3smJFe3/Project-RBT_BI_PAPUA?node-id=3-4&t=l0DaGpUY2NgUX7SO-1", // Figma
+    },
     sections: [
       {
         title: "Empathize",
@@ -214,6 +264,58 @@ const projects = [
       },
     ],
     resultImage: p2,
+  },
+  {
+    id: 5,
+    slug: "ADA-Kos-app",
+    title: "ADAKos",
+    image: p6,
+    category: "Apple Developer Academy",
+    tags: ["UX Research", "UI Design", "Mobile App"],
+    description:
+      "A dedicated accommodation finder for Apple Developer Academy students, consolidating boarding house listings with clear pricing, walking distance to the Academy, and facility filters — making the housing search significantly faster.",
+    year: "2026",
+    timeline: "March 2026",
+    role: "UI/UX Designer & Researcher",
+    duration: "5 days",
+    links: {
+      prototype: "https://sketch.com/s/72fbe0f9-6852-4506-8256-c82c65e2c469", // Sketch
+      github: "https://github.com/AbigailMetanoia/ADAProject/tree/main/MyBaliApp",
+    },
+    sections: [
+      {
+        title: "Empathize",
+        content:
+          "Conducted research on the challenges faced by Apple Developer Academy participants when searching for accommodation near the Academy. Many students struggled to find boarding houses (kos) that matched their budget, distance preference, and required facilities, often relying on scattered information from word of mouth or unstructured group chats.",
+      },
+      {
+        title: "Define",
+        content:
+          "Defined the main problem as the lack of a centralized, reliable source of accommodation information tailored specifically for ADA students. Key decision factors such as price, walking distance to the Academy, and available facilities were difficult to compare quickly, making the search process inefficient and time-consuming.",
+      },
+      {
+        title: "Ideate",
+        content:
+          "Developed the idea of ADAKos, a dedicated accommodation-finder app for ADA students that consolidates listings with clear price information, walking distance in meters to the Academy, and available facilities, allowing users to compare and filter options based on their personal preferences.",
+      },
+      {
+        title: "Prototype",
+        content:
+          "Created a mobile application prototype featuring accommodation listings with price details, walking distance indicators to the Academy, facility tags, and filtering options, designed to make the search and comparison process simple and intuitive for ADA students.",
+      },
+      {
+        title: "Test",
+        content:
+          "Conducted usability testing with ADA students to evaluate whether the listing information was clear, whether the distance and price details helped them make faster decisions, and whether the filtering experience felt intuitive when narrowing down accommodation options.",
+      },
+      {
+        title: "Result",
+        content:
+          "Produced ADAKos, an accommodation discovery app built specifically for Apple Developer Academy students, helping them find the most suitable boarding houses near the Academy based on price, walking distance, and facilities, making the housing search process significantly faster and easier.",
+        link: null,
+      },
+    ],
+    resultImage: p6,
   },
 ];
 

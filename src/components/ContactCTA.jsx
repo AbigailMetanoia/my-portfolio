@@ -1,5 +1,5 @@
-import iconLinkedIn from "../assets/mdi_linkedin.png";
-import iconGmail from "../assets/mdi_gmail.png";
+import iconLinkedIn from "../assets/skill-icons_linkedin.png";
+import iconGmail from "../assets/gmail.png";
 // import iconWhatsapp from "../assets/ic_baseline-whatsapp.png";
 import useIsMobile from "../hooks/Useismobile";
 

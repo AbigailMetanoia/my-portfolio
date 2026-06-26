@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import ProjectCard from "../components/ProjectCard";
 import projects from "../data/projects";
 import useIsMobile from "../hooks/Useismobile";
+import ContactCTA from "../components/ContactCTA";
 
 const FILTERS = ["All", "Freelance", "Personal Project", "Apple Developer Academy"];
 
@@ -19,7 +20,7 @@ export default function ProjectsPage() {
       style={{
         maxWidth: "1200px",
         margin: "0 auto",
-        padding: isMobile ? "120px 20px 80px" : "140px 48px 100px",
+        padding: isMobile ? "120px 20px 0" : "140px 48px 0",
       }}
     >
       <h1
@@ -118,6 +119,7 @@ export default function ProjectsPage() {
           No projects found in this category.
         </p>
       )}
+      <ContactCTA />
     </main>
   );
 }

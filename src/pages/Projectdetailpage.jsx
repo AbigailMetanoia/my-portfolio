@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import projects from "../data/projects";
-import useIsMobile from "../hooks/Useismobile";
+import useIsMobile from "../hooks/useIsMobile";
 
 const tagColors = {
   Edutech: { bg: "rgba(124,92,252,0.25)", color: "#C4B0FF", border: "rgba(124,92,252,0.40)" },
@@ -12,7 +12,227 @@ const tagColors = {
     border: "rgba(80,220,130,0.35)",
   },
   "UX Research": { bg: "rgba(255,160,60,0.20)", color: "#FFA84E", border: "rgba(255,160,60,0.35)" },
+  "Team Project": {
+    bg: "rgba(255,99,132,0.20)",
+    color: "#FF8FA8",
+    border: "rgba(255,99,132,0.35)",
+  },
+  "UI Design": { bg: "rgba(0,210,200,0.20)", color: "#5EEAE0", border: "rgba(0,210,200,0.35)" },
+  "Built-In Website": {
+    bg: "rgba(255,205,60,0.20)",
+    color: "#FFE08A",
+    border: "rgba(255,205,60,0.35)",
+  },
+  "Study Cased": {
+    bg: "rgba(180,120,255,0.22)",
+    color: "#D4B8FF",
+    border: "rgba(180,120,255,0.40)",
+  },
+  "Native iOS": {
+    bg: "rgba(255,140,200,0.20)",
+    color: "#FFB3DC",
+    border: "rgba(255,140,200,0.35)",
+  },
 };
+
+/* ── Icons ── */
+function FigmaIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path
+        d="M5.5 16C6.88 16 8 14.88 8 13.5V11H5.5C4.12 11 3 12.12 3 13.5C3 14.88 4.12 16 5.5 16Z"
+        fill="currentColor"
+      />
+      <path d="M3 8.5C3 7.12 4.12 6 5.5 6H8V11H5.5C4.12 11 3 9.88 3 8.5Z" fill="currentColor" />
+      <path d="M3 3.5C3 2.12 4.12 1 5.5 1H8V6H5.5C4.12 6 3 4.88 3 3.5Z" fill="currentColor" />
+      <path d="M8 1H10.5C11.88 1 13 2.12 13 3.5C13 4.88 11.88 6 10.5 6H8V1Z" fill="currentColor" />
+      <path
+        d="M13 8.5C13 9.88 11.88 11 10.5 11C9.12 11 8 9.88 8 8.5C8 7.12 9.12 6 10.5 6C11.88 6 13 7.12 13 8.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function SketchIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <polygon
+        points="4.5,1.5 11.5,1.5 15,5.5 8,15 1,5.5"
+        stroke="currentColor"
+        strokeWidth="1.1"
+        fill="none"
+        strokeLinejoin="round"
+      />
+      <line x1="1" y1="5.5" x2="15" y2="5.5" stroke="currentColor" strokeWidth="1.1" />
+      <line x1="4.5" y1="1.5" x2="5.5" y2="5.5" stroke="currentColor" strokeWidth="1.1" />
+      <line x1="11.5" y1="1.5" x2="10.5" y2="5.5" stroke="currentColor" strokeWidth="1.1" />
+      <line x1="5.5" y1="5.5" x2="8" y2="15" stroke="currentColor" strokeWidth="1.1" />
+      <line x1="10.5" y1="5.5" x2="8" y2="15" stroke="currentColor" strokeWidth="1.1" />
+      <line x1="4.5" y1="1.5" x2="8" y2="3.2" stroke="currentColor" strokeWidth="1.1" />
+      <line x1="11.5" y1="1.5" x2="8" y2="3.2" stroke="currentColor" strokeWidth="1.1" />
+      <line x1="8" y1="3.2" x2="8" y2="5.5" stroke="currentColor" strokeWidth="1.1" />
+    </svg>
+  );
+}
+
+function GithubIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+      <path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" />
+    </svg>
+  );
+}
+
+/* Deteksi apakah URL adalah Sketch atau Figma */
+function isSketchUrl(url) {
+  return url && url.includes("sketch.com");
+}
+
+const linkButtonStyle = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "8px",
+  padding: "10px 18px",
+  borderRadius: "50px",
+  textDecoration: "none",
+  fontFamily: "'Inter', sans-serif",
+  fontSize: "0.85rem",
+  fontWeight: "500",
+  color: "#fff",
+  background: "rgba(255,255,255,0.08)",
+  backdropFilter: "blur(20px) saturate(180%)",
+  WebkitBackdropFilter: "blur(20px) saturate(180%)",
+  border: "1px solid rgba(255,255,255,0.18)",
+  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.20)",
+  transition: "background 0.2s, transform 0.2s",
+};
+
+/* ── LinkButtons — di luar component utama, terima props ── */
+function LinkButtons({ links }) {
+  return (
+    <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+      {links?.prototype && (
+        <a
+          href={links.prototype}
+          target="_blank"
+          rel="noreferrer"
+          style={linkButtonStyle}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(124,92,252,0.25)";
+            e.currentTarget.style.transform = "scale(1.04)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          {isSketchUrl(links.prototype) ? <SketchIcon /> : <FigmaIcon />}
+          View Prototype
+        </a>
+      )}
+      {links?.github && (
+        <a
+          href={links.github}
+          target="_blank"
+          rel="noreferrer"
+          style={linkButtonStyle}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(124,92,252,0.25)";
+            e.currentTarget.style.transform = "scale(1.04)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          <GithubIcon /> View Code
+        </a>
+      )}
+    </div>
+  );
+}
+
+/* ── Overview metadata strip ── */
+function ProjectOverview({ project, isMobile }) {
+  const meta = [
+    { label: "Year", value: project.year ?? "—" },
+    { label: "Timeline", value: project.timeline ?? "—" },
+    { label: "Role", value: project.role ?? "—" },
+    { label: "Duration", value: project.duration ?? "—" },
+  ];
+
+  return (
+    <div
+      style={{
+        padding: isMobile ? "20px" : "28px 48px",
+        maxWidth: "1100px",
+        margin: "0 auto",
+      }}
+    >
+      {/* Short description */}
+      {project.description && (
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: isMobile ? "0.92rem" : "1rem",
+            color: "rgba(255,255,255,0.55)",
+            lineHeight: 1.8,
+            margin: "0 0 32px 0",
+            maxWidth: "680px",
+          }}
+        >
+          {project.description}
+        </p>
+      )}
+
+      {/* Divider */}
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginBottom: "28px" }} />
+
+      {/* Metadata grid */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)",
+          gap: isMobile ? "20px 12px" : "0",
+        }}
+      >
+        {meta.map(({ label, value }) => (
+          <div key={label}>
+            <p
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.75rem",
+                fontWeight: "500",
+                color: "rgba(255,255,255,0.35)",
+                margin: "0 0 6px 0",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+              }}
+            >
+              {label}
+            </p>
+            <p
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: isMobile ? "0.88rem" : "0.95rem",
+                fontWeight: "500",
+                color: "#fff",
+                margin: 0,
+                lineHeight: 1.4,
+              }}
+            >
+              {value}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "28px" }} />
+    </div>
+  );
+}
 
 export default function ProjectDetailPage() {
   const { slug } = useParams();
@@ -46,6 +266,7 @@ export default function ProjectDetailPage() {
   }
 
   const activeSection = project.sections[activeTab];
+  const hasLinks = project.links && (project.links.prototype || project.links.github);
 
   return (
     <main style={{ minHeight: "100vh", paddingTop: "72px" }}>
@@ -79,46 +300,9 @@ export default function ProjectDetailPage() {
             pointerEvents: "none",
           }}
         />
-        {/* Tag pojok kanan bawah */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "16px",
-            right: "16px",
-            display: "flex",
-            gap: "8px",
-          }}
-        >
-          {project.tags.slice(-1).map((tag) => {
-            const t = tagColors[tag] || {
-              bg: "rgba(255,255,255,0.15)",
-              color: "#fff",
-              border: "rgba(255,255,255,0.3)",
-            };
-            return (
-              <span
-                key={tag}
-                style={{
-                  background: t.bg,
-                  color: t.color,
-                  border: `1px solid ${t.border}`,
-                  padding: "5px 14px",
-                  borderRadius: "50px",
-                  fontSize: "0.78rem",
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: "500",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                }}
-              >
-                {tag}
-              </span>
-            );
-          })}
-        </div>
       </div>
 
-      {/* ── Title + Tags ── */}
+      {/* ── Title + Tags + Links ── */}
       <div
         style={{
           padding: isMobile ? "20px 20px 0" : "32px 48px 0",
@@ -126,6 +310,7 @@ export default function ProjectDetailPage() {
           margin: "0 auto",
         }}
       >
+        {/* Judul */}
         <h1
           style={{
             fontFamily: "'Inter', sans-serif",
@@ -138,46 +323,58 @@ export default function ProjectDetailPage() {
         >
           {project.title}
         </h1>
+
+        {/* Tags (kiri) + Link buttons (kanan) — satu baris */}
         <div
           style={{
             display: "flex",
-            gap: "8px",
+            justifyContent: "space-between",
+            alignItems: "center",
             flexWrap: "wrap",
-            marginBottom: isMobile ? "24px" : "40px",
+            gap: "12px",
+            marginBottom: isMobile ? "16px" : "24px",
           }}
         >
-          {project.tags.map((tag) => {
-            const t = tagColors[tag] || {
-              bg: "rgba(255,255,255,0.1)",
-              color: "#fff",
-              border: "rgba(255,255,255,0.2)",
-            };
-            return (
-              <span
-                key={tag}
-                style={{
-                  background: t.bg,
-                  color: t.color,
-                  border: `1px solid ${t.border}`,
-                  padding: "4px 14px",
-                  borderRadius: "50px",
-                  fontSize: "0.78rem",
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: "500",
-                }}
-              >
-                {tag}
-              </span>
-            );
-          })}
+          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            {project.tags.map((tag) => {
+              const t = tagColors[tag] || {
+                bg: "rgba(255,255,255,0.1)",
+                color: "#fff",
+                border: "rgba(255,255,255,0.2)",
+              };
+              return (
+                <span
+                  key={tag}
+                  style={{
+                    background: t.bg,
+                    color: t.color,
+                    border: `1px solid ${t.border}`,
+                    padding: "4px 14px",
+                    borderRadius: "50px",
+                    fontSize: "0.78rem",
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: "500",
+                  }}
+                >
+                  {tag}
+                </span>
+              );
+            })}
+          </div>
+
+          {/* Link buttons — selalu rata kanan */}
+          {hasLinks && <LinkButtons links={project.links} />}
         </div>
       </div>
+
+      {/* ── Overview Section (description + metadata) ── */}
+      <ProjectOverview project={project} isMobile={isMobile} />
 
       {/* ── MOBILE: Tab layout ── */}
       {isMobile ? (
         <div style={{ padding: "0 0 80px" }}>
-          {/* Tab bar — horizontal scroll */}
           <div
+            className="tab-scroll"
             style={{
               overflowX: "auto",
               overflowY: "hidden",
@@ -191,10 +388,6 @@ export default function ProjectDetailPage() {
           >
             <style>{`
               .tab-scroll::-webkit-scrollbar { display: none; }
-              @keyframes floatBadge {
-                from { transform: translateY(0px); }
-                to   { transform: translateY(-12px); }
-              }
             `}</style>
             {project.sections.map((sec, i) => (
               <button
@@ -220,7 +413,6 @@ export default function ProjectDetailPage() {
             ))}
           </div>
 
-          {/* Tab content */}
           <div style={{ padding: "28px 20px" }}>
             <h2
               style={{
@@ -235,12 +427,7 @@ export default function ProjectDetailPage() {
             </h2>
 
             {activeSection.content && (
-              <div
-                style={{
-                  borderLeft: "2px solid rgba(124,92,252,0.50)",
-                  paddingLeft: "16px",
-                }}
-              >
+              <div style={{ borderLeft: "2px solid rgba(124,92,252,0.50)", paddingLeft: "16px" }}>
                 <p
                   style={{
                     fontFamily: "'Inter', sans-serif",
@@ -255,7 +442,6 @@ export default function ProjectDetailPage() {
               </div>
             )}
 
-            {/* Result — link + image */}
             {activeSection.title === "Result" && (
               <div style={{ borderLeft: "2px solid rgba(124,92,252,0.50)", paddingLeft: "16px" }}>
                 {activeSection.link && (
@@ -298,7 +484,6 @@ export default function ProjectDetailPage() {
             )}
           </div>
 
-          {/* Tab navigation arrows — prev / next */}
           <div
             style={{
               display: "flex",
@@ -376,7 +561,6 @@ export default function ProjectDetailPage() {
               alignItems: "start",
             }}
           >
-            {/* Sidebar sticky */}
             <div style={{ position: "sticky", top: "100px" }}>
               {project.sections.map((sec, i) => (
                 <button
@@ -402,7 +586,6 @@ export default function ProjectDetailPage() {
               ))}
             </div>
 
-            {/* Content */}
             <div>
               {project.sections.map((sec) => (
                 <div key={sec.title} style={{ marginBottom: "56px" }}>
