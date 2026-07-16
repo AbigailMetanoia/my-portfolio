@@ -29,7 +29,7 @@ export default function Projects() {
           letterSpacing: "-0.02em",
         }}
       >
-        My Recent Project
+        My Recent Projects
       </h2>
 
       <div

@@ -86,7 +86,7 @@ export default function About() {
               style={{
                 width: "100%",
                 /* foto lebih besar & lebih landscape natural di mobile */
-                aspectRatio: isMobile ? "4/5" : "3/3",
+                aspectRatio: isMobile ? "4/5" : "3s/3",
                 objectFit: "cover",
                 objectPosition: isMobile ? "center top" : "center",
                 display: "block",
@@ -216,8 +216,9 @@ export default function About() {
             <strong style={{ color: "#fff" }}>reducing friction</strong> and crafting experiences
             shaped by <strong style={{ color: "#fff" }}>real user needs and business goals.</strong>{" "}
             My background in <strong style={{ color: "#fff" }}>Information Technology</strong> gives
-            me a technical edge most designers don't have — I can talk to engineers, understand
-            what's feasible, and design accordingly. I'm sharpest at{" "}
+            me a technical edge{" "}
+            <strong style={{ color: "#fff" }}> most designers don't have</strong> — I can talk to
+            engineers, understand what's feasible, and design accordingly. I'm sharpest at{" "}
             <strong style={{ color: "#fff" }}>user research, analysis, and problem solving.</strong>
           </p>
 

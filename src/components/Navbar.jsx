@@ -6,7 +6,7 @@ import useIsMobile from "../hooks/Useismobile";
 const navItems = [
   { label: "About", path: "/#about-detail" },
   { label: "Projects", path: "/projects" },
-  { label: "Contact", path: "/contact" },
+  // { label: "Contact", path: "/contact" },
 ];
 
 export default function Navbar() {

@@ -1,14 +1,14 @@
 const experiences = [
   {
     id: 1,
-    role: "Junior Developer",
+    role: "UI/UX & iOS Development Trainee",
     company: "Apple Developer Academy Bali Cohort 2026",
     period: "Mar 2026 – Now",
     active: true,
   },
   {
     id: 2,
-    role: "Management Trainee",
+    role: "IT Staff",
     company: "PT Impack Pratama Industri Tbk.",
     period: "Aug 2025 – Feb 2026",
     active: false,
