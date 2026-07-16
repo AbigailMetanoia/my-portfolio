@@ -90,16 +90,35 @@ export default function ProjectCard({ project }) {
         <h3
           style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: "1.05rem",
+            fontSize: "1.37rem",
             fontWeight: "700",
             color: "#fff",
-            margin: "0 0 14px 0",
+            margin: "0 0 8px 0",
             lineHeight: 1.4,
             letterSpacing: "-0.01em",
           }}
         >
           {project.title}
         </h3>
+
+        {project.description && (
+          <p
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "0.88rem",
+              color: "rgba(255,255,255,0.45)",
+              lineHeight: 1.6,
+              margin: "0 0 14px 0",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {project.description}
+          </p>
+        )}
+
         <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
           {project.tags.map((tag) => {
             const t = tagColors[tag] || {
