@@ -212,11 +212,13 @@ export default function About() {
               textAlignLast: isMobile ? "left" : "auto",
             }}
           >
-            I'm a <strong style={{ color: "#fff" }}>UI/UX designer</strong> with a background in
-            Information Technology, <strong style={{ color: "#fff" }}>passionate</strong> about{" "}
-            <strong style={{ color: "#fff" }}>learning something new,</strong>{" "}
-            <strong style={{ color: "#fff" }}>building digital experiences</strong> and{" "}
-            <strong style={{ color: "#fff" }}>solve real problems.</strong>
+            I'm a <strong style={{ color: "#fff" }}>UI/UX designer</strong> focused on{" "}
+            <strong style={{ color: "#fff" }}>reducing friction</strong> and crafting experiences
+            shaped by <strong style={{ color: "#fff" }}>real user needs and business goals.</strong>{" "}
+            My background in <strong style={{ color: "#fff" }}>Information Technology</strong> gives
+            me a technical edge most designers don't have — I can talk to engineers, understand
+            what's feasible, and design accordingly. I'm sharpest at{" "}
+            <strong style={{ color: "#fff" }}>user research, analysis, and problem solving.</strong>
           </p>
 
           <ExperienceTimeline />

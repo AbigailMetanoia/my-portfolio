@@ -34,7 +34,7 @@ export default function ProjectsPage() {
           letterSpacing: "-0.02em",
         }}
       >
-        My Recent Project
+        My Recent Projects
       </h1>
 
       {/* ── Filter chips ── */}
