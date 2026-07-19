@@ -6,6 +6,9 @@ import p5 from "../assets/OuRigin.png";
 import p6 from "../assets/MyBaliApp.png";
 import p7 from "../assets/Singkron.png";
 import v1 from "../assets/singkron_video.mp4";
+import singkronDemo from "../assets/Singkron.mp4";
+import tantrumDemo from "../assets/Tantrum_Noya.mp4";
+// import p3_1 from "../assets/midfi_tantrum_noya.png";
 
 /* ─────────────────────────────────────────────
    Every project follows the same 6-part story:
@@ -20,13 +23,16 @@ import v1 from "../assets/singkron_video.mp4";
 const projects = [
   {
     id: 1,
+    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "tantrum-no-ya",
     title: "Tantrum No-Ya!",
-    image: p3,
+    image: [p3],
+    // Tambahkan foto-foto UI lain di sini kalau ada lebih dari satu:
+    // heroImages: [p3, p3_1],
     category: "Apple Developer Academy",
     tags: ["Team Project", "UX Research", "Mobile App"],
     description:
-      "An iOS app that helps teachers detect and respond to children's tantrums instantly through personalized voice-guided mitigation.",
+      "An iOS app that helps special education teachers respond to children's tantrums with personalized voice guidance.",
     year: "2026",
     timeline: "May 2026 - June 2026",
     role: "UI/UX Designer, Researcher, Project Manager",
@@ -36,29 +42,54 @@ const projects = [
       github: "https://github.com/WilliamHoops2/TantrumNoYa/tree/main/TantrumNoYa.xcodeproj",
     },
     problem: {
-      headline: "Teachers can't always react fast enough",
-      body: "Observing classrooms showed how difficult it is for teachers to detect a tantrum early and decide on the right response in the moment. Every child needed a different approach, and educators had no quick way to access personalized guidance in the middle of a busy classroom — the gap wasn't a lack of training, it was a lack of speed.",
+      headline: "Context",
+      body: "To better understand the challenges teachers face, we interviewed four educators with different backgrounds in special education, ranging from private tutoring to inclusive and special needs schools.",
+    },
+    research: {
+      quotes: [
+        {
+          text: "Emotional situations in the classroom can easily affect other students, when one child cries, others may also become overstimulated.",
+          source:
+            "User 1 - Teacher with 3 years of experience in a special school and 1 year in an inclusive school",
+        },
+        {
+          text: "Sensory sensitivity can significantly affect students' behavior and emotional stability.",
+          source: "User 2 - Private tutor for children with special educational needs",
+        },
+        {
+          text: "Stress with teaching these students, very easy to be angry... first year was hard enough with 5 students, all different.",
+          source: "User 3 - Teacher with 4 years of experience in an inclusive school",
+        },
+        {
+          text: "Practical handling methods for unexpected behaviors are mostly learned through direct experience and discussions with other teachers.",
+          source:
+            "User 4 - Teacher with 5 years of experience teaching high school students with special educational need",
+        },
+      ],
+      // body: "From these interviews, we identified one consistent pattern: there is no universal way to handle a tantrum. Every child responds differently depending on their disability, sensory needs, and previous experiences. Teachers often rely on personal experience rather than structured guidance, making it especially challenging for less experienced educators.",
     },
     businessImpact: {
-      headline: "Scalable support without extra staff",
-      body: "For schools, the concept offers individualized behavioral support without hiring specialists or running extra training. Because the guidance is voice-based and hands-free, it fits directly into a teacher's existing workflow, making it a low-friction addition to a classroom's toolkit rather than another system to learn.",
+      headline: "Teachers Respond Matters",
+      body: "A delayed or inappropriate response during a tantrum can negatively affect both the student experiencing the episode and the surrounding classroom environment. We wanted to help teachers feel more prepared by providing quick, personalized guidance during these stressful moments, allowing them to respond with greater confidence while minimizing the impact on other students.",
     },
     contribution: {
       headline: "Led research, design, and delivery",
-      body: "As UI/UX Designer, Researcher, and Project Manager, I ran the empathy interviews with teachers, defined the core problem statement, and shaped the idea of delivering mitigation steps through the phone's speaker via Siri Shortcuts. I designed the prototype end-to-end and coordinated the team through build and testing.",
+      body: "I was responsible for designing the wireframes and high-fidelity user interface while collaborating with two other designers throughout the project. My role also involved consolidating our individual design work into a consistent design system, ensuring visual consistency and a seamless user experience across the entire application.",
     },
     outcomes: {
-      headline: "A working concept teachers could trust in the moment",
-      body: "The result is an audio-detection driven app that gives teachers fast, personalized mitigation steps exactly when they're needed — validated through usability testing to confirm both the detection and the instructions were easy to follow under pressure.",
+      headline: "Fast, personalized support during tantrums",
+      body: "Teachers can instantly access personalized mitigation steps through Siri or a shortcut, then refine the guidance after each session based on what works best for each child, making future responses faster and more effective.",
     },
+
     learning: {
-      headline: "Design for the moment of crisis, not the ideal case",
-      body: "Leading both research and project management taught me to design for the worst-case, highest-pressure moment a user will face, not the calm walkthrough. Balancing technical constraints like audio detection with the emotional reality of a tantrum in progress shaped every decision after that.",
+      headline: "Simple solutions can create greater impact",
+      body: "User testing showed us that teacher-initiated mitigation was more reliable than automatic detection in noisy classrooms. This project also strengthened my ability to collaborate with multiple designers and create an interface that remains simple, consistent, and easy to use under pressure.",
     },
-    resultImage: p3,
+    resultVideo: tantrumDemo,
   },
   {
     id: 2,
+    featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "expense-tracker",
     title: "Expense Tracker",
     image: p1,
@@ -98,6 +129,7 @@ const projects = [
   },
   {
     id: 3,
+    featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "satisfeat",
     title: "SatisfEAT",
     image: p4,
@@ -106,7 +138,7 @@ const projects = [
     description:
       "Swipe right to save, left to skip — a Tinder-style app that cuts decision fatigue when choosing where to eat.",
     year: "2026",
-    timeline: "Mar 2026",
+    timeline: "March 2026",
     role: "UI/UX Designer & Researcher",
     duration: "12 days",
     links: {
@@ -136,6 +168,7 @@ const projects = [
   },
   {
     id: 4,
+    featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "ourigin",
     title: "OuRigin",
     image: p5,
@@ -144,7 +177,7 @@ const projects = [
     description:
       "A native iOS contacts app that instantly shows the country origin of any phone number — no Googling needed.",
     year: "2026",
-    timeline: "Mei 2026",
+    timeline: "May 2026",
     role: "UI/UX Designer & iOS Developer",
     duration: "10 days",
     links: {
@@ -175,6 +208,7 @@ const projects = [
   },
   {
     id: 5,
+    featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "bi-papua",
     title: "BI Papua",
     image: p2,
@@ -214,6 +248,7 @@ const projects = [
   },
   {
     id: 6,
+    featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "ADA-Kos-app",
     title: "ADAKos",
     image: p6,
@@ -253,11 +288,12 @@ const projects = [
   },
   {
     id: 7,
+    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "singkron-app",
     title: "Singkron",
     image: p7,
     video: v1,
-    resultVideo: v1,
+    resultVideo: singkronDemo,
     category: "Apple Developer Academy",
     tags: ["Team Project", "Mobile App", "Native iOS"],
     description:
@@ -267,8 +303,7 @@ const projects = [
     role: "iOS Developer & UI/UX Contributor",
     duration: "14 days",
     links: {
-      prototype:
-        "https://www.figma.com/design/AWjuHxd6nwVdF0jXEs451f/Challange-4?node-id=0-1&t=XFuLyhYEeC2zZUVG-1",
+      testflight: "https://testflight.apple.com/join/c7RcxHuk",
       github: "https://github.com/arheana/PitchDetector",
     },
     problem: {

@@ -168,9 +168,9 @@ const divider = {
 ───────────────────────────────────────────── */
 const SECTION_DEFS = [
   { id: "brief", label: "Brief" },
-  { id: "problem", label: "Understanding the Problem" },
-  { id: "business-impact", label: "Business Impact" },
-  { id: "contribution", label: "My Contribution" },
+  { id: "problem", label: "The Problem" },
+  { id: "business-impact", label: "Impact" },
+  { id: "contribution", label: "Contribution" },
   { id: "outcomes", label: "Outcomes" },
   { id: "learning", label: "Key Learning" },
 ];
@@ -294,36 +294,222 @@ function InsightCard({ number, text }) {
 }
 
 /* ─────────────────────────────────────────────
-   SCREEN GALLERY — for mockup images
+   QUOTE CARD — cuplikan kalimat asli dari user
+   interview, dipakai untuk menunjukkan pain point
+   dengan suara langsung dari user (bukan interpretasi).
 ───────────────────────────────────────────── */
-function ScreenGallery({ screens, isMobile }) {
-  if (!screens || screens.length === 0) return null;
+function QuoteCard({ text, source }) {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(screens.length, 3)}, 1fr)`,
-        gap: "16px",
-        marginTop: "32px",
+        position: "relative",
+        background: "rgba(124,92,252,0.06)",
+        border: "1px solid rgba(124,92,252,0.18)",
+        borderRadius: "16px",
+        padding: "26px 24px 22px",
       }}
     >
-      {screens.map((src, i) => (
-        <div
-          key={i}
+      <span
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: "6px",
+          left: "20px",
+          fontFamily: "'Fraunces', serif",
+          fontStyle: "italic",
+          fontSize: "2.6rem",
+          color: "rgba(124,92,252,0.35)",
+          lineHeight: 1,
+          userSelect: "none",
+        }}
+      >
+        “
+      </span>
+      <p
+        style={{
+          fontFamily: "'Inter', sans-serif",
+          fontStyle: "italic",
+          fontSize: "0.95rem",
+          color: "rgba(255,255,255,0.80)",
+          lineHeight: 1.75,
+          margin: "16px 0 10px 0",
+          paddingLeft: "8px",
+        }}
+      >
+        {text}
+      </p>
+      {source && (
+        <p
           style={{
-            borderRadius: "16px",
-            overflow: "hidden",
-            border: "1px solid rgba(255,255,255,0.08)",
-            background: "rgba(255,255,255,0.03)",
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.78rem",
+            fontWeight: "500",
+            color: "rgba(124,92,252,0.75)",
+            margin: 0,
+            paddingLeft: "8px",
           }}
         >
-          <img
-            src={src}
-            alt={`Screen ${i + 1}`}
-            style={{ width: "100%", display: "block", objectFit: "cover" }}
-          />
-        </div>
-      ))}
+          — {source}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   SECTION ILLUSTRATION — slot gambar opsional untuk
+   tiap section (Problem, Impact, Contribution, dst).
+   Kalau `src` tidak diisi di data project, komponen ini
+   tidak render apa-apa — jadi aman ditaruh di semua section.
+───────────────────────────────────────────── */
+function SectionIllustration({ src, alt, caption }) {
+  if (!src) return null;
+  return (
+    <div style={{ marginTop: "28px" }}>
+      <div
+        style={{
+          borderRadius: "16px",
+          overflow: "hidden",
+          border: "1px solid rgba(255,255,255,0.08)",
+          background: "rgba(255,255,255,0.03)",
+        }}
+      >
+        <img src={src} alt={alt || ""} style={{ width: "100%", display: "block" }} />
+      </div>
+      {caption && (
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.78rem",
+            color: "rgba(255,255,255,0.4)",
+            margin: "10px 0 0 0",
+            textAlign: "center",
+          }}
+        >
+          {caption}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   CAROUSEL — dipakai untuk hero (banyak foto/video)
+   dan galeri screenshot di Outcomes. Cukup kirim
+   array elemen media (img/video) lewat prop `slides`.
+───────────────────────────────────────────── */
+function Carousel({ slides, height }) {
+  const [index, setIndex] = useState(0);
+
+  if (!slides || slides.length === 0) return null;
+  const hasMultiple = slides.length > 1;
+
+  const go = (dir) => setIndex((i) => (i + dir + slides.length) % slides.length);
+
+  return (
+    <div style={{ position: "relative", width: "100%", height, overflow: "hidden" }}>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          transform: `translateX(-${index * 100}%)`,
+          transition: "transform 0.4s ease",
+        }}
+      >
+        {slides.map((slide, i) => (
+          <div key={i} style={{ width: "100%", height: "100%", flexShrink: 0 }}>
+            {slide}
+          </div>
+        ))}
+      </div>
+
+      {hasMultiple && (
+        <>
+          <button
+            onClick={() => go(-1)}
+            aria-label="Sebelumnya"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "16px",
+              transform: "translateY(-50%)",
+              zIndex: 2,
+              width: "38px",
+              height: "38px",
+              borderRadius: "50%",
+              background: "rgba(0,0,0,0.35)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "#fff",
+              fontSize: "1.1rem",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            ‹
+          </button>
+          <button
+            onClick={() => go(1)}
+            aria-label="Berikutnya"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "16px",
+              transform: "translateY(-50%)",
+              zIndex: 2,
+              width: "38px",
+              height: "38px",
+              borderRadius: "50%",
+              background: "rgba(0,0,0,0.35)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "#fff",
+              fontSize: "1.1rem",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            ›
+          </button>
+
+          <div
+            style={{
+              position: "absolute",
+              bottom: "14px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 2,
+              display: "flex",
+              gap: "6px",
+            }}
+          >
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                aria-label={`Slide ${i + 1}`}
+                style={{
+                  width: i === index ? "20px" : "7px",
+                  height: "7px",
+                  borderRadius: "4px",
+                  border: "none",
+                  background: i === index ? "#fff" : "rgba(255,255,255,0.45)",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "width 0.25s ease, background 0.25s ease",
+                }}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -644,6 +830,40 @@ export default function ProjectDetailPage() {
     P.learning ??
     (P.impact?.reflection ? { headline: "Key Learning", body: P.impact.reflection } : null);
 
+  /* ── Hero slides — HANYA foto UI (video jangan di sini karena
+     kepotong di frame hero yang landscape). Urutan prioritas:
+     1. `P.heroImages` → array foto
+     2. `P.image` tunggal → fallback kalau belum ada array
+  ── */
+  const heroSlides =
+    P.heroImages && P.heroImages.length > 0
+      ? P.heroImages.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt={`${P.title} ${i + 1}`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center top",
+            }}
+          />
+        ))
+      : [
+          <img
+            key="i"
+            src={P.image}
+            alt={P.title}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center top",
+            }}
+          />,
+        ];
+
   return (
     <main style={{ minHeight: "100vh", paddingTop: "72px", background: "#0E0E0E" }}>
       {/* ── NAVIGATION: side rail on desktop, top pills on mobile ── */}
@@ -653,7 +873,7 @@ export default function ProjectDetailPage() {
         <MobileTopNav sections={SECTION_DEFS} activeId={activeId} />
       )}
 
-      {/* ── HERO ── */}
+      {/* ── HERO — sekarang carousel kalau `heroImages` diisi lebih dari 1 ── */}
       <div
         style={{
           width: "100%",
@@ -663,38 +883,14 @@ export default function ProjectDetailPage() {
           background: "#000",
         }}
       >
-        {P.video ? (
-          <video
-            src={P.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center top",
-            }}
-          />
-        ) : (
-          <img
-            src={P.image}
-            alt={P.title}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center top",
-            }}
-          />
-        )}
+        <Carousel slides={heroSlides} height="100%" />
         <div
           style={{
             position: "absolute",
             inset: 0,
             background: "linear-gradient(to bottom, transparent 40%, #0E0E0E)",
             pointerEvents: "none",
+            zIndex: 1,
           }}
         />
       </div>
@@ -819,6 +1015,12 @@ export default function ProjectDetailPage() {
               <p style={sectionLabel}>02 — Understanding the Problem</p>
               <h2 style={sectionHeading(isMobile)}>{problem.headline ?? "The Problem"}</h2>
               <p style={bodyText(isMobile)}>{problem.body}</p>
+              <SectionIllustration
+                src={problem.image}
+                alt={problem.headline}
+                caption={problem.imageCaption}
+              />
+
               {P.research?.insights && P.research.insights.length > 0 && (
                 <div
                   style={{
@@ -831,6 +1033,24 @@ export default function ProjectDetailPage() {
                   {P.research.insights.map((insight, i) => (
                     <InsightCard key={i} number={i + 1} text={insight} />
                   ))}
+                </div>
+              )}
+
+              {/* ── Pain point langsung dari kalimat user interview ── */}
+              {P.research?.quotes && P.research.quotes.length > 0 && (
+                <div style={{ marginTop: "32px" }}>
+                  <p style={{ ...sectionLabel, marginBottom: "16px" }}>What users said</p>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
+                      gap: "16px",
+                    }}
+                  >
+                    {P.research.quotes.map((q, i) => (
+                      <QuoteCard key={i} text={q.text} source={q.source} />
+                    ))}
+                  </div>
                 </div>
               )}
             </Section>
@@ -849,6 +1069,11 @@ export default function ProjectDetailPage() {
                 {businessImpact.headline ?? "Business Impact"}
               </h2>
               <p style={bodyText(isMobile)}>{businessImpact.body}</p>
+              <SectionIllustration
+                src={businessImpact.image}
+                alt={businessImpact.headline}
+                caption={businessImpact.imageCaption}
+              />
             </Section>
           </div>
           <div style={divider} />
@@ -863,6 +1088,11 @@ export default function ProjectDetailPage() {
               <p style={sectionLabel}>04 — My Contribution</p>
               <h2 style={sectionHeading(isMobile)}>{contribution.headline ?? "My Contribution"}</h2>
               <p style={bodyText(isMobile)}>{contribution.body}</p>
+              <SectionIllustration
+                src={contribution.image}
+                alt={contribution.headline}
+                caption={contribution.imageCaption}
+              />
               {contribution.flow && contribution.flow.length > 0 && (
                 <div style={{ marginTop: "32px" }}>
                   <p style={{ ...sectionLabel, marginBottom: "20px" }}>Step by Step</p>
@@ -904,15 +1134,48 @@ export default function ProjectDetailPage() {
               <h2 style={sectionHeading(isMobile)}>{outcomes?.headline ?? "Outcomes"}</h2>
               {outcomes?.body && <p style={bodyText(isMobile)}>{outcomes.body}</p>}
 
-              <ScreenGallery screens={P.screens} isMobile={isMobile} />
+              {/* ── Galeri screenshot sekarang carousel, bukan grid ── */}
+              {P.screens && P.screens.length > 0 && (
+                <div
+                  style={{
+                    marginTop: "32px",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.03)",
+                  }}
+                >
+                  <Carousel
+                    slides={P.screens.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt={`Screen ${i + 1}`}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
+                    ))}
+                    height={isMobile ? "260px" : "420px"}
+                  />
+                </div>
+              )}
 
               {(P.resultVideo || P.resultImage) && (
                 <div
                   style={{
                     marginTop: "32px",
+                    maxWidth: "280px",
+                    marginLeft: "auto",
+                    marginRight: "auto",
                     borderRadius: "20px",
                     overflow: "hidden",
                     border: "1px solid rgba(255,255,255,0.08)",
+                    aspectRatio: "9/20",
+                    background: "#000",
                   }}
                 >
                   {P.resultVideo ? (
@@ -920,13 +1183,23 @@ export default function ProjectDetailPage() {
                       src={P.resultVideo}
                       controls
                       playsInline
-                      style={{ width: "100%", display: "block" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "block",
+                        objectFit: "cover",
+                      }}
                     />
                   ) : (
                     <img
                       src={P.resultImage}
                       alt="Result"
-                      style={{ width: "100%", display: "block", objectFit: "cover" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "block",
+                        objectFit: "cover",
+                      }}
                     />
                   )}
                 </div>
@@ -960,6 +1233,11 @@ export default function ProjectDetailPage() {
                 {learning.headline ?? "What I learned"}
               </h2>
               <p style={bodyText(isMobile)}>{learning.body}</p>
+              <SectionIllustration
+                src={learning.image}
+                alt={learning.headline}
+                caption={learning.imageCaption}
+              />
             </div>
           </Section>
         </div>

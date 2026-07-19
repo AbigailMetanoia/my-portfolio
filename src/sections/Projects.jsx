@@ -5,9 +5,11 @@ import useIsMobile from "../hooks/Useismobile";
 export default function Projects() {
   const isMobile = useIsMobile();
 
-  /* Hanya tampilkan 4 project terbaru di homepage.
-     Urutan mengikuti array projects.js — item pertama = terbaru. */
-  const recentProjects = projects.slice(0, 4);
+  /* Hanya tampilkan project yang ditandai `featured: true` di data/projects.js.
+     Kalau belum ada yang ditandai, fallback ke 2 project pertama di array. */
+  const featuredProjects = projects.some((p) => p.featured)
+    ? projects.filter((p) => p.featured)
+    : projects.slice(0, 2);
 
   return (
     <section
@@ -25,7 +27,7 @@ export default function Projects() {
           fontWeight: "700",
           color: "#fff",
           textAlign: "center",
-          margin: "0 0 48px 0",
+          margin: "0 0 64px 0",
           letterSpacing: "-0.02em",
         }}
       >
@@ -34,13 +36,13 @@ export default function Projects() {
 
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
-          gap: isMobile ? "16px" : "28px",
+          display: "flex",
+          flexDirection: "column",
+          gap: isMobile ? "56px" : "120px",
         }}
       >
-        {recentProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {featuredProjects.map((project, i) => (
+          <ProjectCard key={project.id} project={project} reverse={i % 2 === 1} />
         ))}
       </div>
     </section>

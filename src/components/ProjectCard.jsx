@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useIsMobile from "../hooks/Useismobile";
 
 const tagColors = {
   Edutech: { bg: "rgba(124,92,252,0.25)", color: "#C4B0FF", border: "rgba(124,92,252,0.40)" },
@@ -33,68 +34,104 @@ const tagColors = {
   },
 };
 
-export default function ProjectCard({ project }) {
+/* ─────────────────────────────────────────────
+   Full-width showcase card — gambar di satu sisi,
+   cerita project di sisi lain. `reverse` membalik
+   sisi gambar/teks supaya beberapa card berturut-turut
+   tidak monoton semua gambar di kiri.
+───────────────────────────────────────────── */
+export default function ProjectCard({ project, reverse = false }) {
   const [hovered, setHovered] = useState(false);
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
+
+  const goToDetail = () => navigate(`/projects/${project.slug}`);
 
   return (
     <div
-      onClick={() => navigate(`/projects/${project.slug}`)}
+      onClick={goToDetail}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.05)",
-        backdropFilter: "blur(24px) saturate(180%)",
-        WebkitBackdropFilter: "blur(24px) saturate(180%)",
-        border: hovered ? "1px solid rgba(255,255,255,0.20)" : "1px solid rgba(255,255,255,0.10)",
-        boxShadow: hovered
-          ? "inset 0 1px 0 rgba(255,255,255,0.15), 0 32px 80px rgba(0,0,0,0.50)"
-          : "inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 32px rgba(0,0,0,0.30)",
-        borderRadius: "20px",
-        overflow: "hidden",
+        display: "flex",
+        flexDirection: isMobile ? "column" : reverse ? "row-reverse" : "row",
+        alignItems: "center",
+        gap: isMobile ? "28px" : "64px",
+        width: "100%",
         cursor: "pointer",
-        transform: hovered ? "translateY(-8px)" : "translateY(0)",
-        transition:
-          "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.25s, box-shadow 0.25s, border-color 0.25s",
       }}
     >
-      {/* Project Image */}
-      <div style={{ width: "100%", aspectRatio: "4/3", overflow: "hidden", position: "relative" }}>
-        <img
-          src={project.image}
-          alt={project.title}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-            transform: hovered ? "scale(1.06)" : "scale(1)",
-            transition: "transform 0.5s ease",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: "40%",
-            background: "linear-gradient(to bottom, transparent, rgba(10,10,10,0.55))",
-            pointerEvents: "none",
-          }}
-        />
+      {/* ── Gambar ── */}
+      <div
+        style={{
+          flex: isMobile ? "none" : "1 1 52%",
+          width: isMobile ? "100%" : undefined,
+          position: "relative",
+          borderRadius: "20px",
+          overflow: "hidden",
+          border: hovered ? "1px solid rgba(255,255,255,0.20)" : "1px solid rgba(255,255,255,0.10)",
+          boxShadow: hovered ? "0 32px 80px rgba(0,0,0,0.50)" : "0 12px 40px rgba(0,0,0,0.35)",
+          transition: "border-color 0.25s, box-shadow 0.25s",
+        }}
+      >
+        <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden" }}>
+          {project.video ? (
+            <video
+              src={project.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+                transform: hovered ? "scale(1.05)" : "scale(1)",
+                transition: "transform 0.5s ease",
+              }}
+            />
+          ) : (
+            <img
+              src={project.image}
+              alt={project.title}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+                transform: hovered ? "scale(1.05)" : "scale(1)",
+                transition: "transform 0.5s ease",
+              }}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Card Body */}
-      <div style={{ padding: "20px 22px 22px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+      {/* ── Teks ── */}
+      <div style={{ flex: isMobile ? "none" : "1 1 48%", width: isMobile ? "100%" : undefined }}>
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.85rem",
+            fontWeight: "600",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "var(--color-accent-soft)",
+            margin: "0 0 12px 0",
+          }}
+        >
+          {project.category}
+        </p>
+
         <h3
           style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: "1.37rem",
+            fontFamily: "var(--font-body)",
+            fontSize: isMobile ? "1.6rem" : "clamp(1.7rem, 2.6vw, 2.3rem)",
             fontWeight: "700",
-            color: "#fff",
-            margin: "0 0 8px 0",
-            lineHeight: 1.4,
+            color: "var(--color-text)",
+            margin: "0 0 16px 0",
+            lineHeight: 1.25,
             letterSpacing: "-0.01em",
           }}
         >
@@ -104,22 +141,18 @@ export default function ProjectCard({ project }) {
         {project.description && (
           <p
             style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.88rem",
-              color: "rgba(255,255,255,0.45)",
-              lineHeight: 1.6,
-              margin: "0 0 14px 0",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              fontFamily: "var(--font-body)",
+              fontSize: "1rem",
+              color: "var(--color-text-body)",
+              lineHeight: 1.75,
+              margin: "0 0 22px 0",
             }}
           >
             {project.description}
           </p>
         )}
 
-        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "26px" }}>
           {project.tags.map((tag) => {
             const t = tagColors[tag] || {
               bg: "rgba(255,255,255,0.10)",
@@ -136,7 +169,7 @@ export default function ProjectCard({ project }) {
                   padding: "5px 14px",
                   borderRadius: "50px",
                   fontSize: "0.78rem",
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "var(--font-body)",
                   fontWeight: "500",
                 }}
               >
@@ -145,6 +178,30 @@ export default function ProjectCard({ project }) {
             );
           })}
         </div>
+
+        <span
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            fontFamily: "var(--font-body)",
+            fontSize: "0.95rem",
+            fontWeight: "600",
+            color: "var(--color-text)",
+            borderBottom: "2px solid var(--color-accent)",
+            paddingBottom: "3px",
+          }}
+        >
+          See Study Case
+          <span
+            style={{
+              transform: hovered ? "translateX(4px)" : "translateX(0)",
+              transition: "transform 0.25s",
+            }}
+          >
+            →
+          </span>
+        </span>
       </div>
     </div>
   );

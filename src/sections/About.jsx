@@ -27,17 +27,16 @@ export default function About() {
         margin: "0 auto",
       }}
     >
-      {/* Section label */}
+      {/* Section label — sekarang pakai font-heading (Fraunces) italic + warna accent,
+          sama seperti aksen "friction." di Hero. Sebelumnya pakai font 'Gruppo' sendiri. */}
       <p
         style={{
-          fontFamily: "'Gruppo', cursive",
-          fontSize: isMobile ? "1.4rem" : "2rem",
-          color: "#fff",
+          fontFamily: "var(--font-heading)",
+          fontStyle: "italic",
+          fontSize: "var(--text-eyebrow)",
+          color: "var(--color-accent-soft)",
           textAlign: "center",
           margin: "0 0 10px 0",
-          letterSpacing: "0.08em",
-          WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
-          textShadow: "0px 4px 4px rgba(255,255,255,0.40)",
           lineHeight: 1,
         }}
       >
@@ -46,10 +45,10 @@ export default function About() {
 
       <h2
         style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: isMobile ? "2rem" : "clamp(2.2rem, 5vw, 3.5rem)",
+          fontFamily: "var(--font-body)",
+          fontSize: "var(--text-h2)",
           fontWeight: "700",
-          color: "#fff",
+          color: "var(--color-text)",
           textAlign: "center",
           margin: "0 0 48px 0",
           letterSpacing: "-0.02em",
@@ -85,8 +84,9 @@ export default function About() {
               alt="Abigail Metanoia Melody"
               style={{
                 width: "100%",
-                /* foto lebih besar & lebih landscape natural di mobile */
-                aspectRatio: isMobile ? "4/5" : "3s/3",
+                /* foto lebih besar & lebih landscape natural di mobile.
+                   Fix: nilai desktop sebelumnya "3s/3" tidak valid (typo), diganti "4/3". */
+                aspectRatio: isMobile ? "4/5" : "3/3",
                 objectFit: "cover",
                 objectPosition: isMobile ? "center top" : "center",
                 display: "block",
@@ -160,8 +160,8 @@ export default function About() {
                       src={s.icon}
                       alt={s.label}
                       style={{
-                        width: isMobile ? "24px" : "18px",
-                        height: isMobile ? "24px" : "18px",
+                        width: isMobile ? "44px" : "18px",
+                        height: isMobile ? "44px" : "18px",
                         objectFit: "contain",
                       }}
                     />
@@ -169,14 +169,14 @@ export default function About() {
                 ))}
               </div>
 
-              {/* Nama + role — diperbesar di mobile */}
+              {/* Nama + role — pakai token font & warna terpusat */}
               <div style={{ textAlign: "right" }}>
                 <p
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "var(--font-body)",
                     fontWeight: "700",
-                    fontSize: isMobile ? "1.15rem" : "1rem",
-                    color: "#fff",
+                    fontSize: "var(--text-name)",
+                    color: "var(--color-text)",
                     margin: 0,
                     letterSpacing: "-0.01em",
                   }}
@@ -185,9 +185,9 @@ export default function About() {
                 </p>
                 <p
                   style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: isMobile ? "0.92rem" : "0.78rem",
-                    color: "rgba(255,255,255,0.60)",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "var(--text-caption)",
+                    color: "var(--color-text-caption)",
                     margin: "4px 0 0 0",
                   }}
                 >
@@ -202,9 +202,9 @@ export default function About() {
         <div style={{ paddingTop: isMobile ? "0" : "8px" }}>
           <p
             style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: isMobile ? "0.98rem" : "1.07rem",
-              color: "rgba(255,255,255,0.80)",
+              fontFamily: "var(--font-body)",
+              fontSize: "var(--text-body-lg)",
+              color: "var(--color-text-body)",
               lineHeight: 1.85,
               margin: "0 0 36px 0",
               /* justify agar rapi kiri-kanan, bukan ragged */
@@ -212,14 +212,21 @@ export default function About() {
               textAlignLast: isMobile ? "left" : "auto",
             }}
           >
-            I'm a <strong style={{ color: "#fff" }}>UI/UX designer</strong> focused on{" "}
-            <strong style={{ color: "#fff" }}>reducing friction</strong> and crafting experiences
-            shaped by <strong style={{ color: "#fff" }}>real user needs and business goals.</strong>{" "}
-            My background in <strong style={{ color: "#fff" }}>Information Technology</strong> gives
-            me a technical edge{" "}
-            <strong style={{ color: "#fff" }}> most designers don't have</strong> — I can talk to
-            engineers, understand what's feasible, and design accordingly. I'm sharpest at{" "}
-            <strong style={{ color: "#fff" }}>user research, analysis, and problem solving.</strong>
+            I'm a <strong style={{ color: "var(--color-text)" }}>UI/UX designer</strong> focused on{" "}
+            <strong style={{ color: "var(--color-text)" }}>reducing friction</strong> and crafting
+            experiences shaped by{" "}
+            <strong style={{ color: "var(--color-text)" }}>
+              real user needs and business goals.
+            </strong>{" "}
+            My background in{" "}
+            <strong style={{ color: "var(--color-text)" }}>Information Technology</strong> gives me
+            a technical edge{" "}
+            <strong style={{ color: "var(--color-text)" }}> most designers don't have</strong> — I
+            can talk to engineers, understand what's feasible, and design accordingly. I'm sharpest
+            at{" "}
+            <strong style={{ color: "var(--color-text)" }}>
+              user research, analysis, and problem solving.
+            </strong>
           </p>
 
           <ExperienceTimeline />

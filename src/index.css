@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Gruppo&display=swap');
+@import "./styles/tokens.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,500;1,500&family=Gruppo&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -11,9 +12,9 @@ html {
 }
 
 body {
-  background: #0E0E0E;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden; /* cegah horizontal scroll dari elemen dekoratif yang overflow */
 }
