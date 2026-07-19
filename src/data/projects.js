@@ -7,8 +7,7 @@ import p6 from "../assets/MyBaliApp.png";
 import p7 from "../assets/Singkron.png";
 import v1 from "../assets/singkron_video.mp4";
 import singkronDemo from "../assets/Singkron.mp4";
-import tantrumDemo from "../assets/Tantrum_Noya.mp4";
-// import p3_1 from "../assets/midfi_tantrum_noya.png";
+import tantrumDemo from "../assets/Tantrum_Noya.MP4";
 
 /* ─────────────────────────────────────────────
    Every project follows the same 6-part story:
