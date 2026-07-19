@@ -1174,7 +1174,7 @@ export default function ProjectDetailPage() {
                     borderRadius: "20px",
                     overflow: "hidden",
                     border: "1px solid rgba(255,255,255,0.08)",
-                    aspectRatio: "9/20",
+                    aspectRatio: "10/20",
                     background: "#000",
                   }}
                 >
