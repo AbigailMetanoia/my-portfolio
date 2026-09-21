@@ -163,6 +163,74 @@ const divider = {
   margin: "0",
 };
 
+
+
+/* ─────────────────────────────────────────────
+   BODY TEXT — render satu paragraf (string) atau
+   beberapa paragraf sekaligus (array of string),
+   supaya section seperti Reflection yang panjangnya
+   beberapa alinea tetap rapi jaraknya.
+───────────────────────────────────────────── */
+function BodyText({ content, isMobile }) {
+  if (!content) return null;
+  const paragraphs = Array.isArray(content) ? content : [content];
+  return (
+    <>
+      {paragraphs.map((para, i) => (
+        <p
+          key={i}
+          style={{
+            ...bodyText(isMobile),
+            marginBottom: i < paragraphs.length - 1 ? "16px" : 0,
+          }}
+        >
+          {para}
+        </p>
+      ))}
+    </>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   BULLET LIST — untuk section seperti Outcome yang
+   isinya poin-poin, bukan paragraf mengalir.
+───────────────────────────────────────────── */
+function BulletList({ items, isMobile }) {
+  if (!items || items.length === 0) return null;
+  return (
+    <ul
+      style={{
+        listStyle: "none",
+        margin: "20px 0 0 0",
+        padding: 0,
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+      }}
+    >
+      {items.map((item, i) => (
+        <li
+          key={i}
+          style={{
+            display: "flex",
+            gap: "12px",
+            alignItems: "flex-start",
+            fontFamily: "'Inter', sans-serif",
+            fontSize: isMobile ? "0.92rem" : "0.97rem",
+            color: "rgba(255,255,255,0.58)",
+            lineHeight: 1.75,
+          }}
+        >
+          <span style={{ color: "#7C5CFC", flexShrink: 0, marginTop: "2px", fontSize: "0.6rem" }}>
+            ●
+          </span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /* ─────────────────────────────────────────────
    THE 6 FIXED SECTIONS OF EVERY CASE STUDY
 ───────────────────────────────────────────── */
@@ -388,6 +456,95 @@ function SectionIllustration({ src, alt, caption }) {
         >
           {caption}
         </p>
+      )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   OUTCOME COLLAGE — kolase statis: video di kiri
+   (memanjang, rasio 10/20), di kanan 2 kotak susun
+   ke bawah (mid-fi di atas, hi-fi di bawah). Tinggi
+   kolom kanan otomatis menyamai tinggi video.
+───────────────────────────────────────────── */
+function OutcomeCollage({ video, midfi, hifi, isMobile }) {
+  if (!video && !midfi && !hifi) return null;
+
+  const tileStyle = {
+    flex: "1 1 0",
+    minHeight: 0,
+    borderRadius: "16px",
+    overflow: "hidden",
+    border: "1px solid rgba(255,255,255,0.08)",
+    background: "rgba(255,255,255,0.03)",
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        alignItems: "stretch",
+        gap: "16px",
+        marginTop: "32px",
+      }}
+    >
+      {video && (
+        <div
+          style={{
+            flex: isMobile ? "none" : "0 0 auto",
+            width: isMobile ? "100%" : "240px",
+            maxWidth: isMobile ? "280px" : "none",
+            margin: isMobile ? "0 auto" : 0,
+            aspectRatio: "9/19.5",
+            borderRadius: "20px",
+            overflow: "hidden",
+            border: "1px solid rgba(255,255,255,0.10)",
+            background: "#000",
+          }}
+        >
+          <video
+            src={video}
+            controls
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          />
+        </div>
+      )}
+
+      {(midfi || hifi) && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+            flex: isMobile ? "none" : "1 1 auto",
+            width: isMobile ? "100%" : undefined,
+            minHeight: isMobile ? "320px" : undefined,
+          }}
+        >
+          {midfi && (
+            <div style={tileStyle}>
+              <img
+                src={midfi}
+                alt="Mid-fi screens"
+                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+              />
+            </div>
+          )}
+          {hifi && (
+            <div style={tileStyle}>
+              <img
+                src={hifi}
+                alt="Hi-fi screens"
+                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+              />
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
@@ -1014,7 +1171,7 @@ export default function ProjectDetailPage() {
             <Section isMobile={isMobile}>
               <p style={sectionLabel}>02 — Understanding the Problem</p>
               <h2 style={sectionHeading(isMobile)}>{problem.headline ?? "The Problem"}</h2>
-              <p style={bodyText(isMobile)}>{problem.body}</p>
+              <BodyText content={problem.body} isMobile={isMobile} />
               <SectionIllustration
                 src={problem.image}
                 alt={problem.headline}
@@ -1053,6 +1210,14 @@ export default function ProjectDetailPage() {
                   </div>
                 </div>
               )}
+
+              {/* ── Sintesis riset — kesimpulan dari wawancara/eksplorasi ── */}
+              {P.research?.summary && (
+                <div style={{ marginTop: "28px" }}>
+                  <p style={{ ...sectionLabel, marginBottom: "12px" }}>What this told us</p>
+                  <BodyText content={P.research.summary} isMobile={isMobile} />
+                </div>
+              )}
             </Section>
           </div>
           <div style={divider} />
@@ -1068,7 +1233,7 @@ export default function ProjectDetailPage() {
               <h2 style={sectionHeading(isMobile)}>
                 {businessImpact.headline ?? "Business Impact"}
               </h2>
-              <p style={bodyText(isMobile)}>{businessImpact.body}</p>
+              <BodyText content={businessImpact.body} isMobile={isMobile} />
               <SectionIllustration
                 src={businessImpact.image}
                 alt={businessImpact.headline}
@@ -1087,7 +1252,7 @@ export default function ProjectDetailPage() {
             <Section isMobile={isMobile}>
               <p style={sectionLabel}>04 — My Contribution</p>
               <h2 style={sectionHeading(isMobile)}>{contribution.headline ?? "My Contribution"}</h2>
-              <p style={bodyText(isMobile)}>{contribution.body}</p>
+              <BodyText content={contribution.body} isMobile={isMobile} />
               <SectionIllustration
                 src={contribution.image}
                 alt={contribution.headline}
@@ -1132,78 +1297,16 @@ export default function ProjectDetailPage() {
             <Section isMobile={isMobile}>
               <p style={sectionLabel}>05 — Outcomes</p>
               <h2 style={sectionHeading(isMobile)}>{outcomes?.headline ?? "Outcomes"}</h2>
-              {outcomes?.body && <p style={bodyText(isMobile)}>{outcomes.body}</p>}
+              {outcomes?.body && <BodyText content={outcomes.body} isMobile={isMobile} />}
+              <BulletList items={outcomes?.bullets} isMobile={isMobile} />
 
-              {/* ── Galeri screenshot sekarang carousel, bukan grid ── */}
-              {P.screens && P.screens.length > 0 && (
-                <div
-                  style={{
-                    marginTop: "32px",
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    background: "rgba(255,255,255,0.03)",
-                  }}
-                >
-                  <Carousel
-                    slides={P.screens.map((src, i) => (
-                      <img
-                        key={i}
-                        src={src}
-                        alt={`Screen ${i + 1}`}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          display: "block",
-                        }}
-                      />
-                    ))}
-                    height={isMobile ? "260px" : "420px"}
-                  />
-                </div>
-              )}
-
-              {(P.resultVideo || P.resultImage) && (
-                <div
-                  style={{
-                    marginTop: "32px",
-                    maxWidth: "280px",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    aspectRatio: "10/20",
-                    background: "#000",
-                  }}
-                >
-                  {P.resultVideo ? (
-                    <video
-                      src={P.resultVideo}
-                      controls
-                      playsInline
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "block",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : (
-                    <img
-                      src={P.resultImage}
-                      alt="Result"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "block",
-                        objectFit: "cover",
-                      }}
-                    />
-                  )}
-                </div>
-              )}
+              {/* ── Kolase outcome: video di kiri, mid-fi & hi-fi di kanan ── */}
+              <OutcomeCollage
+                video={P.resultVideo}
+                midfi={P.midfiImage}
+                hifi={P.hifiImage}
+                isMobile={isMobile}
+              />
             </Section>
           </div>
           <div style={divider} />
@@ -1232,7 +1335,7 @@ export default function ProjectDetailPage() {
               >
                 {learning.headline ?? "What I learned"}
               </h2>
-              <p style={bodyText(isMobile)}>{learning.body}</p>
+              <BodyText content={learning.body} isMobile={isMobile} />
               <SectionIllustration
                 src={learning.image}
                 alt={learning.headline}

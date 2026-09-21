@@ -8,6 +8,11 @@ import p7 from "../assets/Singkron.png";
 import v1 from "../assets/singkron_video.mp4";
 import singkronDemo from "../assets/Singkron.mp4";
 import tantrumDemo from "../assets/Tantrum_Noya.MP4";
+import screen1 from "../assets/hifi_tantrum_noya.png";
+import screen2 from "../assets/midfi_tantrum_noya.png";
+import s1 from "../assets/mid_fi.png";
+import s2 from "../assets/hifi_dark_mode.png";
+// import s3 from "../assets/hifi_light_mode.png";
 
 /* ─────────────────────────────────────────────
    Every project follows the same 6-part story:
@@ -25,13 +30,15 @@ const projects = [
     featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "tantrum-no-ya",
     title: "Tantrum No-Ya!",
-    image: [p3],
-    // Tambahkan foto-foto UI lain di sini kalau ada lebih dari satu:
+    image: p3,
     // heroImages: [p3, p3_1],
+    // Kolase di Outcomes: mid-fi di atas, hi-fi di bawah
+    midfiImage: screen2,
+    hifiImage: screen1,
     category: "Apple Developer Academy",
     tags: ["Team Project", "UX Research", "Mobile App"],
     description:
-      "An iOS app that helps special education teachers respond to children's tantrums with personalized voice guidance.",
+      "Tantrum No-Ya! is an iOS application designed to help teachers respond to tantrums experienced by children with special educational needs. Instead of expecting teachers to remember every intervention strategy during a stressful situation, the app provides immediate voice-guided mitigation through the device's speaker. Each mitigation plan can be personalized based on the child's disability and previous successful interventions, allowing teachers to respond more confidently when a tantrum occurs.",
     year: "2026",
     timeline: "May 2026 - June 2026",
     role: "UI/UX Designer, Researcher, Project Manager",
@@ -47,28 +54,29 @@ const projects = [
     research: {
       quotes: [
         {
-          text: "Emotional situations in the classroom can easily affect other students, when one child cries, others may also become overstimulated.",
+          text: "Children with sensory sensitivities can become easily distracted or overwhelmed by surrounding sounds, making it important to respond calmly and appropriately.",
+          source: "User 1 - Private tutor for children with special educational needs",
+        },
+        {
+          text: "When one student experiences a tantrum, the situation can quickly affect other students if it is not handled immediately.",
           source:
-            "User 1 - Teacher with 3 years of experience in a special school and 1 year in an inclusive school",
+            "User 2 - Teacher with 3 years of experience in a special school and 1 year in an inclusive school",
         },
         {
-          text: "Sensory sensitivity can significantly affect students' behavior and emotional stability.",
-          source: "User 2 - Private tutor for children with special educational needs",
-        },
-        {
-          text: "Stress with teaching these students, very easy to be angry... first year was hard enough with 5 students, all different.",
+          text: "As a new teacher, handling tantrums was one of the most difficult situations. Without knowing the appropriate response, teachers may panic or unintentionally raise their voices because they are unsure what to do.",
           source: "User 3 - Teacher with 4 years of experience in an inclusive school",
         },
         {
-          text: "Practical handling methods for unexpected behaviors are mostly learned through direct experience and discussions with other teachers.",
+          text: "Older students generally develop better emotional regulation, making severe tantrums less frequent than among younger children.",
           source:
-            "User 4 - Teacher with 5 years of experience teaching high school students with special educational need",
+            "User 4 - Teacher with 5 years of experience teaching high school students with special educational needs",
         },
       ],
-      // body: "From these interviews, we identified one consistent pattern: there is no universal way to handle a tantrum. Every child responds differently depending on their disability, sensory needs, and previous experiences. Teachers often rely on personal experience rather than structured guidance, making it especially challenging for less experienced educators.",
+      summary:
+        "From these interviews, we identified one consistent pattern: there is no universal way to handle a tantrum. Every child responds differently depending on their disability, sensory needs, and previous experiences. Teachers often rely on personal experience rather than structured guidance, making it especially challenging for less experienced educators.",
     },
     businessImpact: {
-      headline: "Teachers Respond Matters",
+      headline: "Why It Matters",
       body: "A delayed or inappropriate response during a tantrum can negatively affect both the student experiencing the episode and the surrounding classroom environment. We wanted to help teachers feel more prepared by providing quick, personalized guidance during these stressful moments, allowing them to respond with greater confidence while minimizing the impact on other students.",
     },
     contribution: {
@@ -77,12 +85,24 @@ const projects = [
     },
     outcomes: {
       headline: "Fast, personalized support during tantrums",
-      body: "Teachers can instantly access personalized mitigation steps through Siri or a shortcut, then refine the guidance after each session based on what works best for each child, making future responses faster and more effective.",
+      body: "The final solution focuses on helping teachers access personalized mitigation steps as quickly as possible during a tantrum.",
+      bullets: [
+        "Teachers can instantly open the application using either Siri or a predefined shortcut.",
+        "When handling a new student for the first time, the app provides a general mitigation guide.",
+        "After the situation is resolved, teachers can review which mitigation steps were effective, remove ineffective ones, and personalize the mitigation plan for that specific child.",
+        "The application automatically prioritizes the strategies that have proven successful, making future responses faster and more relevant.",
+        "During future tantrums, teachers simply use Siri or the shortcut to immediately access the personalized mitigation plan for that child.",
+      ],
     },
 
     learning: {
       headline: "Simple solutions can create greater impact",
-      body: "User testing showed us that teacher-initiated mitigation was more reliable than automatic detection in noisy classrooms. This project also strengthened my ability to collaborate with multiple designers and create an interface that remains simple, consistent, and easy to use under pressure.",
+      body: [
+        "This project taught me several valuable lessons. First, I learned the importance of validating solutions within realistic usage scenarios instead of ideal conditions. Observing how teachers would actually use the application helped us identify usability issues much earlier.",
+        "Second, we decided to rely on teacher-initiated mitigation instead of automatic tantrum detection. While automatic detection initially seemed more innovative, we realized that noisy classroom environments would likely produce too many false detections. Trusting teachers to initiate the process resulted in a more practical and reliable solution.",
+        "From a design perspective, I also gained experience collaborating with multiple designers and combining different design approaches into one cohesive interface. Designing for teachers with varying levels of technology familiarity reminded me that simplicity should always take priority over visual complexity.",
+        "Finally, this project reinforced the value of user research. Some of the most meaningful insights came from challenges that initially seemed small or were rarely discussed, proving that careful observation often reveals opportunities for impactful solutions.",
+      ],
     },
     resultVideo: tantrumDemo,
   },
@@ -293,10 +313,12 @@ const projects = [
     image: p7,
     video: v1,
     resultVideo: singkronDemo,
+    midfiImage: s1,
+    hifiImage: s2,
     category: "Apple Developer Academy",
     tags: ["Team Project", "Mobile App", "Native iOS"],
     description:
-      "A real-time pitch detection app that tells singers instantly whether they're on key — built and shipped to TestFlight.",
+      "Singkron is an iOS application designed to help users learn three fundamental singing techniques: Straight, Vibrato, and Belt. To make vocal practice more engaging, each technique is represented through playful visualizations that respond to the user's voice in real time. Instead of presenting technical indicators alone, each singing technique is visualized through playful mini-games that help users intuitively understand how their voice should behave.",
     year: "2026",
     timeline: "June 2026 - July 2026",
     role: "iOS Developer & UI/UX Contributor",
@@ -306,24 +328,46 @@ const projects = [
       github: "https://github.com/arheana/PitchDetector",
     },
     problem: {
-      headline: "No real-time feedback without a coach",
-      body: "Music learners and hobbyist singers had no accessible way to know whether they were singing in tune without a teacher present, leaving most of them relying on guesswork or an expensive vocal coach just to get basic feedback on pitch accuracy.",
+      headline: "Finding the Right Problem",
+      body: [
+        "To understand how we could apply machine learning in a meaningful way, our team first explored different ideas rather than jumping directly into development. During this challenge, we were encouraged to experiment with Apple's frameworks and build an AI-powered application that solved a real problem.",
+        "Initially, we considered creating an Apple Watch application that could recognize tennis hand movements. However, after experimenting with available datasets, we found that the data quality was not reliable enough to produce accurate results.",
+        "While searching for alternative ideas, we discovered a video demonstrating music generated through hand gestures. That inspired us to explore music as a domain, leading us to research available vocal datasets and investigate how machine learning could be applied to singing.",
+      ],
+    },
+    research: {
+      summary: [
+        "Throughout our exploration, we realized that not every music-related problem required machine learning. At first, we considered helping users reach specific musical notes, but detecting pitch can already be achieved using traditional audio processing techniques.",
+        "This realization helped us redefine our problem statement. Instead of recognizing pitch, we focused on something that would genuinely benefit from machine learning: identifying singing techniques. We chose three techniques that are commonly practiced by beginner singers—Straight, Vibrato, and Belt—and explored how AI could recognize them in real time.",
+      ],
     },
     businessImpact: {
-      headline: "A lower-cost path to feedback-driven practice",
-      body: "Singkron shows that real-time, coach-free pitch feedback is technically feasible on a phone — relevant to any music-education product trying to lower the cost barrier between a learner and useful, immediate feedback.",
+      headline: "Why It Matters",
+      body: "Learning vocal techniques often requires continuous guidance from a vocal coach, making independent practice difficult for many learners. By providing real-time recognition of singing techniques, Singkron helps users receive immediate feedback while practicing on their own, making vocal training more accessible, engaging, and interactive.",
     },
     contribution: {
-      headline: "Built the real-time detection and its UI",
-      body: "As iOS Developer and UI/UX contributor, I built the real-time pitch detection using Swift and AVFoundation, designed the live feedback UI showing flat, sharp, or on-target status, and tested responsiveness with singers of different skill levels.",
+      headline: "Built the ML pipeline and the interface",
+      body: "I contributed throughout the entire development process, from researching suitable datasets and defining the application flow to training the machine learning model. I also designed the application's wireframes and implemented both the frontend and backend, allowing me to experience the complete product development process from ideation to implementation.",
     },
     outcomes: {
       headline: "Shipped to TestFlight, not just prototyped",
-      body: "The team delivered a working iOS app that detects and displays vocal pitch in real time — a milestone project where I moved from design into full implementation, contributing directly to the codebase behind a shipped product.",
+      body: 'The final product, Singkron, combines the words "Sing" and "Sinkron" (meaning synchronized), representing the harmony between a singer and their vocal technique.',
+      bullets: [
+        "Users begin by selecting one of three singing techniques to practice: Straight, Vibrato, or Belt.",
+        "Each technique contains practice levels where users sing notes based on the provided melody.",
+        "While singing, the application displays real-time visual feedback and continuously recognizes the vocal technique being performed.",
+        "After completing the exercise, users receive an analysis showing which singing technique was detected for each note.",
+        "To improve accessibility, the application also supports Light Mode, Dark Mode, bilingual interfaces (English and Indonesian), and adjustable background music and sound effect volume.",
+      ],
     },
     learning: {
-      headline: "Design specs meet real technical constraints",
-      body: "Contributing directly to the codebase taught me how design intentions run into real technical constraints like audio latency and real-time UI updates, and how much stronger a design gets when the person shaping it can also help build it.",
+      headline: "Finding the right problem matters as much as solving it",
+      body: [
+        "This project taught me that finding the right problem is just as important as building the solution. Rather than forcing our initial idea to work, we were willing to change direction after discovering technical limitations and continued exploring until we found a problem that was both meaningful and technically feasible.",
+        "Working closely with our mentors also helped us better understand the scope of our capabilities as a team. Their feedback encouraged us to refine our ideas and make more realistic technical decisions throughout the project.",
+        "Another valuable lesson was how we organized our teamwork. We assigned responsibilities based on what each team member wanted to learn, allowing everyone to develop new skills while contributing effectively to the project.",
+        "Finally, I learned the importance of maintaining a detailed task tracking process. By documenting and reviewing even the smallest unfinished tasks before release, we were able to deliver a more polished and complete product.",
+      ],
     },
     resultImage: p7,
   },
