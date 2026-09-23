@@ -9,10 +9,13 @@ import p8 from "../assets/Transium.png";
 import v1 from "../assets/singkron_video.mp4";
 import singkronDemo from "../assets/Singkron.mp4";
 import tantrumDemo from "../assets/Tantrum_Noya.MP4";
+import transiumDemo from "../assets/Transium.MP4";
 import screen1 from "../assets/hifi_tantrum_noya.png";
 import screen2 from "../assets/midfi_tantrum_noya.png";
 import s1 from "../assets/mid_fi.png";
 import s2 from "../assets/hifi_dark_mode.png";
+import s3 from "../assets/midfi_transium.png";
+import s4 from "../assets/hifi_transium.png";
 // import s3 from "../assets/hifi_light_mode.png";
 
 /* ─────────────────────────────────────────────
@@ -380,51 +383,58 @@ const projects = [
     title: "Transium",
     image: p8,
     // video: v1,
-    // resultVideo: singkronDemo,
-    midfiImage: s1, // TODO: ganti dengan mid-fi Transium
-    hifiImage: s2, // TODO: ganti dengan hi-fi Transium
+    resultVideo: transiumDemo,
+    midfiImage: s3,
+    hifiImage: s4,
     category: "Apple Developer Academy",
-    tags: ["Team Project", "Mobile App", "iOS App"],
+    tags: ["Team Project", "Mobile App", "Utility App", "iOS App"],
     description:
-      "Transium is an app that guides users to complete quests in Bali using public transportation. Users will be able to get badges upon quest completion and share their achievements and moments on socials.",
+      "Public transport in Bali is rarely the first choice. Together with FDTBali, a community working to improve public transportation in Bali, we started with one question: why don't people in Bali use public transport more often?",
     year: "2026",
-    timeline: "August 2026 - September 2026",
-    role: "iOS Developer & UI/UX Contributor",
+    timeline: "Agustus 2026 - September 2026",
+    role: "UI/UX Designer",
     duration: "26 days",
     links: {
       testflight: "https://testflight.apple.com/join/UpSD6DCt",
-      // appstore: "ISI_LINK_APP_STORE",
-      // github: "https://github.com/...",
+      // github: "https://github.com/arheana/PitchDetector",
     },
     problem: {
-      headline: "The Problem",
+      headline: "The problem",
       body: [
-        "Public transport in Bali is rarely the first choice. Together with FDTBali, a community working to improve public transportation in Bali, we started with one question: why don't people in Bali use public transport more often?",
+        "Bali is an island built for wandering, rice terraces unfolding into cliffside temples, beaches trading places with jungle roads. But beneath the postcard views lies a quieter reality, most people get around by private vehicle. Motorbikes weave through narrow streets, cars pile up during peak hours, and public transportation sits mostly forgotten in the background. For locals, it's simply not part of daily life. For visitors, it's barely on the radar. As tourism grows and traffic worsens, the island faces a real question, what would it take for Bali to move differently, and could design be part of the answer?",
+        // "We partnered with FDTBali, a community focused on improving public transportation in Bali. The core question we set out to answer was simple, why aren't Balinese locals using public transport more often?",
       ],
     },
     research: {
       summary: [
-        "FDTBali shared that a more positive image of public transport is key to growing public interest, which supports their advocacy for better infrastructure.",
-        "Through interviews and research, we heard the same three reasons again and again: long travel times, traffic, and inefficiency.",
-        "As a design team, we couldn't change the infrastructure. So we asked a different question: what could give people a reason to ride?",
+        "FDTBali shared an important insight, a more positive perception of public transport is key to increasing public interest, which in turn supports their advocacy for better infrastructure that benefits Bali residents. Through interviews and further research, we found that most locals avoid public transport due to long travel times, traffic congestion, and inefficiency. Since infrastructure was beyond our control as a design team, we focused instead on finding what could realistically motivate people to choose public transport anyway.",
+        // "This realization helped us redefine our problem statement..."
       ],
     },
     businessImpact: {
-      headline: "A Reason to Ride Again",
-      body: "User testing gave us honest feedback. People agreed that using public transport in Bali is still hard. But many said they would consider taking it again when exploring Bali for leisure. It's a small shift, but it's a step toward a more positive impression of public transport.",
+      headline: "A shift in perception, even before infrastructure changes",
+      body: "After user testing, we received a wave of honest feedback. Participants admitted that using public transport in Bali isn't easy, yet many said they'd genuinely consider using it again, especially for casual trips or sightseeing around the island. This shift in mindset matters, it's the first step toward the kind of public support FDTBali needs to advocate for better infrastructure long term.",
     },
     contribution: {
-      headline: "Shaped the look and feel from scratch",
-      body: "I designed the app from scratch. We started by defining the vibe. To stand apart from Google Maps, we wanted a fresh feel that stays intuitive, so we made it more fun and playful. We chose blue as the main color. It echoes Bali's ocean and sky, builds a sense of trust and reliability, and keeps the experience calm, even when the roads are not.",
+      headline: "Shaped the app's identity from the ground up",
+      body: "I led the design process from the ground up. Early on, our team focused on defining the app's vibe, since we wanted Transium to feel different from Google Maps, familiar enough to stay intuitive, yet fresh enough to stand on its own. We leaned into a fun, approachable visual identity and chose blue as our primary color, evoking the openness of Bali's sky and sea, while also communicating trust and calm, qualities we wanted people to associate with public transport itself.",
     },
     outcomes: {
-      headline: "Live on the App Store",
-      body: "We chose the App Store to reach more users and to catch the attention of tourist destinations. Partnerships with them could bring in more visitors, and with them, more riders on public transport in Bali.",
+      headline: "Launched on the App Store, not just prototyped",
+      body: "Transium is a companion app designed to make public transport in Bali feel approachable, guiding users through routes, schedules, and stops in a way that feels less like a utility and more like part of the journey.",
+      bullets: [
+        "Users can search their destination and instantly see available public transport routes and estimated travel time.",
+        "The app highlights nearby stops and points of interest, encouraging spontaneous exploration rather than rigid navigation.",
+        "A fun, illustrative visual language sets Transium apart from generic map apps, making the experience feel more like a travel companion.",
+        "Launched on the App Store to reach both locals and tourists, opening the door to potential partnerships with tourist attractions.",
+      ],
     },
     learning: {
-      headline: "When you can't change the system, change the reason",
+      headline: "Changing minds can matter more than changing infrastructure",
       body: [
-        "We couldn't fix Bali's infrastructure, but we could change how people feel about public transport. This project taught me that good design doesn't always solve the biggest problem directly. Sometimes it finds a smaller, more human reason for people to try something new.",
+        "This project taught me that design can't always fix the root problem, but it can change how people feel about it. We couldn't shorten travel times or fix traffic, so instead we focused on making public transport feel more approachable and worth trying.",
+        "Working with FDTBali also showed me the value of designing for a cause bigger than the product itself. Every decision we made tied back to a larger goal, building public support that could eventually push for real infrastructure change.",
+        "I also learned how important tone and personality are in utility apps. Choosing to make Transium feel fun and inviting, rather than purely functional, turned out to be one of the most important decisions we made.",
       ],
     },
     resultImage: p8,
