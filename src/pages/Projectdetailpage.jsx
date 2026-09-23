@@ -523,7 +523,9 @@ function OutcomeCollage({ video, midfi, hifi, isMobile }) {
             gap: "16px",
             flex: isMobile ? "none" : "1 1 auto",
             width: isMobile ? "100%" : undefined,
-            minHeight: isMobile ? "320px" : undefined,
+            // Fallback height ketika tidak ada video di sebelahnya untuk
+            // di-"stretch" — tanpa ini, kolom kanan collapse ke 0px di desktop
+            minHeight: video ? undefined : isMobile ? "320px" : "420px",
           }}
         >
           {midfi && (

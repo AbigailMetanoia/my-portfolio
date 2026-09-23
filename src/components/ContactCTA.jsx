@@ -1,6 +1,7 @@
 import iconLinkedIn from "../assets/skill-icons_linkedin.png";
 import iconGmail from "../assets/gmail.png";
 import useIsMobile from "../hooks/Useismobile";
+import { Download } from "lucide-react";
 
 /* ─────────────────────────────────────────────
    Buttons:
@@ -12,7 +13,7 @@ import useIsMobile from "../hooks/Useismobile";
    cleaner look.
 ───────────────────────────────────────────── */
 
-const RESUME_HREF = "/resume.pdf"; // ← update this path to your actual resume file
+const RESUME_HREF = "/CV_Abigail Metanoia Melody.pdf"; // ← update this path to your actual resume file
 const LINKEDIN_HREF = "https://www.linkedin.com/in/abigail-metanoia-melody-09bb99219/";
 const EMAIL_HREF = "mailto:abigailmetanoia17@gmail.com";
 
@@ -131,7 +132,13 @@ export default function ContactCTA() {
           <a
             href={RESUME_HREF}
             download
-            style={{ ...pillBase, ...pillOutline }}
+            style={{
+              ...pillBase,
+              ...pillOutline,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "rgba(255,255,255,0.06)";
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)";
@@ -141,7 +148,8 @@ export default function ContactCTA() {
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)";
             }}
           >
-            Download resume ↓
+            <Download size={16} strokeWidth={2} />
+            Download resume
           </a>
 
           <a

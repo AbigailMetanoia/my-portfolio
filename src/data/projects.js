@@ -1,4 +1,4 @@
-import p1 from "../assets/Expense_Tracker.png";
+import p1 from "../assets/Costa.png";
 import p2 from "../assets/BI_Papua.png";
 import p3 from "../assets/Tantrum_Noya.png";
 import p4 from "../assets/SatisfEAT.gif";
@@ -16,7 +16,8 @@ import s1 from "../assets/mid_fi.png";
 import s2 from "../assets/hifi_dark_mode.png";
 import s3 from "../assets/midfi_transium.png";
 import s4 from "../assets/hifi_transium.png";
-// import s3 from "../assets/hifi_light_mode.png";
+import s5 from "../assets/mid-fi_costa.png";
+import s6 from "../assets/hi-fi_costa.png";
 
 /* ─────────────────────────────────────────────
    Every project follows the same 6-part story:
@@ -112,41 +113,62 @@ const projects = [
   },
   {
     id: 2,
-    featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
+    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "expense-tracker",
-    title: "Expense Tracker",
+    title: "Costa Expense Tracker",
     image: p1,
+    // video: v1,
+    // resultVideo: expenseTrackerDemo,
+    // midfiImage: s5,
+    hifiImage: s6,
     category: "Personal Project",
     tags: ["Team Project", "Mobile App"],
     description:
       "A receipt-scanning app that tracks daily expenses automatically, so budgeting takes seconds instead of minutes.",
     year: "2026",
-    timeline: "March 2026 - April 2026",
+    timeline: "March 2026 - March 2026",
     role: "UI/UX Designer",
-    duration: "1 month",
+    duration: "10 days",
     links: {
-      prototype: "https://sketch.com/s/a10c4010-da7c-4f45-ad21-6c4ba31e0a48",
-      github: "https://github.com/abui-am/expense-tracker",
+      prototype:
+        "https://www.figma.com/proto/7VPm8AJbxquAjA8Ak1bTOy/Expense-Tracker-App?node-id=113-9612&t=5aK5t4josDCiFGIw-1",
+      github: "https://github.com/AbigailMetanoia/expense-tracker/tree/noia_ch6",
     },
     problem: {
-      headline: "Manual tracking gets forgotten",
-      body: "Research into everyday spending habits showed manual expense recording felt slow and inconvenient, so people simply stopped doing it. The real problem wasn't a lack of budgeting apps — it was that typing in every transaction was enough friction to break the habit within days.",
+      headline: "The habit that never survived the first week",
+      body: [
+        "Most people who try to track their spending start with good intentions, then quietly give up within days. Our research into everyday budgeting habits pointed to one clear reason, typing in every transaction felt like a chore. The problem was never a shortage of budgeting apps, it was that manual entry asked for more effort than most people were willing to give, especially after a long day.",
+      ],
+    },
+    research: {
+      summary: [
+        "We looked closely at how people actually behave when trying to stick to a budget, not just what they said they wanted. Across interviews and everyday observation, a pattern kept surfacing, people didn't lack the discipline to budget, they lacked the patience to type in every single expense. The friction wasn't emotional or motivational, it was purely mechanical, and that meant it was solvable through design rather than persuasion.",
+      ],
     },
     businessImpact: {
-      headline: "Less friction, more daily engagement",
-      body: "Automating entry through receipt scanning removes the single biggest drop-off point for budgeting apps. For a product in this category, that translates directly into stronger daily engagement and retention, since users only get value if they keep logging expenses long enough to see patterns.",
+      headline: "Removing the moment people usually quit",
+      body: "Every budgeting app lives or dies at the same moment, the second a user has to manually log an expense. By replacing that step with a quick scan, we removed the exact point where most people drop off. For a product like this, that single change is the difference between a habit that sticks and an app that gets deleted after a week.",
     },
     contribution: {
-      headline: "Designed the scan-to-dashboard flow",
-      body: "I designed the full prototype in Sketch — from camera-based receipt scanning, through data validation, to a simple financial dashboard — and worked closely with the developer to make sure the flow matched what was technically feasible in the shipped repo.",
+      headline: "From camera to clarity",
+      image: s5, // midfi image, khusus ditampilkan di section My Contribution
+      body: "I designed the entire experience in Sketch, starting from the moment a user points their camera at a receipt, through the quiet validation step in the background, to a dashboard that finally makes sense of it all. Throughout the process, I worked closely with the developer to keep the design grounded in what could actually be built, so the final flow felt just as smooth in the shipped repo as it did on paper.",
     },
     outcomes: {
-      headline: "A faster way to see where money goes",
-      body: "The result is a modern expense tracker concept that lets people record and monitor daily spending in seconds through camera-based scanning, validated with users to confirm the interface was clear and the scanning flow felt fast.",
+      headline: "Seeing where your money goes, before you finish your coffee",
+      body: "What came out of this project is a simple promise kept, scan a receipt, and know exactly where your money went, all in seconds.",
+      bullets: [
+        "Users scan a receipt with their camera, and the app automatically extracts the amount, merchant, and category.",
+        "A validation step lets users quickly confirm or correct scanned data before it's saved.",
+        "A simple dashboard shows daily and monthly spending at a glance, without any manual input required.",
+        "User testing confirmed the interface was easy to follow and the scanning flow felt genuinely fast, not just faster on paper.",
+      ],
     },
     learning: {
-      headline: "Simplicity beats feature completeness",
-      body: "This project taught me to prioritize cutting steps over adding intelligence. It's tempting to add smarter categorization or richer insights, but for a habit-forming tool, removing friction from the very first action matters more than any feature built on top of it.",
+      headline: "The best feature is one less step",
+      body: [
+        "This project taught me to resist the urge to add more, smarter categorization, deeper insights, richer charts. For a tool meant to build a daily habit, none of that matters if the first action still feels like work. Removing friction at the very start turned out to be worth more than any feature I could have layered on top.",
+      ],
     },
     resultImage: p1,
   },
@@ -196,7 +218,7 @@ const projects = [
     title: "OuRigin",
     image: p5,
     category: "Apple Developer Academy",
-    tags: ["UI Design", "Mobile App", "Native iOS"],
+    tags: ["UI Design", "Mobile App", "Native iOS", "AI Development"],
     description:
       "A native iOS contacts app that instantly shows the country origin of any phone number — no Googling needed.",
     year: "2026",
