@@ -5,6 +5,7 @@ import p4 from "../assets/SatisfEAT.gif";
 import p5 from "../assets/OuRigin.png";
 import p6 from "../assets/MyBaliApp.png";
 import p7 from "../assets/Singkron.png";
+import p8 from "../assets/Transium.png";
 import v1 from "../assets/singkron_video.mp4";
 import singkronDemo from "../assets/Singkron.mp4";
 import tantrumDemo from "../assets/Tantrum_Noya.MP4";
@@ -370,6 +371,63 @@ const projects = [
       ],
     },
     resultImage: p7,
+  },
+
+  {
+    id: 8,
+    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
+    slug: "transium-app",
+    title: "Transium",
+    image: p8,
+    // video: v1,
+    // resultVideo: singkronDemo,
+    midfiImage: s1, // TODO: ganti dengan mid-fi Transium
+    hifiImage: s2, // TODO: ganti dengan hi-fi Transium
+    category: "Apple Developer Academy",
+    tags: ["Team Project", "Mobile App", "iOS App"],
+    description:
+      "Transium is an app that guides users to complete quests in Bali using public transportation. Users will be able to get badges upon quest completion and share their achievements and moments on socials.",
+    year: "2026",
+    timeline: "August 2026 - September 2026",
+    role: "iOS Developer & UI/UX Contributor",
+    duration: "26 days",
+    links: {
+      testflight: "https://testflight.apple.com/join/UpSD6DCt",
+      // appstore: "ISI_LINK_APP_STORE",
+      // github: "https://github.com/...",
+    },
+    problem: {
+      headline: "The Problem",
+      body: [
+        "Public transport in Bali is rarely the first choice. Together with FDTBali, a community working to improve public transportation in Bali, we started with one question: why don't people in Bali use public transport more often?",
+      ],
+    },
+    research: {
+      summary: [
+        "FDTBali shared that a more positive image of public transport is key to growing public interest, which supports their advocacy for better infrastructure.",
+        "Through interviews and research, we heard the same three reasons again and again: long travel times, traffic, and inefficiency.",
+        "As a design team, we couldn't change the infrastructure. So we asked a different question: what could give people a reason to ride?",
+      ],
+    },
+    businessImpact: {
+      headline: "A Reason to Ride Again",
+      body: "User testing gave us honest feedback. People agreed that using public transport in Bali is still hard. But many said they would consider taking it again when exploring Bali for leisure. It's a small shift, but it's a step toward a more positive impression of public transport.",
+    },
+    contribution: {
+      headline: "Shaped the look and feel from scratch",
+      body: "I designed the app from scratch. We started by defining the vibe. To stand apart from Google Maps, we wanted a fresh feel that stays intuitive, so we made it more fun and playful. We chose blue as the main color. It echoes Bali's ocean and sky, builds a sense of trust and reliability, and keeps the experience calm, even when the roads are not.",
+    },
+    outcomes: {
+      headline: "Live on the App Store",
+      body: "We chose the App Store to reach more users and to catch the attention of tourist destinations. Partnerships with them could bring in more visitors, and with them, more riders on public transport in Bali.",
+    },
+    learning: {
+      headline: "When you can't change the system, change the reason",
+      body: [
+        "We couldn't fix Bali's infrastructure, but we could change how people feel about public transport. This project taught me that good design doesn't always solve the biggest problem directly. Sometimes it finds a smaller, more human reason for people to try something new.",
+      ],
+    },
+    resultImage: p8,
   },
 ];
 
