@@ -8,7 +8,7 @@ import p7 from "../assets/Singkron.png";
 import p8 from "../assets/Transium.png";
 import v1 from "../assets/singkron_video.mp4";
 import singkronDemo from "../assets/Singkron.mp4";
-import tantrumDemo from "../assets/Tantrum_Noya.mp4";
+import tantrumDemo from "../assets/Tantrum_Noya.MP4";
 import transiumDemo from "../assets/Transium.mp4";
 import screen1 from "../assets/hifi_tantrum_noya.png";
 import screen2 from "../assets/midfi_tantrum_noya.png";
