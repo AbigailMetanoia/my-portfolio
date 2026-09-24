@@ -32,6 +32,26 @@ const tagColors = {
     color: "#b8c7ff",
     border: "rgba(120, 201, 255, 0.4)",
   },
+  "iOS App": {
+    bg: "rgba(120,140,255,0.20)",
+    color: "#A8B8FF",
+    border: "rgba(120,140,255,0.35)",
+  },
+  "AI Development": {
+    bg: "rgba(230,90,230,0.20)",
+    color: "#FF8AF0",
+    border: "rgba(230,90,230,0.35)",
+  },
+  "Game App": {
+    bg: "rgba(160,255,60,0.20)",
+    color: "#C6FF6E",
+    border: "rgba(160,255,60,0.35)",
+  },
+  "Utility App": {
+    bg: "rgba(200,150,80,0.20)",
+    color: "#E0C08A",
+    border: "rgba(200,150,80,0.35)",
+  },
 };
 
 /* ─────────────────────────────────────────────

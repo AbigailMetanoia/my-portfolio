@@ -31,6 +31,199 @@ import s6 from "../assets/hi-fi_costa.png";
 
 const projects = [
   {
+    id: 8,
+    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
+    slug: "transium-app",
+    title: "Transium",
+    image: p8,
+    // video: v1,
+    resultVideo: transiumDemo,
+    midfiImage: s3,
+    hifiImage: s4,
+    category: "Apple Developer Academy",
+    tags: ["Team Project", "Mobile App", "Utility App", "iOS App"],
+    description:
+      "Public transport in Bali is rarely the first choice. Together with FDTBali, a community working to improve public transportation in Bali, we started with one question: why don't people in Bali use public transport more often?",
+    year: "2026",
+    timeline: "Agustus 2026 - September 2026",
+    role: "UI/UX Designer",
+    duration: "26 days",
+    links: {
+      testflight: "https://testflight.apple.com/join/UpSD6DCt",
+      // github: "https://github.com/arheana/PitchDetector",
+    },
+    problem: {
+      headline: "The problem",
+      body: [
+        "Bali is an island built for wandering, rice terraces unfolding into cliffside temples, beaches trading places with jungle roads. But beneath the postcard views lies a quieter reality, most people get around by private vehicle. Motorbikes weave through narrow streets, cars pile up during peak hours, and public transportation sits mostly forgotten in the background. For locals, it's simply not part of daily life. For visitors, it's barely on the radar. As tourism grows and traffic worsens, the island faces a real question, what would it take for Bali to move differently, and could design be part of the answer?",
+        // "We partnered with FDTBali, a community focused on improving public transportation in Bali. The core question we set out to answer was simple, why aren't Balinese locals using public transport more often?",
+      ],
+    },
+    research: {
+      summary: [
+        "FDTBali shared an important insight, a more positive perception of public transport is key to increasing public interest, which in turn supports their advocacy for better infrastructure that benefits Bali residents. Through interviews and further research, we found that most locals avoid public transport due to long travel times, traffic congestion, and inefficiency. Since infrastructure was beyond our control as a design team, we focused instead on finding what could realistically motivate people to choose public transport anyway.",
+        // "This realization helped us redefine our problem statement..."
+      ],
+    },
+    businessImpact: {
+      headline: "A shift in perception, even before infrastructure changes",
+      body: "After user testing, we received a wave of honest feedback. Participants admitted that using public transport in Bali isn't easy, yet many said they'd genuinely consider using it again, especially for casual trips or sightseeing around the island. This shift in mindset matters, it's the first step toward the kind of public support FDTBali needs to advocate for better infrastructure long term.",
+    },
+    contribution: {
+      headline: "Shaped the app's identity from the ground up",
+      body: "I led the design process from the ground up. Early on, our team focused on defining the app's vibe, since we wanted Transium to feel different from Google Maps, familiar enough to stay intuitive, yet fresh enough to stand on its own. We leaned into a fun, approachable visual identity and chose blue as our primary color, evoking the openness of Bali's sky and sea, while also communicating trust and calm, qualities we wanted people to associate with public transport itself.",
+    },
+    outcomes: {
+      headline: "Launched on the App Store, not just prototyped",
+      body: "Transium is a companion app designed to make public transport in Bali feel approachable, guiding users through routes, schedules, and stops in a way that feels less like a utility and more like part of the journey.",
+      bullets: [
+        "Users can search their destination and instantly see available public transport routes and estimated travel time.",
+        "The app highlights nearby stops and points of interest, encouraging spontaneous exploration rather than rigid navigation.",
+        "A fun, illustrative visual language sets Transium apart from generic map apps, making the experience feel more like a travel companion.",
+        "Launched on the App Store to reach both locals and tourists, opening the door to potential partnerships with tourist attractions.",
+      ],
+    },
+    learning: {
+      headline: "Changing minds can matter more than changing infrastructure",
+      body: [
+        "This project taught me that design can't always fix the root problem, but it can change how people feel about it. We couldn't shorten travel times or fix traffic, so instead we focused on making public transport feel more approachable and worth trying.",
+        "Working with FDTBali also showed me the value of designing for a cause bigger than the product itself. Every decision we made tied back to a larger goal, building public support that could eventually push for real infrastructure change.",
+        "I also learned how important tone and personality are in utility apps. Choosing to make Transium feel fun and inviting, rather than purely functional, turned out to be one of the most important decisions we made.",
+      ],
+    },
+    resultImage: p8,
+  },
+
+  {
+    id: 7,
+    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
+    slug: "singkron-app",
+    title: "Singkron",
+    image: p7,
+    video: v1,
+    resultVideo: singkronDemo,
+    midfiImage: s1,
+    hifiImage: s2,
+    category: "Apple Developer Academy",
+    tags: ["Team Project", "Mobile App", "Native iOS"],
+    description:
+      "Singkron is an iOS application designed to help users learn three fundamental singing techniques: Straight, Vibrato, and Belt. To make vocal practice more engaging, each technique is represented through playful visualizations that respond to the user's voice in real time. Instead of presenting technical indicators alone, each singing technique is visualized through playful mini-games that help users intuitively understand how their voice should behave.",
+    year: "2026",
+    timeline: "June 2026 - July 2026",
+    role: "iOS Developer & UI/UX Contributor",
+    duration: "14 days",
+    links: {
+      testflight: "https://testflight.apple.com/join/c7RcxHuk",
+      github: "https://github.com/arheana/PitchDetector",
+    },
+    problem: {
+      headline: "Finding the Right Problem",
+      body: [
+        "To understand how we could apply machine learning in a meaningful way, our team first explored different ideas rather than jumping directly into development. During this challenge, we were encouraged to experiment with Apple's frameworks and build an AI-powered application that solved a real problem.",
+        "Initially, we considered creating an Apple Watch application that could recognize tennis hand movements. However, after experimenting with available datasets, we found that the data quality was not reliable enough to produce accurate results.",
+        "While searching for alternative ideas, we discovered a video demonstrating music generated through hand gestures. That inspired us to explore music as a domain, leading us to research available vocal datasets and investigate how machine learning could be applied to singing.",
+      ],
+    },
+    research: {
+      summary: [
+        "Throughout our exploration, we realized that not every music-related problem required machine learning. At first, we considered helping users reach specific musical notes, but detecting pitch can already be achieved using traditional audio processing techniques.",
+        "This realization helped us redefine our problem statement. Instead of recognizing pitch, we focused on something that would genuinely benefit from machine learning: identifying singing techniques. We chose three techniques that are commonly practiced by beginner singers—Straight, Vibrato, and Belt—and explored how AI could recognize them in real time.",
+      ],
+    },
+    businessImpact: {
+      headline: "Why It Matters",
+      body: "Learning vocal techniques often requires continuous guidance from a vocal coach, making independent practice difficult for many learners. By providing real-time recognition of singing techniques, Singkron helps users receive immediate feedback while practicing on their own, making vocal training more accessible, engaging, and interactive.",
+    },
+    contribution: {
+      headline: "Built the ML pipeline and the interface",
+      body: "I contributed throughout the entire development process, from researching suitable datasets and defining the application flow to training the machine learning model. I also designed the application's wireframes and implemented both the frontend and backend, allowing me to experience the complete product development process from ideation to implementation.",
+    },
+    outcomes: {
+      headline: "Shipped to TestFlight, not just prototyped",
+      body: 'The final product, Singkron, combines the words "Sing" and "Sinkron" (meaning synchronized), representing the harmony between a singer and their vocal technique.',
+      bullets: [
+        "Users begin by selecting one of three singing techniques to practice: Straight, Vibrato, or Belt.",
+        "Each technique contains practice levels where users sing notes based on the provided melody.",
+        "While singing, the application displays real-time visual feedback and continuously recognizes the vocal technique being performed.",
+        "After completing the exercise, users receive an analysis showing which singing technique was detected for each note.",
+        "To improve accessibility, the application also supports Light Mode, Dark Mode, bilingual interfaces (English and Indonesian), and adjustable background music and sound effect volume.",
+      ],
+    },
+    learning: {
+      headline: "Finding the right problem matters as much as solving it",
+      body: [
+        "This project taught me that finding the right problem is just as important as building the solution. Rather than forcing our initial idea to work, we were willing to change direction after discovering technical limitations and continued exploring until we found a problem that was both meaningful and technically feasible.",
+        "Working closely with our mentors also helped us better understand the scope of our capabilities as a team. Their feedback encouraged us to refine our ideas and make more realistic technical decisions throughout the project.",
+        "Another valuable lesson was how we organized our teamwork. We assigned responsibilities based on what each team member wanted to learn, allowing everyone to develop new skills while contributing effectively to the project.",
+        "Finally, I learned the importance of maintaining a detailed task tracking process. By documenting and reviewing even the smallest unfinished tasks before release, we were able to deliver a more polished and complete product.",
+      ],
+    },
+    resultImage: p7,
+  },
+
+  {
+    id: 2,
+    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
+    slug: "expense-tracker",
+    title: "Costa Expense Tracker",
+    image: p1,
+    // video: v1,
+    // resultVideo: expenseTrackerDemo,
+    // midfiImage: s5,
+    hifiImage: s6,
+    category: "Personal Project",
+    tags: ["Team Project", "Mobile App"],
+    description:
+      "A receipt-scanning app that tracks daily expenses automatically, so budgeting takes seconds instead of minutes.",
+    year: "2026",
+    timeline: "March 2026 - March 2026",
+    role: "UI/UX Designer",
+    duration: "10 days",
+    links: {
+      prototype:
+        "https://www.figma.com/proto/7VPm8AJbxquAjA8Ak1bTOy/Expense-Tracker-App?node-id=113-9612&t=5aK5t4josDCiFGIw-1",
+      github: "https://github.com/AbigailMetanoia/expense-tracker/tree/noia_ch6",
+    },
+    problem: {
+      headline: "The habit that never survived the first week",
+      body: [
+        "Most people who try to track their spending start with good intentions, then quietly give up within days. Our research into everyday budgeting habits pointed to one clear reason, typing in every transaction felt like a chore. The problem was never a shortage of budgeting apps, it was that manual entry asked for more effort than most people were willing to give, especially after a long day.",
+      ],
+    },
+    research: {
+      summary: [
+        "We looked closely at how people actually behave when trying to stick to a budget, not just what they said they wanted. Across interviews and everyday observation, a pattern kept surfacing, people didn't lack the discipline to budget, they lacked the patience to type in every single expense. The friction wasn't emotional or motivational, it was purely mechanical, and that meant it was solvable through design rather than persuasion.",
+      ],
+    },
+    businessImpact: {
+      headline: "Removing the moment people usually quit",
+      body: "Every budgeting app lives or dies at the same moment, the second a user has to manually log an expense. By replacing that step with a quick scan, we removed the exact point where most people drop off. For a product like this, that single change is the difference between a habit that sticks and an app that gets deleted after a week.",
+    },
+    contribution: {
+      headline: "From camera to clarity",
+      image: s5, // midfi image, khusus ditampilkan di section My Contribution
+      body: "I designed the entire experience in Sketch, starting from the moment a user points their camera at a receipt, through the quiet validation step in the background, to a dashboard that finally makes sense of it all. Throughout the process, I worked closely with the developer to keep the design grounded in what could actually be built, so the final flow felt just as smooth in the shipped repo as it did on paper.",
+    },
+    outcomes: {
+      headline: "Seeing where your money goes, before you finish your coffee",
+      body: "What came out of this project is a simple promise kept, scan a receipt, and know exactly where your money went, all in seconds.",
+      bullets: [
+        "Users scan a receipt with their camera, and the app automatically extracts the amount, merchant, and category.",
+        "A validation step lets users quickly confirm or correct scanned data before it's saved.",
+        "A simple dashboard shows daily and monthly spending at a glance, without any manual input required.",
+        "User testing confirmed the interface was easy to follow and the scanning flow felt genuinely fast, not just faster on paper.",
+      ],
+    },
+    learning: {
+      headline: "The best feature is one less step",
+      body: [
+        "This project taught me to resist the urge to add more, smarter categorization, deeper insights, richer charts. For a tool meant to build a daily habit, none of that matters if the first action still feels like work. Removing friction at the very start turned out to be worth more than any feature I could have layered on top.",
+      ],
+    },
+    resultImage: p1,
+  },
+
+  {
     id: 1,
     featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
     slug: "tantrum-no-ya",
@@ -111,67 +304,7 @@ const projects = [
     },
     resultVideo: tantrumDemo,
   },
-  {
-    id: 2,
-    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
-    slug: "expense-tracker",
-    title: "Costa Expense Tracker",
-    image: p1,
-    // video: v1,
-    // resultVideo: expenseTrackerDemo,
-    // midfiImage: s5,
-    hifiImage: s6,
-    category: "Personal Project",
-    tags: ["Team Project", "Mobile App"],
-    description:
-      "A receipt-scanning app that tracks daily expenses automatically, so budgeting takes seconds instead of minutes.",
-    year: "2026",
-    timeline: "March 2026 - March 2026",
-    role: "UI/UX Designer",
-    duration: "10 days",
-    links: {
-      prototype:
-        "https://www.figma.com/proto/7VPm8AJbxquAjA8Ak1bTOy/Expense-Tracker-App?node-id=113-9612&t=5aK5t4josDCiFGIw-1",
-      github: "https://github.com/AbigailMetanoia/expense-tracker/tree/noia_ch6",
-    },
-    problem: {
-      headline: "The habit that never survived the first week",
-      body: [
-        "Most people who try to track their spending start with good intentions, then quietly give up within days. Our research into everyday budgeting habits pointed to one clear reason, typing in every transaction felt like a chore. The problem was never a shortage of budgeting apps, it was that manual entry asked for more effort than most people were willing to give, especially after a long day.",
-      ],
-    },
-    research: {
-      summary: [
-        "We looked closely at how people actually behave when trying to stick to a budget, not just what they said they wanted. Across interviews and everyday observation, a pattern kept surfacing, people didn't lack the discipline to budget, they lacked the patience to type in every single expense. The friction wasn't emotional or motivational, it was purely mechanical, and that meant it was solvable through design rather than persuasion.",
-      ],
-    },
-    businessImpact: {
-      headline: "Removing the moment people usually quit",
-      body: "Every budgeting app lives or dies at the same moment, the second a user has to manually log an expense. By replacing that step with a quick scan, we removed the exact point where most people drop off. For a product like this, that single change is the difference between a habit that sticks and an app that gets deleted after a week.",
-    },
-    contribution: {
-      headline: "From camera to clarity",
-      image: s5, // midfi image, khusus ditampilkan di section My Contribution
-      body: "I designed the entire experience in Sketch, starting from the moment a user points their camera at a receipt, through the quiet validation step in the background, to a dashboard that finally makes sense of it all. Throughout the process, I worked closely with the developer to keep the design grounded in what could actually be built, so the final flow felt just as smooth in the shipped repo as it did on paper.",
-    },
-    outcomes: {
-      headline: "Seeing where your money goes, before you finish your coffee",
-      body: "What came out of this project is a simple promise kept, scan a receipt, and know exactly where your money went, all in seconds.",
-      bullets: [
-        "Users scan a receipt with their camera, and the app automatically extracts the amount, merchant, and category.",
-        "A validation step lets users quickly confirm or correct scanned data before it's saved.",
-        "A simple dashboard shows daily and monthly spending at a glance, without any manual input required.",
-        "User testing confirmed the interface was easy to follow and the scanning flow felt genuinely fast, not just faster on paper.",
-      ],
-    },
-    learning: {
-      headline: "The best feature is one less step",
-      body: [
-        "This project taught me to resist the urge to add more, smarter categorization, deeper insights, richer charts. For a tool meant to build a daily habit, none of that matters if the first action still feels like work. Removing friction at the very start turned out to be worth more than any feature I could have layered on top.",
-      ],
-    },
-    resultImage: p1,
-  },
+
   {
     id: 3,
     featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
@@ -211,6 +344,7 @@ const projects = [
     },
     resultImage: p4,
   },
+
   {
     id: 4,
     featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
@@ -251,6 +385,7 @@ const projects = [
     },
     resultImage: p5,
   },
+
   {
     id: 5,
     featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
@@ -291,6 +426,7 @@ const projects = [
     },
     resultImage: p2,
   },
+
   {
     id: 6,
     featured: false, // ganti jadi true untuk menampilkan project ini di homepage & /projects
@@ -331,136 +467,7 @@ const projects = [
     },
     resultImage: p6,
   },
-  {
-    id: 7,
-    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
-    slug: "singkron-app",
-    title: "Singkron",
-    image: p7,
-    video: v1,
-    resultVideo: singkronDemo,
-    midfiImage: s1,
-    hifiImage: s2,
-    category: "Apple Developer Academy",
-    tags: ["Team Project", "Mobile App", "Native iOS"],
-    description:
-      "Singkron is an iOS application designed to help users learn three fundamental singing techniques: Straight, Vibrato, and Belt. To make vocal practice more engaging, each technique is represented through playful visualizations that respond to the user's voice in real time. Instead of presenting technical indicators alone, each singing technique is visualized through playful mini-games that help users intuitively understand how their voice should behave.",
-    year: "2026",
-    timeline: "June 2026 - July 2026",
-    role: "iOS Developer & UI/UX Contributor",
-    duration: "14 days",
-    links: {
-      testflight: "https://testflight.apple.com/join/c7RcxHuk",
-      github: "https://github.com/arheana/PitchDetector",
-    },
-    problem: {
-      headline: "Finding the Right Problem",
-      body: [
-        "To understand how we could apply machine learning in a meaningful way, our team first explored different ideas rather than jumping directly into development. During this challenge, we were encouraged to experiment with Apple's frameworks and build an AI-powered application that solved a real problem.",
-        "Initially, we considered creating an Apple Watch application that could recognize tennis hand movements. However, after experimenting with available datasets, we found that the data quality was not reliable enough to produce accurate results.",
-        "While searching for alternative ideas, we discovered a video demonstrating music generated through hand gestures. That inspired us to explore music as a domain, leading us to research available vocal datasets and investigate how machine learning could be applied to singing.",
-      ],
-    },
-    research: {
-      summary: [
-        "Throughout our exploration, we realized that not every music-related problem required machine learning. At first, we considered helping users reach specific musical notes, but detecting pitch can already be achieved using traditional audio processing techniques.",
-        "This realization helped us redefine our problem statement. Instead of recognizing pitch, we focused on something that would genuinely benefit from machine learning: identifying singing techniques. We chose three techniques that are commonly practiced by beginner singers—Straight, Vibrato, and Belt—and explored how AI could recognize them in real time.",
-      ],
-    },
-    businessImpact: {
-      headline: "Why It Matters",
-      body: "Learning vocal techniques often requires continuous guidance from a vocal coach, making independent practice difficult for many learners. By providing real-time recognition of singing techniques, Singkron helps users receive immediate feedback while practicing on their own, making vocal training more accessible, engaging, and interactive.",
-    },
-    contribution: {
-      headline: "Built the ML pipeline and the interface",
-      body: "I contributed throughout the entire development process, from researching suitable datasets and defining the application flow to training the machine learning model. I also designed the application's wireframes and implemented both the frontend and backend, allowing me to experience the complete product development process from ideation to implementation.",
-    },
-    outcomes: {
-      headline: "Shipped to TestFlight, not just prototyped",
-      body: 'The final product, Singkron, combines the words "Sing" and "Sinkron" (meaning synchronized), representing the harmony between a singer and their vocal technique.',
-      bullets: [
-        "Users begin by selecting one of three singing techniques to practice: Straight, Vibrato, or Belt.",
-        "Each technique contains practice levels where users sing notes based on the provided melody.",
-        "While singing, the application displays real-time visual feedback and continuously recognizes the vocal technique being performed.",
-        "After completing the exercise, users receive an analysis showing which singing technique was detected for each note.",
-        "To improve accessibility, the application also supports Light Mode, Dark Mode, bilingual interfaces (English and Indonesian), and adjustable background music and sound effect volume.",
-      ],
-    },
-    learning: {
-      headline: "Finding the right problem matters as much as solving it",
-      body: [
-        "This project taught me that finding the right problem is just as important as building the solution. Rather than forcing our initial idea to work, we were willing to change direction after discovering technical limitations and continued exploring until we found a problem that was both meaningful and technically feasible.",
-        "Working closely with our mentors also helped us better understand the scope of our capabilities as a team. Their feedback encouraged us to refine our ideas and make more realistic technical decisions throughout the project.",
-        "Another valuable lesson was how we organized our teamwork. We assigned responsibilities based on what each team member wanted to learn, allowing everyone to develop new skills while contributing effectively to the project.",
-        "Finally, I learned the importance of maintaining a detailed task tracking process. By documenting and reviewing even the smallest unfinished tasks before release, we were able to deliver a more polished and complete product.",
-      ],
-    },
-    resultImage: p7,
-  },
 
-  {
-    id: 8,
-    featured: true, // ganti jadi true untuk menampilkan project ini di homepage & /projects
-    slug: "transium-app",
-    title: "Transium",
-    image: p8,
-    // video: v1,
-    resultVideo: transiumDemo,
-    midfiImage: s3,
-    hifiImage: s4,
-    category: "Apple Developer Academy",
-    tags: ["Team Project", "Mobile App", "Utility App", "iOS App"],
-    description:
-      "Public transport in Bali is rarely the first choice. Together with FDTBali, a community working to improve public transportation in Bali, we started with one question: why don't people in Bali use public transport more often?",
-    year: "2026",
-    timeline: "Agustus 2026 - September 2026",
-    role: "UI/UX Designer",
-    duration: "26 days",
-    links: {
-      testflight: "https://testflight.apple.com/join/UpSD6DCt",
-      // github: "https://github.com/arheana/PitchDetector",
-    },
-    problem: {
-      headline: "The problem",
-      body: [
-        "Bali is an island built for wandering, rice terraces unfolding into cliffside temples, beaches trading places with jungle roads. But beneath the postcard views lies a quieter reality, most people get around by private vehicle. Motorbikes weave through narrow streets, cars pile up during peak hours, and public transportation sits mostly forgotten in the background. For locals, it's simply not part of daily life. For visitors, it's barely on the radar. As tourism grows and traffic worsens, the island faces a real question, what would it take for Bali to move differently, and could design be part of the answer?",
-        // "We partnered with FDTBali, a community focused on improving public transportation in Bali. The core question we set out to answer was simple, why aren't Balinese locals using public transport more often?",
-      ],
-    },
-    research: {
-      summary: [
-        "FDTBali shared an important insight, a more positive perception of public transport is key to increasing public interest, which in turn supports their advocacy for better infrastructure that benefits Bali residents. Through interviews and further research, we found that most locals avoid public transport due to long travel times, traffic congestion, and inefficiency. Since infrastructure was beyond our control as a design team, we focused instead on finding what could realistically motivate people to choose public transport anyway.",
-        // "This realization helped us redefine our problem statement..."
-      ],
-    },
-    businessImpact: {
-      headline: "A shift in perception, even before infrastructure changes",
-      body: "After user testing, we received a wave of honest feedback. Participants admitted that using public transport in Bali isn't easy, yet many said they'd genuinely consider using it again, especially for casual trips or sightseeing around the island. This shift in mindset matters, it's the first step toward the kind of public support FDTBali needs to advocate for better infrastructure long term.",
-    },
-    contribution: {
-      headline: "Shaped the app's identity from the ground up",
-      body: "I led the design process from the ground up. Early on, our team focused on defining the app's vibe, since we wanted Transium to feel different from Google Maps, familiar enough to stay intuitive, yet fresh enough to stand on its own. We leaned into a fun, approachable visual identity and chose blue as our primary color, evoking the openness of Bali's sky and sea, while also communicating trust and calm, qualities we wanted people to associate with public transport itself.",
-    },
-    outcomes: {
-      headline: "Launched on the App Store, not just prototyped",
-      body: "Transium is a companion app designed to make public transport in Bali feel approachable, guiding users through routes, schedules, and stops in a way that feels less like a utility and more like part of the journey.",
-      bullets: [
-        "Users can search their destination and instantly see available public transport routes and estimated travel time.",
-        "The app highlights nearby stops and points of interest, encouraging spontaneous exploration rather than rigid navigation.",
-        "A fun, illustrative visual language sets Transium apart from generic map apps, making the experience feel more like a travel companion.",
-        "Launched on the App Store to reach both locals and tourists, opening the door to potential partnerships with tourist attractions.",
-      ],
-    },
-    learning: {
-      headline: "Changing minds can matter more than changing infrastructure",
-      body: [
-        "This project taught me that design can't always fix the root problem, but it can change how people feel about it. We couldn't shorten travel times or fix traffic, so instead we focused on making public transport feel more approachable and worth trying.",
-        "Working with FDTBali also showed me the value of designing for a cause bigger than the product itself. Every decision we made tied back to a larger goal, building public support that could eventually push for real infrastructure change.",
-        "I also learned how important tone and personality are in utility apps. Choosing to make Transium feel fun and inviting, rather than purely functional, turned out to be one of the most important decisions we made.",
-      ],
-    },
-    resultImage: p8,
-  },
 ];
 
 export default projects;
